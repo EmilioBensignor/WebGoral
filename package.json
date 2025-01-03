@@ -5,16 +5,23 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
+    "start": "git pull origin main && npm i && nuxt dev --open",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@nuxt/fonts": "^0.10.3",
     "@nuxt/icon": "^1.8.1",
     "@nuxt/image": "^1.8.1",
+    "@nuxt/scripts": "^0.9.5",
+    "@nuxtjs/fontaine": "^0.4.4",
     "@nuxtjs/seo": "^2.0.0-rc.23",
     "@primevue/nuxt-module": "^4.2.2",
     "nuxt": "^3.14.159",
+    "nuxt-anchorscroll": "^1.0.5",
+    "nuxt-booster": "^3.1.9",
+    "nuxt-vitalizer": "^0.10.0",
     "vue": "latest",
     "vue-router": "latest"
   },
