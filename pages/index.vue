@@ -1,5 +1,6 @@
 <template>
   <main>
-    <h1>GORAL</h1>
+    <HomeHero />
+    <HomeVariedades />
   </main>
 </template>
