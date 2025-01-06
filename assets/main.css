@@ -6,6 +6,7 @@
     --secondary-color: #9B213A;
     --terciary-color: #791328;
     --dark-color: #480311;
+    --dark-gray: #7C797A;
     --primary-gradient: linear-gradient(90deg, #480311 0%, #E2083A 100%);
 
 }
@@ -38,8 +39,11 @@ header {
 }
 
 header>div {
+    justify-content: center;
     position: relative;
     z-index: 11;
+    box-shadow: 0px 0px 5px 0px var(--dark-color);
+    padding: 1.125rem 1.25rem;
 }
 
 main {
@@ -143,7 +147,8 @@ h3 {
 
 a,
 .primaryButton,
-.secondaryButton {
+.secondaryButton,
+.hero p {
     font-size: 0.875rem;
 }
 
@@ -184,4 +189,8 @@ p {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+}
+
+.text-dark-gray {
+    color: var(--dark-gray);
 }
