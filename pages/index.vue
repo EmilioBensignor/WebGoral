@@ -1,6 +1,7 @@
 <template>
   <main>
     <HomeHero />
-    <HomeVariedades />
+    <HomeVariations />
+    <HomeCalendar />
   </main>
 </template>

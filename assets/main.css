@@ -6,7 +6,8 @@
     --secondary-color: #9B213A;
     --terciary-color: #791328;
     --dark-color: #480311;
-    --dark-gray: #7C797A;
+    --dark-gray-color: #7C797A;
+    --gray-color: #C1BCBD;
     --primary-gradient: linear-gradient(90deg, #480311 0%, #E2083A 100%);
 
 }
@@ -180,6 +181,9 @@ p {
     border-bottom-width: 3px;
     border-radius: 7px;
     color: var(--primary-color);
+    text-decoration: none;
+    transition: all 0.3s;
+    cursor: pointer;
     padding: 1rem 1.25rem;
 }
 
@@ -191,6 +195,14 @@ p {
     background-repeat: no-repeat;
 }
 
+.bg-gradient {
+    background: var(--primary-gradient);
+}
+
 .text-dark-gray {
-    color: var(--dark-gray);
+    color: var(--dark-gray-color);
+}
+
+.text-light {
+    color: var(--white-color);
 }
