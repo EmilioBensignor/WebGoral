@@ -177,14 +177,21 @@ p {
 
 .secondaryButton {
     background-color: var(--white-color);
-    border: 1px solid var(--primary-color);
+    border: 1px solid var(--white-color);
     border-bottom-width: 3px;
     border-radius: 7px;
-    color: var(--primary-color);
+    color: var(--dark-color);
     text-decoration: none;
     transition: all 0.3s;
     cursor: pointer;
     padding: 1rem 1.25rem;
+}
+
+.secondaryButton.active {
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    border-bottom-width: 3px;
+    border-radius: 7px;
 }
 
 /* Backgrounds & Typography */

@@ -58,7 +58,7 @@
                 </div>
             </ClientOnly>
 
-            <button class="secondaryButton">Reservá tus granadas</button>
+            <button class="secondaryButton active">Reservá tus granadas</button>
         </div>
     </section>
 </template>
@@ -68,8 +68,8 @@ export default {
     data() {
         return {
             months: ['ENE', 'FEB', 'MAR', 'ABR', 'MAY', 'JUN-DIC'],
-            accoHarvestDate: new Date('2025-04-15'),
-            wonderfulHarvestDate: new Date('2025-06-01')
+            accoHarvestDate: new Date('2025-02-20'),
+            wonderfulHarvestDate: new Date('2025-03-25')
         }
     },
 
@@ -107,11 +107,11 @@ export default {
             const days = Math.floor(totalDays % 30)
 
             // Calcular el progreso (asumiendo 6 meses como período total)
-            const totalPeriod = 180 // 6 meses en días
+            const totalPeriod = 360 // 6 meses en días
             const progress = 100 - ((totalDays / totalPeriod) * 100)
 
             return {
-                timeLeft: `Faltan ${months} meses y ${days} días de cosecha`,
+                timeLeft: `Faltan ${months} meses y ${days} días`,
                 progress: Math.min(Math.max(progress, 0), 100),
             }
         }

@@ -3,5 +3,6 @@
     <HomeHero />
     <HomeVariations />
     <HomeCalendar />
+    <HomeAbout />
   </main>
 </template>

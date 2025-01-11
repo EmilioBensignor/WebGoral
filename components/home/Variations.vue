@@ -4,13 +4,11 @@
             <h2 class="text-primary">Nuestras variedades</h2>
             <img src="/images/home/Granada3d.svg" alt="Granada">
             <div class="variations rowCenter">
-                <button class="secondaryButton" :class="{ noActive: selectedVariation !== 'Acco' }"
-                    @click="selectVariation('Acco')">
-                    Acco
-                </button>
-                <button class="secondaryButton" :class="{ noActive: selectedVariation !== 'Wonderful' }"
-                    @click="selectVariation('Wonderful')">
-                    Wonderful
+                <button v-for="variation in variationsList" :key="variation"
+                    class="secondaryButton" 
+                    :class="{ active: selectedVariation == variation }"
+                    @click="selectVariation(variation)">
+                    {{ variation }}
                 </button>
             </div>
             <div class="features rowCenter">
@@ -34,6 +32,7 @@ export default {
         return {
             selectedVariation: 'Acco',
             selectedFeatureIndex: 0,
+            variationsList: ['Acco', 'Wonderful'],
             variations: {
                 Acco: {
                     features: [
@@ -83,11 +82,6 @@ export default {
 <style scoped>
 .variations {
     gap: 0.75rem;
-}
-
-.secondaryButton.noActive {
-    border-color: var(--white-color);
-    color: var(--dark-color);
 }
 
 .features {
