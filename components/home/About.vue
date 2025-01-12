@@ -8,7 +8,8 @@
             </p>
             <div class="w-full infosContainer">
                 <button @click="selectInfo(info.name)" v-for="(info, index) in about" :key="index"
-                    class="secondaryButton" :class="{ active: selectedInfo == info.name }">
+                    class="secondaryButton columnAlignCenter" :class="{ active: selectedInfo == info.name }">
+                    <Icon :name="`mingcute:${info.icon}`" class="text-primary" />
                     {{ info.title }}
                 </button>
             </div>
@@ -30,19 +31,19 @@ export default {
                 {
                     name: 'Clima',
                     title: 'Clima ideal para el cultivo',
-                    icon: '',
+                    icon: 'sun-cloudy-line',
                     video: 'Video clima',
                 },
                 {
                     name: 'Calidad',
                     title: 'Calidad garantizada',
-                    icon: '',
+                    icon: 'diamond-2-line',
                     video: 'Video calidad',
                 },
                 {
                     name: 'Ubicacion',
                     title: 'Ubicación estratégica',
-                    icon: '',
+                    icon: 'location-line',
                     video: 'Video ubicación',
                 }
             ],
@@ -63,14 +64,16 @@ export default {
 </script>
 
 <style scoped>
-    .infosContainer {
-        display: flex;
-        align-items: stretch;
-        gap: 0.2rem;
-    }
+.infosContainer {
+    display: flex;
+    align-items: stretch;
+    gap: 0.2rem;
+}
 
-    .infosContainer button {
-        width: 33%;
-        padding: 0.5rem;
-    }
+.infosContainer button {
+    width: 33%;
+    gap: 0.375rem;
+    font-size: 0.75rem;
+    padding: 0.5rem;
+}
 </style>

@@ -4,5 +4,6 @@
     <HomeVariations />
     <HomeCalendar />
     <HomeAbout />
+    <HomeServices />
   </main>
 </template>
