@@ -129,7 +129,8 @@ section>div {
 }
 
 h1,
-h2 {
+h2,
+h3 {
     text-align: center;
     font-weight: 400;
 }
@@ -222,10 +223,18 @@ p {
     background-color: var(--dark-color);
 }
 
+.bg-light {
+    background-color: var(--white-color);
+}
+
 .text-dark-gray {
     color: var(--dark-gray-color);
 }
 
 .text-light {
     color: var(--white-color);
+}
+
+.text-secondary {
+    color: var(--secondary-color);
 }
