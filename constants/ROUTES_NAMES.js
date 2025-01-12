@@ -1,3 +1,3 @@
-export const ROUTE_NAMES = {
+export const ROUTES_NAMES = {
     HOME: "/",
 };

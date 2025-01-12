@@ -2,13 +2,17 @@
     <section>
         <div class="columnAlignCenter">
             <h2 class="text-primary">Impulsá tu negocio con productos de calidad</h2>
-            <div>
-                <div v-for="(service, index) in services" :key="index">
-                    <h3>{{ service.title }}</h3>
-                    <p v-html="service.text"></p>
-                    <img :src="`/images/home/${service.video}`" alt="">
-                </div>
-            </div>
+            <Accordion value="0">
+                <AccordionPanel v-for="(service, index) in services" :key="index">
+                    <AccordionHeader>
+                        <h3>{{ service.title }}</h3>
+                    </AccordionHeader>
+                    <AccordionContent>
+                        <p v-html="service.text"></p>
+                        <img :src="`/images/home/${service.video}`" alt="">
+                    </AccordionContent>
+                </AccordionPanel>
+            </Accordion>
             <NuxtLink to="#" class="primaryButton">Hacé tu pedido ahora</NuxtLink>
         </div>
     </section>

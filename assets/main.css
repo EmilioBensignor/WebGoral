@@ -55,7 +55,6 @@ main {
 
 footer {
     grid-area: footer;
-    background-color: var(--secondary-color);
 }
 
 header>div,
@@ -205,6 +204,22 @@ p {
 
 .bg-gradient {
     background: var(--primary-gradient);
+}
+
+.bg-primary {
+    background-color: var(--primary-color);
+}
+
+.bg-secondary {
+    background-color: var(--secondary-color);
+}
+
+.bg-terciary {
+    background-color: var(--terciary-color);
+}
+
+.bg-dark {
+    background-color: var(--dark-color);
 }
 
 .text-dark-gray {

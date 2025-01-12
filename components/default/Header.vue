@@ -32,27 +32,15 @@
 </template>
 
 <script>
-import { ROUTE_NAMES } from '~/constants/ROUTES_NAMES';
+import { ROUTES_NAMES } from "~/constants/ROUTES_NAMES";
+import { menu } from '~/shared/menu';
 
 export default {
   data() {
     return {
-      routes: ROUTE_NAMES,
       drawerMenu: false,
-      menu: [
-        {
-          route: ROUTE_NAMES.HOME,
-          label: 'Inicio',
-        },
-        {
-          route: ROUTE_NAMES.HOME,
-          label: 'Somos',
-        },
-        {
-          route: ROUTE_NAMES.HOME,
-          label: 'Contacto',
-        },
-      ],
+      routes: ROUTES_NAMES,
+      menu: menu,
     }
   },
   watch: {
