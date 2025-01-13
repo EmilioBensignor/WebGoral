@@ -176,6 +176,10 @@ p {
     padding: 1rem 1.25rem;
 }
 
+.primaryButton:hover {
+    background-color: var(--dark-color);
+}
+
 .secondaryButton {
     background-color: var(--white-color);
     border: 1px solid var(--white-color);
@@ -186,6 +190,12 @@ p {
     transition: all 0.3s;
     cursor: pointer;
     padding: 1rem 1.25rem;
+}
+
+.secondaryButton:hover {
+    border-color: var(--primary-color);
+    border-bottom-width: 1px;
+    color: var(--primary-color);
 }
 
 .secondaryButton.active {

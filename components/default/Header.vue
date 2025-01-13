@@ -129,12 +129,13 @@ export default {
 }
 
 .languages {
-  width: 0.875rem;
-  height: 0.875rem;
+  width: 1rem;
+  height: 1rem;
   position: absolute;
   right: 1.125rem;
   border: 1px solid var(--dark-color);
   border-radius: 999px;
+  cursor: pointer;
 }
 
 .navMenu ul {
