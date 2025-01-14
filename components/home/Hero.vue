@@ -17,15 +17,37 @@
 </template>
 
 <style scoped>
-    .hero > div {
-        gap: 0.625rem;
+.hero {
+    gap: 0.75rem;
+}
+
+.hero>div {
+    gap: 0.625rem;
+}
+
+.hero>div>div {
+    gap: 0.375rem;
+}
+
+.hero>div img {
+    width: 1.35rem;
+}
+
+@media (width >=1080px) {
+    .hero {
+        gap: 1.5rem;
     }
 
-    .hero > div > div {
-        gap: 0.375rem;
+    .hero>div {
+        gap: 1.25rem;
     }
 
-    .hero > div img {
-        width: 1.35rem;
+    .hero>p {
+        max-width: 290px;
     }
+
+    .hero>div img {
+        width: 1.875rem;
+    }
+}
 </style>

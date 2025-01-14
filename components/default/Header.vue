@@ -7,27 +7,34 @@
       <NuxtLink :to="routes.HOME">
         <NuxtImg class="logo" src="/images/Logo-Goral.svg" alt="Logo Infosystema" />
       </NuxtLink>
-      <div class="menuSidebar">
-        <Drawer :visible="drawerMenu" :modal="true" :dismissable="true" :closeOnEscape="true" class="column"
-          @hide="closeDrawer">
-          <template #header>
-            <button @click="closeDrawer" class="closeButton allCenter">
-              <Icon size="1.25rem" name="mingcute:close-line" class="text-primary" />
-            </button>
-          </template>
-          <nav class="w-full h-full navMenu columnSpaceBetween">
-            <ul class="column">
-              <li v-for="(item, index) in menu" :key="index">
-                <NuxtLink :to="item.route">{{ item.label }}</NuxtLink>
-              </li>
-            </ul>
-          </nav>
-        </Drawer>
-      </div>
-      <div class="allCenter languages">
-        <NuxtImg src="/images/arg.svg" class="w-full" />
+      <div class="desktopMenu">
+        <nav class="navMenu">
+          <ul class="rowCenter">
+            <li v-for="(item, index) in menu" :key="index">
+              <NuxtLink :to="item.route">{{ item.label }}</NuxtLink>
+            </li>
+          </ul>
+        </nav>
+        <div class="allCenter languages">
+          <NuxtImg src="/images/arg.svg" class="w-full" />
+        </div>
       </div>
     </div>
+    <Drawer :visible="drawerMenu" :modal="true" :dismissable="true" :closeOnEscape="true" class="column"
+      @hide="closeDrawer">
+      <template #header>
+        <button @click="closeDrawer" class="closeButton allCenter">
+          <Icon size="1.25rem" name="mingcute:close-line" class="text-primary" />
+        </button>
+      </template>
+      <nav class="w-full h-full navMenu columnSpaceBetween">
+        <ul class="column">
+          <li v-for="(item, index) in menu" :key="index">
+            <NuxtLink :to="item.route">{{ item.label }}</NuxtLink>
+          </li>
+        </ul>
+      </nav>
+    </Drawer>
   </header>
 </template>
 
@@ -138,6 +145,10 @@ export default {
   cursor: pointer;
 }
 
+.desktopMenu {
+  display: none;
+}
+
 .navMenu ul {
   gap: 2rem;
 }
@@ -146,5 +157,37 @@ export default {
   text-decoration: none;
   color: var(--primary-color);
   font-size: 1rem;
+}
+
+@media (width >=1080px) {
+  header>div {
+    justify-content: space-between;
+  }
+
+  .hamburger {
+    display: none;
+  }
+
+  .logo {
+    width: 100%;
+    height: 2.5rem;
+  }
+
+  .desktopMenu {
+    width: max-content;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .navMenu ul li a {
+    font-size: 1.375rem;
+  }
+
+  .languages {
+    width: 2.5rem;
+    height: 2.5rem;
+    position: static;
+  }
 }
 </style>
