@@ -37,14 +37,9 @@ export default {
       menu: menu,
       contact: [
         {
-          icon: "whatsapp-line",
-          text: "+54 9 11 1234 5678",
-          link: "#",
-        },
-        {
           icon: "mail-line",
           text: "info@goral.com",
-          link: "#",
+          link: "mailto:info@goral.com",
         },
       ],
     }
