@@ -123,6 +123,7 @@ export default {
 
 <style scoped>
 .hamburger {
+  display: none;
   position: absolute;
   left: 1.125rem;
   background: none;
@@ -139,13 +140,15 @@ export default {
   width: 1rem;
   height: 1rem;
   position: absolute;
+  top: 50%;
   right: 1.125rem;
   border: 1px solid var(--dark-color);
   border-radius: 999px;
+  transform: translateY(-50%);
   cursor: pointer;
 }
 
-.desktopMenu {
+.desktopMenu .navMenu {
   display: none;
 }
 
@@ -180,6 +183,10 @@ export default {
     gap: 2rem;
   }
 
+  .desktopMenu .navMenu {
+    display: flex;
+  }
+
   .navMenu ul li a {
     font-size: 1.375rem;
   }
@@ -188,6 +195,7 @@ export default {
     width: 2.5rem;
     height: 2.5rem;
     position: static;
+    transform: none;
   }
 }
 </style>
