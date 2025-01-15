@@ -167,6 +167,7 @@ p {
 
 .primaryButton {
     background-color: var(--primary-color);
+    border: none;
     border-radius: 7px;
     color: var(--white-color);
     font-weight: 400;

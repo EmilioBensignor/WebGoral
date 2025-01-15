@@ -58,7 +58,7 @@
                 </div>
             </ClientOnly>
 
-            <button class="secondaryButton active">Reservá tus granadas</button>
+            <button class="secondaryButton active">Pedí más información</button>
         </div>
     </section>
 </template>

@@ -16,7 +16,7 @@
                     </AccordionContent>
                 </AccordionPanel>
             </Accordion>
-            <NuxtLink to="#" class="primaryButton">Hacé tu pedido ahora</NuxtLink>
+            <buton class="primaryButton">Consultá ahora</buton>
         </div>
     </section>
 </template>

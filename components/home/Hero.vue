@@ -6,7 +6,7 @@
                 entregas
                 rápidas y consistentes.</p>
             <div class="w-full columnAlignCenter">
-                <NuxtLink to="#" class="primaryButton">Hacé tu pedido ahora</NuxtLink>
+                <button class="primaryButton">Reservá tus granadas</button>
                 <div class="rowCenter">
                     <NuxtImg src="/images/home/Logo-Global-GAP.svg" />
                     <p class="text-dark-gray font-medium">Certificados por Global GAP</p>
