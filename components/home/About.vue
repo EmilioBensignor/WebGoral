@@ -16,7 +16,7 @@
             <div class="videoContainer">
                 {{ activeInfo }}
             </div>
-            <NuxtLink to="#" class="primaryButton">Conocé más de Goral</NuxtLink>
+            <!-- <NuxtLink to="#" class="primaryButton">Conocé más de Goral</NuxtLink> -->
         </div>
     </section>
 </template>
