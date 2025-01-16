@@ -116,6 +116,7 @@ export default {
 .servicesAccordion .p-accordionheader,
 .servicesAccordion .p-accordioncontent-content {
     border: none;
+    interpolate-size: allow-keywords;
 }
 
 .servicesAccordion .p-accordionheader {

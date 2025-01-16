@@ -159,7 +159,8 @@ li {
     font-size: 0.75rem;
 }
 
-p {
+p,
+p span {
     font-family: "Urbanist", sans-serif;
 }
 
@@ -261,7 +262,8 @@ p {
         font-size: 1.125rem;
     }
 
-    .primaryButton, .secondaryButton {
+    .primaryButton,
+    .secondaryButton {
         transition: all 0.3s;
     }
 
