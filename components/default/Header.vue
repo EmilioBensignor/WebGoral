@@ -133,12 +133,12 @@ export default {
 }
 
 .logo {
-  width: 5rem;
+  width: 6rem;
 }
 
 .languages {
-  width: 1rem;
-  height: 1rem;
+  width: 1.5rem;
+  height: 1.5rem;
   position: absolute;
   top: 50%;
   right: 1.125rem;

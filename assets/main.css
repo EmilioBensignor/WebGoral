@@ -172,13 +172,8 @@ p {
     color: var(--white-color);
     font-weight: 400;
     text-decoration: none;
-    transition: all 0.3s;
     cursor: pointer;
     padding: 1rem 1.25rem;
-}
-
-.primaryButton:hover {
-    background-color: var(--dark-color);
 }
 
 .secondaryButton {
@@ -188,15 +183,8 @@ p {
     border-radius: 7px;
     color: var(--dark-color);
     text-decoration: none;
-    transition: all 0.3s;
     cursor: pointer;
     padding: 1rem 1.25rem;
-}
-
-.secondaryButton:hover {
-    border-color: var(--primary-color);
-    border-bottom-width: 1px;
-    color: var(--primary-color);
 }
 
 .secondaryButton.active {
@@ -271,5 +259,19 @@ p {
     a,
     .primaryButton {
         font-size: 1.125rem;
+    }
+
+    .primaryButton, .secondaryButton {
+        transition: all 0.3s;
+    }
+
+    .primaryButton:hover {
+        background-color: var(--dark-color);
+    }
+
+    .secondaryButton:hover {
+        border-color: var(--primary-color);
+        border-bottom-width: 1px;
+        color: var(--primary-color);
     }
 }

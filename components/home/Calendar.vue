@@ -212,4 +212,8 @@ section {
     font-size: 0.625rem;
     font-weight: 500;
 }
+
+.secondaryButton:hover {
+    border-bottom-width: 3px;
+}
 </style>

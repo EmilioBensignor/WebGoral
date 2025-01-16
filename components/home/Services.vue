@@ -16,7 +16,7 @@
                     </AccordionContent>
                 </AccordionPanel>
             </Accordion>
-            <buton class="primaryButton">Consultá ahora</buton>
+            <button class="primaryButton">Consultá ahora</button>
         </div>
     </section>
 </template>
@@ -97,19 +97,10 @@ export default {
     border-radius: 18px 18px 0 0;
     padding: 0.75rem 1rem 1.5rem 1rem;
     margin-bottom: -1rem;
-    transition: background-color 0.3s;
 }
 
-.servicesAccordion .p-accordionpanel * {
-    transition: all 0.3s ease-in-out;
-}
-
-.servicesAccordion .p-accordionpanel:first-of-type  {
+.servicesAccordion .p-accordionpanel:first-of-type {
     border-color: var(--secondary-color);
-}
-
-.servicesAccordion .p-accordionpanel:not(.p-accordionpanel-active):not(.p-disabled):first-of-type>.p-accordionheader:hover {
-    color: var(--dark-color);
 }
 
 .servicesAccordion .p-accordionpanel:last-child {

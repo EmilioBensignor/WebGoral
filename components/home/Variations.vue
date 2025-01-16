@@ -4,10 +4,8 @@
             <h2 class="text-primary">Nuestras variedades</h2>
             <img src="/images/home/Granada3d.svg" alt="Granada">
             <div class="variations rowCenter">
-                <button v-for="variation in variationsList" :key="variation"
-                    class="secondaryButton" 
-                    :class="{ active: selectedVariation == variation }"
-                    @click="selectVariation(variation)">
+                <button v-for="variation in variationsList" :key="variation" class="secondaryButton"
+                    :class="{ active: selectedVariation == variation }" @click="selectVariation(variation)">
                     {{ variation }}
                 </button>
             </div>
@@ -96,7 +94,6 @@ export default {
     border-radius: 999px;
     padding: 1px;
     cursor: pointer;
-    transition: all 0.3s;
 }
 
 .featureBtn div {
@@ -114,5 +111,11 @@ export default {
 
 .featureContent p {
     font-size: 0.875rem;
+}
+
+@media (width >=1080px) {
+    .featureBtn {
+        transition: all 0.3s;
+    }
 }
 </style>
