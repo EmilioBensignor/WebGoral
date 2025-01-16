@@ -276,4 +276,8 @@ p span {
         border-bottom-width: 1px;
         color: var(--primary-color);
     }
+
+    .secondaryButton.active {
+        border-bottom-width: 3px;
+    }
 }

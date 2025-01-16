@@ -116,7 +116,6 @@ export default {
 .servicesAccordion .p-accordionheader,
 .servicesAccordion .p-accordioncontent-content {
     border: none;
-    interpolate-size: allow-keywords;
 }
 
 .servicesAccordion .p-accordionheader {
@@ -141,7 +140,11 @@ export default {
     font-size: 1rem;
 }
 
-.servicesAccordion .p-accordionpanel:not(.p-accordionpanel-active):not(.p-disabled)>.p-accordionheader:hover {
+.servicesAccordion .p-accordionpanel:first-of-type:not(.p-accordionpanel-active):not(.p-disabled)>.p-accordionheader:hover {
+    color: var(--dark-color);
+}
+
+.servicesAccordion .p-accordionpanel:not(.p-accordionpanel-active):not(.p-disabled):not(.bg-light)>.p-accordionheader:hover {
     color: var(--white-color);
 }
 
@@ -150,7 +153,14 @@ export default {
 }
 
 .servicesAccordion .p-accordioncontent {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
     padding: 0.75rem 0 0.5rem 0;
+}
+
+.servicesAccordion .p-accordionpanel-active .p-accordioncontent {
+    max-height: 200px;
 }
 
 .servicesAccordion .p-accordioncontent-content div {
