@@ -255,10 +255,16 @@ p span {
         font-size: 2.25rem;
     }
 
+    h2 {
+        font-size: 1.75rem;
+    }
+
+    h3,
     p,
     .hero>p,
     a,
-    .primaryButton {
+    .primaryButton,
+    .secondaryButton {
         font-size: 1.125rem;
     }
 

@@ -2,23 +2,30 @@
     <section>
         <div class="columnAlignCenter">
             <h2 class="text-primary">Nuestras variedades</h2>
-            <img src="/images/home/Granada3d.svg" alt="Granada">
-            <div class="variations rowCenter">
-                <button v-for="variation in variationsList" :key="variation" class="secondaryButton"
-                    :class="{ active: selectedVariation == variation }" @click="selectVariation(variation)">
-                    {{ variation }}
-                </button>
-            </div>
-            <div class="features rowCenter">
-                <button v-for="(feature, index) in activeFeatures" :key="index" class="featureBtn allCenter"
-                    :class="{ active: selectedFeatureIndex === index }" @click="selectedFeatureIndex = index">
-                    <div class="allCenter">
-                        <Icon :name="`mingcute:${feature.icon}`" />
+            <div class="variationsContainer columnAlignCenter">
+                <img src="/images/home/Granada3d.svg" alt="Granada">
+                <div class="columnAlignCenter">
+                    <div class="variations rowCenter">
+                        <button v-for="variation in variationsList" :key="variation" class="secondaryButton"
+                            :class="{ active: selectedVariation == variation }" @click="selectVariation(variation)">
+                            {{ variation }}
+                        </button>
                     </div>
-                </button>
-            </div>
-            <div class="w-full featureContent">
-                <p class="text-center">{{ activeFeatures[selectedFeatureIndex].descripcion }}</p>
+                    <div class="featuresContainer columnAlignCenter">
+                        <div class="features rowCenter">
+                            <button v-for="(feature, index) in activeFeatures" :key="index" class="featureBtn allCenter"
+                                :class="{ active: selectedFeatureIndex === index }"
+                                @click="selectedFeatureIndex = index">
+                                <div class="allCenter">
+                                    <Icon :name="`mingcute:${feature.icon}`" />
+                                </div>
+                            </button>
+                        </div>
+                        <div class="w-full featureContent">
+                            <p class="text-center">{{ activeFeatures[selectedFeatureIndex].descripcion }}</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -78,12 +85,15 @@ export default {
 </style>
 
 <style scoped>
-.variations {
-    gap: 0.75rem;
-}
-
+.variationsContainer,
+.variationsContainer>div,
 .features {
     gap: 1.25rem;
+}
+
+.variations,
+.featuresContainer {
+    gap: 0.75rem;
 }
 
 .featureBtn {
@@ -114,8 +124,44 @@ export default {
 }
 
 @media (width >=1080px) {
+    .variationsContainer {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .variationsContainer > img {
+        width: 18.75rem;
+    }
+
+    .variationsContainer > div {
+        gap: 2.5rem;
+    }
+
+    .variations button {
+        font-size: 1.375rem;
+    }
+
+    .featuresContainer {
+        gap: 2rem;
+    }
+
+    .features {
+        gap: 3rem;
+    }
+
     .featureBtn {
+        width: 4.375rem;
+        height: 4.375rem;
         transition: all 0.3s;
+    }
+
+    .featureBtn span {
+        font-size: 1.5rem !important;
+    }
+
+    .featureContent p {
+        font-size: 1.125rem;
     }
 }
 </style>

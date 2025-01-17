@@ -126,6 +126,7 @@ section {
 
 .harvestCalendar {
     width: 100%;
+    max-width: 400px;
     border-collapse: collapse;
 }
 
@@ -146,6 +147,7 @@ section {
 }
 
 .month {
+    width: 15%;
     border: 1px solid var(--gray-color);
     padding: 3px;
 }
@@ -166,11 +168,12 @@ section {
 
 .month.active .wonderfulHarvest {
     width: 250%;
-    transform: translateX(-60%);
+    transform: translateX(-55%);
 }
 
 .progressContainer {
     width: 100%;
+    max-width: 400px;
     gap: 1rem;
 }
 
@@ -181,7 +184,7 @@ section {
 }
 
 .progressContainer>div>p {
-    width: 20%;
+    width: max-content;
     text-align: end;
 }
 
@@ -215,5 +218,66 @@ section {
 
 .secondaryButton:hover {
     border-bottom-width: 3px;
+}
+
+@media (width >=1080px) {
+    .harvestCalendar {
+        max-width: 750px;
+    }
+
+    .harvestCalendar th p {
+        font-size: 1.125rem;
+    }
+
+    .variety {
+        padding-right: 1.25rem;
+    }
+
+    .variety p,
+    .progressContainer>div>p {
+        font-size: 1.375rem;
+    }
+
+    .month {
+        width: 6.25rem;
+        height: 3.125rem;
+    }
+
+    .month.active span {
+        height: 1.625rem;
+    }
+
+    .month.active .wonderfulHarvest {
+        width: 215%;
+        transform: translateX(-52%);
+    }
+
+    .progressContainer {
+        max-width: 100%;
+        flex-direction: row;
+        justify-content: center;
+        gap: 4.375rem;
+    }
+
+    .progressContainer>div {
+        width: 50%;
+    }
+
+    .progressContainer>div>div {
+        gap: 0.5rem;
+    }
+
+    .progressBar {
+        height: 1.25rem;
+        padding: 0 5px;
+    }
+
+    .progress {
+        height: 0.75rem;
+    }
+
+    .timeLeft {
+        font-size: 0.875rem;
+    }
 }
 </style>

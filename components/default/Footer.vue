@@ -54,10 +54,6 @@ footer>div ul li a {
   font-family: "Urbanist", sans-serif;
 }
 
-footer>div:last-of-type {
-  padding: 0.5rem;
-}
-
 footer>div .contact {
   gap: 0.5rem;
 }
@@ -65,5 +61,35 @@ footer>div .contact {
 .contact li a {
   flex-direction: row-reverse;
   gap: 0.375rem;
+}
+
+footer>div:last-of-type {
+  padding: 0.5rem;
+}
+
+@media (width >=1080px) {
+  footer>div:first-of-type {
+    padding: 2.5rem 5rem;
+  }
+
+  .logo {
+    width: 7.5rem;
+  }
+
+  footer>div:last-of-type {
+    padding: 1rem;
+  }
+
+  .contact li a {
+    gap: 0.75rem;
+  }
+
+  .contact li a span {
+    font-size: 1.25rem !important;
+  }
+
+  footer>div:last-of-type p {
+    font-size: 0.875rem;
+  }
 }
 </style>

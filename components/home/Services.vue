@@ -16,6 +16,15 @@
                     </AccordionContent>
                 </AccordionPanel>
             </Accordion>
+            <div class="servicesContainer">
+                <div v-for="(service, index) in services" :key="index" class="service rowSpaceBetweenCenter">
+                    <div class="column">
+                        <h3>{{ service.title }}</h3>
+                        <p v-html="service.text"></p>
+                    </div>
+                    <img :src="`/images/home/${service.video}`" alt="">
+                </div>
+            </div>
             <button class="primaryButton">Consultá ahora</button>
         </div>
     </section>
@@ -173,7 +182,45 @@ export default {
     font-size: 0.875rem;
 }
 
-.servicesAccordion .p-accordioncontent-content div p span {
+.servicesAccordion .p-accordioncontent-content div p span,
+.service div p span {
     font-weight: bold;
+}
+
+@media (width >=1080px) {
+    .servicesAccordion {
+        display: none;
+    }
+}
+</style>
+
+<style scoped>
+.servicesContainer {
+    display: none;
+}
+
+@media (width >=1080px) {
+    .servicesContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 5rem;
+    }
+
+    .service {
+        gap: 3.5rem;
+    }
+
+    .service div {
+        gap: 0.75rem;
+    }
+
+    .service h3 {
+        text-align: start;
+    }
+
+    .service img {
+        width: 100%;
+        max-width: 360px;
+    }
 }
 </style>
