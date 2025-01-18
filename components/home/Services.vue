@@ -106,6 +106,7 @@ export default {
     border-radius: 18px 18px 0 0;
     padding: 0.75rem 1rem 1.5rem 1rem;
     margin-bottom: -1rem;
+    transition: all 0.5s;
 }
 
 .servicesAccordion .p-accordionpanel:first-of-type {
@@ -120,6 +121,7 @@ export default {
 
 .servicesAccordion .p-accordionpanel:not(.p-disabled).p-accordionpanel-active {
     border-color: var(--secondary-color);
+    transition: all 1.5s;
 }
 
 .servicesAccordion .p-accordionheader,
@@ -134,6 +136,7 @@ export default {
 .servicesAccordion .p-accordionheader h3 {
     font-weight: 300;
     font-size: 0.75rem;
+    transition: font-size 0.3s ease-in-out;
 }
 
 .servicesAccordion .p-accordionpanel:not(.bg-light) .p-accordionheader {
@@ -162,14 +165,25 @@ export default {
 }
 
 .servicesAccordion .p-accordioncontent {
-    max-height: 0;
+    height: 0;
+    interpolate-size: allow-keywords;
     overflow: hidden;
-    transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
-    padding: 0.75rem 0 0.5rem 0;
+    opacity: 0;
+    padding: 0;
+    transition: all 1s;
 }
 
 .servicesAccordion .p-accordionpanel-active .p-accordioncontent {
-    max-height: 200px;
+    height: auto;
+    interpolate-size: allow-keywords;
+    opacity: 1;
+    padding: 0.75rem 0 0.5rem 0;
+    transition: all 1s;
+}
+
+.servicesAccordion .p-accordioncontent-content {
+    transition: transform 0.3s ease-in-out;
+    transform-origin: top;
 }
 
 .servicesAccordion .p-accordioncontent-content div {
