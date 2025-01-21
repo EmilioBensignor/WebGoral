@@ -12,7 +12,7 @@
       </ul>
     </div>
     <div class="bg-dark">
-      <p class="text-center text-light">© Goral 2024. Todos los derechos reservados.</p>
+      <p class="text-center text-light">© Goral 2024. {{ $t('footer.rights') }}</p>
     </div>
   </footer>
 </template>

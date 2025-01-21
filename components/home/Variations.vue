@@ -1,7 +1,7 @@
 <template>
     <section>
         <div class="columnAlignCenter">
-            <h2 class="text-primary">Nuestras variedades</h2>
+            <h2 class="text-primary">{{ $t('variationsTitle') }}</h2>
             <div class="variationsContainer columnAlignCenter">
                 <img src="/images/home/Granada3d.svg" alt="Granada">
                 <div class="columnAlignCenter">
@@ -22,7 +22,7 @@
                             </button>
                         </div>
                         <div class="w-full featureContent">
-                            <p class="text-center">{{ activeFeatures[selectedFeatureIndex].descripcion }}</p>
+                            <p class="text-center">{{ $t(`${selectedVariation.toLowerCase()}.feature${selectedFeatureIndex + 1}`) }}</p>
                         </div>
                     </div>
                 </div>
@@ -41,20 +41,20 @@ export default {
             variations: {
                 Acco: {
                     features: [
-                        { icon: 'star-line', descripcion: 'Característica 1 de Acco' },
-                        { icon: 'star-line', descripcion: 'Característica 2 de Acco' },
-                        { icon: 'star-line', descripcion: 'Característica 3 de Acco' },
-                        { icon: 'star-line', descripcion: 'Característica 4 de Acco' },
-                        { icon: 'star-line', descripcion: 'Característica 5 de Acco' }
+                        { icon: 'star-line' },
+                        { icon: 'star-line' },
+                        { icon: 'star-line' },
+                        { icon: 'star-line' },
+                        { icon: 'star-line' }
                     ]
                 },
                 Wonderful: {
                     features: [
-                        { icon: 'star-line', descripcion: 'Característica 1 de Wonderful' },
-                        { icon: 'star-line', descripcion: 'Característica 2 de Wonderful' },
-                        { icon: 'star-line', descripcion: 'Característica 3 de Wonderful' },
-                        { icon: 'star-line', descripcion: 'Característica 4 de Wonderful' },
-                        { icon: 'star-line', descripcion: 'Característica 5 de Wonderful' }
+                        { icon: 'star-line' },
+                        { icon: 'star-line' },
+                        { icon: 'star-line' },
+                        { icon: 'star-line' },
+                        { icon: 'star-line' }
                     ]
                 }
             }

@@ -1,13 +1,13 @@
 <template>
     <section class="bg-gradient">
         <div class="columnAlignCenter">
-            <h2>Calendario de cosecha</h2>
+            <h2>{{ $t('calendar.title') }}</h2>
             <table class="harvestCalendar">
                 <thead>
                     <tr>
                         <th></th>
-                        <th v-for="(month, index) in months" :key="index">
-                            <p>{{ month }}</p>
+                        <th v-for="i in 6" :key="i">
+                            <p>{{ $t(`calendar.months.${i}`) }}</p>
                         </th>
                     </tr>
                 </thead>
@@ -16,18 +16,18 @@
                         <td class="variety">
                             <p>Acco</p>
                         </td>
-                        <td v-for="(month, index) in months" :key="index" class="month"
-                            :class="month === 'MAR' ? 'active' : ''">
-                            <span v-if="month === 'MAR'" class="accoHarvest"></span>
+                        <td v-for="i in 6" :key="i" class="month"
+                            :class="$t(`calendar.months.${i}`) === $t('calendar.harvestMonth.acco') ? 'active' : ''">
+                            <span v-if="$t(`calendar.months.${i}`) === $t('calendar.harvestMonth.acco')" class="accoHarvest"></span>
                         </td>
                     </tr>
                     <tr>
                         <td class="variety">
                             <p>Wonderful</p>
                         </td>
-                        <td v-for="(month, index) in months" :key="index" class="month"
-                            :class="month === 'ABR' ? 'active' : ''">
-                            <span v-if="month === 'ABR'" class="wonderfulHarvest"></span>
+                        <td v-for="i in 6" :key="i" class="month"
+                            :class="$t(`calendar.months.${i}`) === $t('calendar.harvestMonth.wonderful') ? 'active' : ''">
+                            <span v-if="$t(`calendar.months.${i}`) === $t('calendar.harvestMonth.wonderful')" class="wonderfulHarvest"></span>
                         </td>
                     </tr>
                 </tbody>
@@ -58,7 +58,7 @@
                 </div>
             </ClientOnly>
 
-            <button class="secondaryButton active">Pedí más información</button>
+            <button class="secondaryButton active">{{ $t('calendar.cta') }}</button>
         </div>
     </section>
 </template>
@@ -67,7 +67,6 @@
 export default {
     data() {
         return {
-            months: ['ENE', 'FEB', 'MAR', 'ABR', 'MAY', 'JUN-DIC'],
             accoHarvestDate: new Date('2025-02-20'),
             wonderfulHarvestDate: new Date('2025-03-25')
         }
@@ -106,12 +105,11 @@ export default {
             const months = Math.floor(totalDays / 30)
             const days = Math.floor(totalDays % 30)
 
-            // Calcular el progreso (asumiendo 6 meses como período total)
-            const totalPeriod = 360 // 6 meses en días
+            const totalPeriod = 360
             const progress = 100 - ((totalDays / totalPeriod) * 100)
 
             return {
-                timeLeft: `Faltan ${months} meses y ${days} días`,
+                timeLeft: this.$t('calendar.timeLeftText', { months, days }),
                 progress: Math.min(Math.max(progress, 0), 100),
             }
         }

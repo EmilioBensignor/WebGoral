@@ -14,6 +14,7 @@ export default defineNuxtConfig({
     'nuxt-anchorscroll',
     '@nuxt/scripts',
     '@nuxt/fonts',
+    '@nuxtjs/i18n',
   ],
   fonts: {
     defaults: {
@@ -23,7 +24,7 @@ export default defineNuxtConfig({
   icon: {
     size: '1rem',
     serverBundle: {
-      collections: ['mingcute']
+      collections: ['mingcute', 'circle-flags']
     }
   },
   app: {
@@ -35,6 +36,12 @@ export default defineNuxtConfig({
         },
       ],
     }
+  },
+  i18n: {
+    vueI18n: './i18n.config.ts',
+    strategy: 'prefix_except_default',
+    defaultLocale: 'es',
+    locales: ['es', 'en', 'fr', 'pt', 'ru'],
   },
   site: {
     url: 'https://goral.com',

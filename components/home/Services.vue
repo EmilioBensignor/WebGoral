@@ -1,31 +1,31 @@
 <template>
     <section>
         <div class="columnAlignCenter">
-            <h2 class="text-primary">Impulsá tu negocio con productos de calidad</h2>
+            <h2 class="text-primary">{{ $t('services.title') }}</h2>
             <Accordion :value="activePanel" @update:activeIndex="activePanel = $event" class="w-full servicesAccordion">
-                <AccordionPanel v-for="(service, index) in services" :key="index" :value="index"
-                    :class="getPanelBackgroundClass(index)">
+                <AccordionPanel v-for="(service, key) in servicesList" :key="key"
+                    :class="getPanelBackgroundClass(key)">
                     <AccordionHeader>
-                        <h3>{{ service.title }}</h3>
+                        <h3>{{ $t(`services.items.${key}.title`) }}</h3>
                     </AccordionHeader>
                     <AccordionContent>
                         <div class="columnAlignCenter">
-                            <p v-html="service.text"></p>
-                            <img :src="`/images/home/${service.video}`" alt="">
+                            <p v-html="formatText($t(`services.items.${key}.text`))"></p>
+                            <img :src="`/images/home/${service.video}`" :alt="$t(`services.items.${key}.title`)">
                         </div>
                     </AccordionContent>
                 </AccordionPanel>
             </Accordion>
             <div class="servicesContainer">
-                <div v-for="(service, index) in services" :key="index" class="service rowSpaceBetweenCenter">
+                <div v-for="(service, key) in servicesList" :key="key" class="service rowSpaceBetweenCenter">
                     <div class="column">
-                        <h3>{{ service.title }}</h3>
-                        <p v-html="service.text"></p>
+                        <h3>{{ $t(`services.items.${key}.title`) }}</h3>
+                        <p v-html="formatText($t(`services.items.${key}.text`))"></p>
                     </div>
-                    <img :src="`/images/home/${service.video}`" alt="">
+                    <img :src="`/images/home/${service.video}`" :alt="$t(`services.items.${key}.title`)">
                 </div>
             </div>
-            <button class="primaryButton">Consultá ahora</button>
+            <button class="primaryButton">{{ $t('services.cta') }}</button>
         </div>
     </section>
 </template>
@@ -35,35 +35,30 @@ export default {
     data() {
         return {
             activePanel: 0,
-            services: [
-                {
-                    title: "Certificados por Global GAP",
-                    text: "<span>Cumplimos con los más altos estándares.</span> Nuestras prácticas agrícolas están certificadas por Global GAP, garantizando productos seguros y responsables.",
+            servicesList: {
+                globalGap: {
                     video: "Video-Service.png",
                     zIndex: 0,
                 },
-                {
-                    title: "Consistencia en tus pedidos",
-                    text: "Granadas con el mismo estándar, siempre. Garantizamos que cada lote tenga la <span>misma calidad y tamaño</span> siempre recibas el producto que esperas.",
+                consistency: {
                     video: "Video-Service.png",
                     zIndex: 1,
                 },
-                {
-                    title: "Importa granadas a tu país",
-                    text: "<span>Desde San Juan al mundo.</span> Proveemos un servicio de exportación confiable para que puedas importar el mejor producto a tu mercado.",
+                import: {
                     video: "Video-Service.png",
                     zIndex: 2,
                 },
-                {
-                    title: "Asistencia personalizada",
-                    text: "Nuestro equipo te acompaña en cada etapa con <span>atención personalizada</span>, para que nunca estés solo en el proceso.",
+                assistance: {
                     video: "Video-Service.png",
                     zIndex: 3,
-                },
-            ],
+                }
+            }
         }
     },
     methods: {
+        formatText(text) {
+            return text.replace(/\*(.*?)\*/g, '<span>$1</span>')
+        },
         getPanelBackgroundClass(index) {
             if (index === this.activePanel) {
                 return 'bg-light'

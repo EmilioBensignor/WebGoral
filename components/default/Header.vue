@@ -11,13 +11,21 @@
         <nav class="navMenu">
           <ul class="rowCenter">
             <li v-for="(item, index) in menu" :key="index">
-              <NuxtLink :to="item.route">{{ item.label }}</NuxtLink>
+              <NuxtLink :to="item.route">{{ $t(item.translationKey) }}</NuxtLink>
             </li>
           </ul>
         </nav>
-        <div class="allCenter languages">
-          <NuxtImg src="/images/arg.svg" class="w-full" />
-        </div>
+        <button @click="toggleLanguages($event)" class="allCenter languages">
+          <Icon :name="`circle-flags:${selectedLanguage.icon}`" />
+        </button>
+        <Menu ref="languagesMenu" id="account_menu" :model="languagesMenu" :popup="true">
+          <template #item="{ item }">
+            <button @click="item.command">
+              <Icon :name="`circle-flags:${item.icon}`" />
+              {{ item.label }}
+            </button>
+          </template>
+        </Menu>
       </div>
     </div>
     <Drawer :visible="drawerMenu" :modal="true" :dismissable="true" :closeOnEscape="true" class="column"
@@ -30,7 +38,7 @@
       <nav class="w-full h-full navMenu columnSpaceBetween">
         <ul class="column">
           <li v-for="(item, index) in menu" :key="index">
-            <NuxtLink :to="item.route">{{ item.label }}</NuxtLink>
+            <NuxtLink :to="item.route">{{ $t(item.translationKey) }}</NuxtLink>
           </li>
         </ul>
       </nav>
@@ -48,6 +56,26 @@ export default {
       drawerMenu: false,
       routes: ROUTES_NAMES,
       menu: menu,
+      languages: [
+        { code: 'es', label: 'Español', icon: 'ar' },
+        { code: 'en', label: 'English', icon: 'gb' },
+        { code: 'pt', label: 'Português', icon: 'pt' },
+        { code: 'fr', label: 'Français', icon: 'fr' },
+        { code: 'ru', label: 'Русский', icon: 'ru' }
+      ],
+      selectedLanguage: { icon: 'ar' },
+    }
+  },
+  computed: {
+    languagesMenu() {
+      return this.languages.map(lang => ({
+        label: lang.label,
+        icon: lang.icon,
+        command: () => {
+          this.$i18n.setLocale(lang.code);
+          this.selectedLanguage = { icon: lang.icon };
+        }
+      }))
     }
   },
   watch: {
@@ -56,6 +84,8 @@ export default {
     }
   },
   mounted() {
+    const currentLang = this.languages.find(lang => lang.code === this.$i18n.locale);
+    this.selectedLanguage = { icon: currentLang?.icon || 'ar' };
     document.addEventListener("click", this.handleOutsideClick);
     document.addEventListener("keydown", this.handleKeyDown);
   },
@@ -88,6 +118,9 @@ export default {
         this.closeDrawer();
       }
     },
+    toggleLanguages(event) {
+      this.$refs.languagesMenu.toggle(event);
+    },
   },
 }
 </script>
@@ -119,6 +152,64 @@ export default {
 .p-drawer-content {
   padding: 1.25rem 0 !important;
 }
+
+.p-menu {
+  background: var(--white-color) !important;
+  border: 1px solid var(--dark-color) !important;
+  border-radius: 10px !important;
+  min-width: 10rem !important;
+  padding: 0.5rem !important;
+  margin-top: 0.5rem;
+}
+
+.p-menu button {
+  width: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  background: none !important;
+  border: none !important;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  transition: background-color 0.3s !important;
+  cursor: pointer !important;
+  padding: 0.5rem 1rem !important;
+}
+
+.p-menu button:hover {
+  background-color: #f0f0f0 !important;
+}
+
+.p-menu button span {
+  border: 1px solid var(--dark-color);
+  border-radius: 999px;
+  font-size: 1.8755rem !important;
+}
+
+.p-menu-list {
+  padding: 0 !important;
+  margin: 0 !important;
+  list-style: none !important;
+}
+
+.p-menuitem {
+  margin-bottom: 0.25rem !important;
+}
+
+.p-menuitem:last-child {
+  margin-bottom: 0 !important;
+}
+
+@media (width >=1080px) {
+  .p-menu button {
+    gap: 1rem !important;
+    font-size: 1rem;
+  }
+
+  .p-menu button span {
+    font-size: 2rem !important;
+  }
+}
 </style>
 
 <style scoped>
@@ -142,10 +233,15 @@ export default {
   position: absolute;
   top: 50%;
   right: 1.125rem;
+  background: none;
   border: 1px solid var(--dark-color);
   border-radius: 999px;
   transform: translateY(-50%);
   cursor: pointer;
+}
+
+.languages span {
+  font-size: 1.875rem !important;
 }
 
 .desktopMenu .navMenu {
@@ -196,6 +292,10 @@ export default {
     height: 2.5rem;
     position: static;
     transform: none;
+  }
+
+  .languages span {
+    font-size: 2.5rem !important;
   }
 }
 </style>

@@ -1,24 +1,22 @@
 <template>
     <section>
         <div class="aboutContainer columnAlignCenter">
-            <h2 class="text-primary">El corazón de nuestro cultivo</h2>
-            <p class="text-center font-medium">
-                Ubicada en San Juan, Argentina, nuestra finca se encuentra en un entorno ideal para el cultivo de
-                granadas de alta calidad.
-            </p>
+            <h2 class="text-primary">{{ $t('about.title') }}</h2>
+            <p class="text-center font-medium">{{ $t('about.description') }}</p>
             <div class="infosVideo columnAlignCenter">
                 <div class="w-full infosContainer">
-                    <button @click="selectInfo(info.name)" v-for="(info, index) in about" :key="index"
-                        class="secondaryButton columnAlignCenter" :class="{ active: selectedInfo == info.name }">
-                        <Icon :name="`mingcute:${info.icon}`" class="text-primary" />
-                        {{ info.title }}
+                    <button v-for="type in infoTypes" :key="type"
+                        class="secondaryButton columnAlignCenter" 
+                        :class="{ active: selectedInfo === type }"
+                        @click="selectInfo(type)">
+                        <Icon :name="`mingcute:${icons[type]}`" class="text-primary" />
+                        {{ $t(`about.info.${type}.title`) }}
                     </button>
                 </div>
-                <div class="videoContainer">
-                    {{ activeInfo }}
+                <div class="videoContainer allCenter">
+                    {{ $t(`about.info.${selectedInfo}.video`) }}
                 </div>
             </div>
-            <!-- <NuxtLink to="#" class="primaryButton">Conocé más de Goral</NuxtLink> -->
         </div>
     </section>
 </template>
@@ -27,39 +25,22 @@
 export default {
     data() {
         return {
-            selectedInfo: 'Clima',
-            selectedInfoIndex: 0,
-            about: [
-                {
-                    name: 'Clima',
-                    title: 'Clima ideal para el cultivo',
-                    icon: 'sun-cloudy-line',
-                    video: 'Video clima',
-                },
-                {
-                    name: 'Calidad',
-                    title: 'Calidad garantizada',
-                    icon: 'diamond-2-line',
-                    video: 'Video calidad',
-                },
-                {
-                    name: 'Ubicacion',
-                    title: 'Ubicación estratégica',
-                    icon: 'location-line',
-                    video: 'Video ubicación',
-                }
-            ],
+            selectedInfo: 'climate',
+            icons: {
+                climate: 'sun-cloudy-line',
+                quality: 'diamond-2-line',
+                location: 'location-line'
+            }
         }
     },
     computed: {
-        activeInfo() {
-            return this.about.find(info => info.name === this.selectedInfo).video
+        infoTypes() {
+            return ['climate', 'quality', 'location']
         }
     },
     methods: {
-        selectInfo(about) {
-            this.selectedInfo = about
-            this.selectedInfoIndex = 0;
+        selectInfo(type) {
+            this.selectedInfo = type;
         }
     }
 }
@@ -81,6 +62,12 @@ export default {
     gap: 0.375rem;
     font-size: 0.75rem;
     padding: 0.5rem;
+}
+
+.videoContainer {
+    width: 100%;
+    height: 10rem;
+    background: #D9D9D9;
 }
 
 @media (width >=1080px) {
@@ -113,6 +100,10 @@ export default {
 
     .infosContainer button span {
         font-size: 1.25rem !important;
+    }
+
+    .videoContainer {
+        height: 22.5rem;
     }
 }
 </style>
