@@ -171,6 +171,7 @@ export default {
   border: none !important;
   border-radius: 8px;
   font-size: 0.875rem;
+  color: var(--dark-color);
   transition: background-color 0.3s !important;
   cursor: pointer !important;
   padding: 0.5rem 1rem !important;
