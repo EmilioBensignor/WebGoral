@@ -3,8 +3,10 @@
         <div class="columnAlignCenter">
             <h2 class="text-primary">{{ $t('services.title') }}</h2>
             <Accordion :value="activePanel" @update:activeIndex="activePanel = $event" class="w-full servicesAccordion">
-                <AccordionPanel v-for="(service, key) in servicesList" :key="key"
-                    :class="getPanelBackgroundClass(key)">
+                <AccordionPanel v-for="(service, key, index) in servicesList" :key="key" :value="index" :class="[
+                    getPanelBackgroundClass(index),
+                    { 'p-accordionpanel-active': activePanel === index }
+                ]">
                     <AccordionHeader>
                         <h3>{{ $t(`services.items.${key}.title`) }}</h3>
                     </AccordionHeader>
@@ -64,30 +66,14 @@ export default {
                 return 'bg-light'
             }
 
-            const backgroundMap = {
-                0: {
-                    1: 'bg-secondary',
-                    2: 'bg-terciary',
-                    3: 'bg-dark'
-                },
-                1: {
-                    0: 'bg-secondary',
-                    2: 'bg-terciary',
-                    3: 'bg-dark'
-                },
-                2: {
-                    0: 'bg-secondary',
-                    1: 'bg-terciary',
-                    3: 'bg-dark'
-                },
-                3: {
-                    0: 'bg-secondary',
-                    1: 'bg-terciary',
-                    2: 'bg-dark'
-                }
+            const backgroundClasses = {
+                0: ['bg-light', 'bg-secondary', 'bg-terciary', 'bg-dark'],
+                1: ['bg-secondary', 'bg-light', 'bg-terciary', 'bg-dark'],
+                2: ['bg-secondary', 'bg-terciary', 'bg-light', 'bg-dark'],
+                3: ['bg-secondary', 'bg-terciary', 'bg-dark', 'bg-light']
             }
 
-            return backgroundMap[this.activePanel]?.[index] || ''
+            return backgroundClasses[this.activePanel]?.[index] || ''
         }
     }
 }

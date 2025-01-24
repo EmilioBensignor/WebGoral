@@ -77,6 +77,11 @@ export default {
 <style>
 .featureBtn span {
     color: var(--primary-color);
+    transition: all 0.3s;
+}
+
+.featureBtn:hover span {
+    color: var(--dark-color);
 }
 
 .featureBtn.active span {
@@ -103,7 +108,12 @@ export default {
     border: none;
     border-radius: 999px;
     padding: 1px;
+    transition: all 0.3s;
     cursor: pointer;
+}
+
+.featureBtn:hover {
+    background: var(--dark-color);
 }
 
 .featureBtn div {
