@@ -58,13 +58,15 @@
                 </div>
             </ClientOnly>
 
-            <button class="secondaryButton active">Reservá tus granadas</button>
+            <button @click="$emit('open-dialog')" class="secondaryButton active">Reservá tus granadas</button>
+            <DefaultContacto ref="dialog" />
         </div>
     </section>
 </template>
 
 <script>
 export default {
+    emits: ['open-dialog'],
     data() {
         return {
             months: ['ENE', 'FEB', 'MAR', 'ABR', 'MAY', 'JUN-DIC'],

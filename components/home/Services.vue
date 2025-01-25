@@ -27,13 +27,14 @@
                     <img :src="`/images/home/${service.video}`" :alt="$t(`services.items.${key}.title`)">
                 </div>
             </div>
-            <button class="primaryButton">{{ $t('services.cta') }}</button>
+            <button @click="$emit('open-dialog')" class="primaryButton">{{ $t('services.cta') }}</button>
         </div>
     </section>
 </template>
 
 <script>
 export default {
+    emits: ['open-dialog'],
     data() {
         return {
             activePanel: 0,

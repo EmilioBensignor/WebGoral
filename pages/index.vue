@@ -1,9 +1,20 @@
 <template>
   <main>
-    <HomeHero />
+    <HomeHero @open-dialog="openContactDialog" />
     <HomeVariations />
-    <HomeCalendar />
+    <HomeCalendar @open-dialog="openContactDialog" />
     <HomeAbout />
-    <HomeServices />
+    <HomeServices @open-dialog="openContactDialog" />
+    <DefaultContacto ref="dialog" />
   </main>
 </template>
+
+<script>
+export default {
+  methods: {
+    openContactDialog() {
+      this.$refs.dialog?.openDialog()
+    }
+  }
+}
+</script>

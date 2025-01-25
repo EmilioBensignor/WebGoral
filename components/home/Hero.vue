@@ -2,17 +2,25 @@
     <section>
         <div class="hero columnAlignCenter">
             <h1>{{ $t('title') }}</h1>
-            <p class="text-center font-medium"><span class="text-primary font-bold">{{ $t('pomegranates') }}</span>{{ $t('subtitle') }}</p>
+            <p class="text-center font-medium"><span class="text-primary font-bold">{{ $t('pomegranates') }}</span>{{
+                $t('subtitle') }}</p>
             <div class="w-full columnAlignCenter">
-                <button class="primaryButton">{{ $t('ctaHero') }}</button>
+                <button @click="$emit('open-dialog')" class="primaryButton">{{ $t('ctaHero') }}</button>
                 <div class="rowCenter">
                     <NuxtImg src="/images/home/Logo-Global-GAP.svg" />
                     <p class="text-dark-gray font-medium">{{ $t('globalGap') }}</p>
                 </div>
             </div>
         </div>
+        <DefaultContacto ref="dialog" />
     </section>
 </template>
+
+<script>
+export default {
+    emits: ['open-dialog']
+}
+</script>
 
 <style scoped>
 .hero {
