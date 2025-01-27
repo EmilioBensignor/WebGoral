@@ -67,6 +67,29 @@ footer>div:last-of-type {
   padding: 0.5rem;
 }
 
+@media (width >=700px) {
+  footer>div:first-of-type {
+    padding: 2.25rem 2.5rem;
+  }
+
+  footer>div:last-of-type {
+    padding: 0.75rem;
+  }
+
+  .contact li a {
+    gap: 0.75rem;
+    font-size: 1.125rem;
+  }
+
+  .contact li a span {
+    font-size: 1.125rem !important;
+  }
+
+  footer>div:last-of-type p {
+    font-size: 0.875rem;
+  }
+}
+
 @media (width >=1080px) {
   footer>div:first-of-type {
     padding: 2.5rem 5rem;
@@ -81,15 +104,15 @@ footer>div:last-of-type {
   }
 
   .contact li a {
-    gap: 0.75rem;
+    font-size: 1.25rem;
   }
 
   .contact li a span {
-    font-size: 1.25rem !important;
+    font-size: 1.375rem !important;
   }
 
   footer>div:last-of-type p {
-    font-size: 0.875rem;
+    font-size: 1rem;
   }
 }
 </style>

@@ -70,6 +70,35 @@ export default {
     background: #D9D9D9;
 }
 
+@media (width >=700px) {
+    .aboutContainer>p {
+        max-width: 524px;
+    }
+
+    .infosVideo {
+        gap: 2rem;
+    }
+
+    .infosContainer {
+        gap: 1.5rem;
+    }
+
+    .infosContainer button {
+        gap: 0.75rem;
+        font-size: 0.875rem;
+        padding: 0.75rem 0.5rem;
+    }
+
+    .infosContainer button span {
+        font-size: 1.125rem !important;
+    }
+
+    .videoContainer {
+        width: 24.75rem;
+        height: 15rem;
+    }
+}
+
 @media (width >=1080px) {
     .aboutContainer>p {
         max-width: 570px;

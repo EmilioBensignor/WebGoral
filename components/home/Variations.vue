@@ -22,7 +22,8 @@
                             </button>
                         </div>
                         <div class="w-full featureContent">
-                            <p class="text-center">{{ $t(`${selectedVariation.toLowerCase()}.feature${selectedFeatureIndex + 1}`) }}</p>
+                            <p class="text-center">{{
+                                $t(`${selectedVariation.toLowerCase()}.feature${selectedFeatureIndex + 1}`) }}</p>
                         </div>
                     </div>
                 </div>
@@ -87,6 +88,12 @@ export default {
 .featureBtn.active span {
     color: var(--white-color);
 }
+
+@media (width >=700px) {
+    .featureBtn span {
+        font-size: 1.125rem !important;
+    }
+}
 </style>
 
 <style scoped>
@@ -133,18 +140,42 @@ export default {
     font-size: 0.875rem;
 }
 
-@media (width >=1080px) {
+@media (width >=700px) {
     .variationsContainer {
         width: 100%;
         flex-direction: row;
         justify-content: space-between;
+        gap: 5rem;
     }
 
-    .variationsContainer > img {
+    .variationsContainer>img {
+        width: 12.5rem;
+    }
+
+    .variationsContainer>div {
+        gap: 2.25rem;
+    }
+
+    .variations, .featuresContainer {
+        gap: 1.25rem;
+    }
+
+    .features {
+        gap: 1.375rem;
+    }
+
+    .featureBtn {
+        width: 3.125rem;
+        height: 3.125rem;
+    }
+}
+
+@media (width >=1080px) {
+    .variationsContainer>img {
         width: 18.75rem;
     }
 
-    .variationsContainer > div {
+    .variationsContainer>div {
         gap: 2.5rem;
     }
 

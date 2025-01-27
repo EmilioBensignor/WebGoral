@@ -3,10 +3,8 @@
         <div class="columnAlignCenter">
             <h2 class="text-primary">{{ $t('services.title') }}</h2>
             <Accordion :value="activePanel" @update:activeIndex="activePanel = $event" class="w-full servicesAccordion">
-                <AccordionPanel v-for="(service, key, index) in servicesList" :key="key" :value="index" :class="[
-                    getPanelBackgroundClass(index),
-                    { 'p-accordionpanel-active': activePanel === index }
-                ]">
+                <AccordionPanel v-for="(service, key, index) in servicesList" :key="key" :value="index"
+                    :class="[getPanelBackgroundClass(index), { 'p-accordionpanel-active': activePanel === index }]">
                     <AccordionHeader>
                         <h3>{{ $t(`services.items.${key}.title`) }}</h3>
                     </AccordionHeader>
@@ -181,6 +179,34 @@ export default {
 .servicesAccordion .p-accordioncontent-content div p span,
 .service div p span {
     font-weight: bold;
+}
+
+@media (width >=700px) {
+    .servicesAccordion .p-accordionpanel {
+        padding: 1rem 1.5rem 2rem 1.5rem;
+    }
+
+    .servicesAccordion .p-accordionpanel:not(.p-disabled).p-accordionpanel-active>.p-accordionheader h3 {
+        font-size: 1.25rem;
+    }
+
+    .servicesAccordion .p-accordionheader h3 {
+        font-size: 0.875rem;
+    }
+
+    .servicesAccordion .p-accordionpanel-active .p-accordioncontent {
+        padding: 1.25rem 0 0.75rem 0;
+    }
+
+    .servicesAccordion .p-accordioncontent-content div {
+        flex-direction: row;
+        gap: 2rem;
+    }
+
+    .servicesAccordion .p-accordioncontent-content div p {
+        text-align: start;
+        font-size: 1rem;
+    }
 }
 
 @media (width >=1080px) {

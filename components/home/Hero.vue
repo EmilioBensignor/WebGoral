@@ -39,6 +39,20 @@ export default {
     width: 1.35rem;
 }
 
+@media (width >=700px) {
+    .hero {
+        gap: 1rem;
+    }
+
+    .hero>div {
+        gap: 0.875rem;
+    }
+
+    .hero>div img {
+        width: 1.625rem;
+    }
+}
+
 @media (width >=1080px) {
     .hero {
         gap: 1.5rem;
