@@ -135,4 +135,22 @@ export default {
         height: 22.5rem;
     }
 }
+
+@media (width >=1440px) {
+    .infosVideo {
+        gap: 3.875rem;
+    }
+    
+    .infosContainer {
+        max-width: 200px;
+    }
+
+    .infosContainer button {
+        font-size: 1.25rem;
+    }
+
+    .infosContainer button span {
+        font-size: 1.5rem !important;
+    }
+}
 </style>

@@ -205,4 +205,40 @@ export default {
         font-size: 1.125rem;
     }
 }
+
+@media (width >=1440px) {
+    .variationsContainer {
+        justify-content: center;
+        gap: 7.5rem;
+    }
+
+    .variationsContainer>img {
+        width: 20rem;
+    }
+
+    .variationsContainer>div {
+        gap: 3rem;
+    }
+
+    .featuresContainer {
+        gap: 2.5rem;
+    }
+
+    .features {
+        gap: 5rem;
+    }
+
+    .featureBtn {
+        width: 4.375rem;
+        height: 4.375rem;
+    }
+
+    .featureBtn span {
+        font-size: 1.75rem !important;
+    }
+
+    .featureContent p {
+        font-size: 1.25rem;
+    }
+}
 </style>

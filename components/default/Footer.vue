@@ -1,18 +1,22 @@
 <template>
   <footer id="footer">
-    <div class="rowSpaceBetween bg-secondary">
-      <NuxtImg src="/images/Logo-Goral-Blanco.svg" alt="Logo Goral" class="logo" />
-      <ul class="contact column">
-        <li v-for="(item, index) in contact" :key="index">
-          <a :href="item.link" class="rowCenter text-light font-miedum no-underline">
-            <Icon :name="`mingcute:${item.icon}`" class="text-light" />
-            {{ item.text }}
-          </a>
-        </li>
-      </ul>
+    <div class="bg-secondary">
+      <div class="upperFooter rowSpaceBetween">
+        <NuxtImg src="/images/Logo-Goral-Blanco.svg" alt="Logo Goral" class="logo" />
+        <ul class="contact column">
+          <li v-for="(item, index) in contact" :key="index">
+            <a :href="item.link" class="rowCenter text-light font-miedum no-underline">
+              <Icon :name="`mingcute:${item.icon}`" class="text-light" />
+              {{ item.text }}
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
     <div class="bg-dark">
-      <p class="text-center text-light">© Goral 2024. {{ $t('footer.rights') }}</p>
+      <div class="rights">
+        <p class="text-center text-light">© Goral 2024. {{ $t('footer.rights') }}</p>
+      </div>
     </div>
   </footer>
 </template>
@@ -37,7 +41,7 @@ export default {
 </script>
 
 <style scoped>
-footer>div:first-of-type {
+.upperFooter {
   gap: 0.75rem;
   padding: 1.5rem 1.25rem;
 }
@@ -46,15 +50,15 @@ footer>div:first-of-type {
   width: 5rem;
 }
 
-footer>div ul {
+footer ul {
   gap: 0.75rem;
 }
 
-footer>div ul li a {
+footer ul li a {
   font-family: "Urbanist", sans-serif;
 }
 
-footer>div .contact {
+footer .contact {
   gap: 0.5rem;
 }
 
@@ -63,16 +67,16 @@ footer>div .contact {
   gap: 0.375rem;
 }
 
-footer>div:last-of-type {
+.rights {
   padding: 0.5rem;
 }
 
 @media (width >=700px) {
-  footer>div:first-of-type {
+  .upperFooter {
     padding: 2.25rem 2.5rem;
   }
 
-  footer>div:last-of-type {
+  .rights {
     padding: 0.75rem;
   }
 
@@ -85,13 +89,13 @@ footer>div:last-of-type {
     font-size: 1.125rem !important;
   }
 
-  footer>div:last-of-type p {
+  .rights p {
     font-size: 0.875rem;
   }
 }
 
 @media (width >=1080px) {
-  footer>div:first-of-type {
+  .upperFooter {
     padding: 2.5rem 5rem;
   }
 
@@ -99,7 +103,7 @@ footer>div:last-of-type {
     width: 7.5rem;
   }
 
-  footer>div:last-of-type {
+  .rights {
     padding: 1rem;
   }
 
@@ -111,8 +115,30 @@ footer>div:last-of-type {
     font-size: 1.375rem !important;
   }
 
-  footer>div:last-of-type p {
+  .rights p {
     font-size: 1rem;
+  }
+}
+
+@media (width >=1440px) {
+  .upperFooter {
+    padding: 3.25rem 5.75rem;
+  }
+
+  .logo {
+    width: 10rem;
+  }
+
+  .rights {
+    padding: 1.25rem;
+  }
+
+  .contact li a {
+    font-size: 1.375rem;
+  }
+
+  .contact li a span {
+    font-size: 1.5rem !important;
   }
 }
 </style>

@@ -370,4 +370,22 @@ section {
         animation-duration: 4s;
     }
 }
+
+@media (width >=1440px) {
+    .progressContainer>div>p {
+        font-size: 1.5rem;
+    }
+
+    .progressBar {
+        height: 1.625rem;
+    }
+
+    .progress {
+        height: 1rem;
+    }
+
+    .timeLeft {
+        font-size: 1rem;
+    }
+}
 </style>

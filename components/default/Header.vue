@@ -299,4 +299,27 @@ export default {
     font-size: 2.5rem !important;
   }
 }
+
+@media (width >=1440px) {
+  .logo {
+    height: 3.125rem;
+  }
+
+  .desktopMenu {
+    gap: 3.25rem;
+  }
+
+  .navMenu ul li a {
+    font-size: 1.5rem;
+  }
+
+  .languages {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .languages span {
+    font-size: 3rem !important;
+  }
+}
 </style>

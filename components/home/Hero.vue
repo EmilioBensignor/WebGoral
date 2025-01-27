@@ -70,4 +70,26 @@ export default {
         width: 1.875rem;
     }
 }
+
+@media (width >=1440px) {
+    .hero {
+        gap: 2.25rem;
+    }
+
+    .hero>div {
+        gap: 1.75rem;
+    }
+
+    .hero>div>div {
+        gap: 0.75rem;
+    }
+
+    .hero>div p {
+        font-size: 1rem;
+    }
+
+    .hero>div img {
+        width: 2.25rem;
+    }
+}
 </style>
