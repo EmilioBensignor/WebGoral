@@ -47,6 +47,10 @@ export default {
 </script>
 
 <style scoped>
+.aboutContainer > p {
+    max-width: 330px;
+}
+
 .infosVideo {
     gap: 1.25rem;
 }
@@ -59,6 +63,7 @@ export default {
 
 .infosContainer button {
     width: 33%;
+    justify-content: space-evenly;
     gap: 0.375rem;
     font-size: 0.75rem;
     padding: 0.5rem;
@@ -90,7 +95,7 @@ export default {
     }
 
     .infosContainer button span {
-        font-size: 1.125rem !important;
+        font-size: 1.25rem !important;
     }
 
     .videoContainer {
@@ -107,6 +112,7 @@ export default {
     .infosVideo {
         width: 100%;
         flex-direction: row;
+        justify-content: center;
         gap: 2.75rem;
     }
 
@@ -128,7 +134,7 @@ export default {
     }
 
     .infosContainer button span {
-        font-size: 1.25rem !important;
+        font-size: 1.375rem !important;
     }
 
     .videoContainer {

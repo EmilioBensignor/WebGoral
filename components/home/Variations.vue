@@ -144,7 +144,7 @@ export default {
     .variationsContainer {
         width: 100%;
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: center;
         gap: 5rem;
     }
 
@@ -208,7 +208,6 @@ export default {
 
 @media (width >=1440px) {
     .variationsContainer {
-        justify-content: center;
         gap: 7.5rem;
     }
 

@@ -141,6 +141,7 @@ section {
 
 .harvestCalendar {
     width: 100%;
+    max-width: 330px;
     border-collapse: collapse;
 }
 
@@ -161,6 +162,8 @@ section {
 }
 
 .month {
+    width: 2.188rem;
+    height: 1rem;
     border: 1px solid var(--gray-color);
     padding: 3px;
 }
@@ -180,12 +183,13 @@ section {
 }
 
 .month.active .wonderfulHarvest {
-    width: 250%;
-    transform: translateX(-60%);
+    width: 230%;
+    transform: translateX(-54%);
 }
 
 .progressContainer {
     width: 100%;
+    max-width: 330px;
     gap: 1rem;
 }
 
@@ -268,6 +272,10 @@ section {
         font-weight: 600;
     }
 
+    .harvestCalendar {
+        max-width: 550px;
+    }
+
     .harvestCalendar th p {
         font-size: 1rem;
         padding-bottom: 1rem;
@@ -283,7 +291,7 @@ section {
     }
 
     .month.active .wonderfulHarvest {
-        width: 220%;
+        width: 210%;
         transform: translateX(-52%);
     }
 
@@ -334,7 +342,7 @@ section {
     }
 
     .month.active .wonderfulHarvest {
-        width: 215%;
+        width: 205%;
     }
 
     .progressContainer {
