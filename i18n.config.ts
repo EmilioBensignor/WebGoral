@@ -90,6 +90,42 @@ export default defineI18nConfig(() => ({
             },
             footer: {
                 rights: 'Todos los derechos reservados.'
+            },
+            contact: {
+                title: '¡Deja tus datos y nos pondremos en contacto!',
+                name: {
+                    label: 'Nombre',
+                    placeholder: 'Ingrese su nombre',
+                    required: 'Debe ingresar su nombre',
+                    minLength: 'El nombre debe tener al menos 2 caracteres',
+                    maxLength: 'El nombre no puede superar los 20 caracteres',
+                    onlyText: 'El nombre debe ser texto'
+                },
+                email: {
+                    label: 'Correo electrónico',
+                    placeholder: 'Ingrese su correo electrónico',
+                    required: 'Debe ingresar su correo electrónico',
+                    invalid: 'Formato de correo electrónico inválido'
+                },
+                phone: {
+                    label: 'Número de teléfono',
+                    prefix: 'Prefijo',
+                    placeholder: 'Ingrese su número de teléfono',
+                    required: 'Debe ingresar un número de teléfono',
+                    onlyNumbers: 'El número de teléfono debe ser un número'
+                },
+                message: {
+                    label: 'Mensaje',
+                    placeholder: 'Ingrese su mensaje',
+                    required: 'Debe ingresar su mensaje',
+                    minLength: 'El mensaje debe tener al menos 10 caracteres',
+                    maxLength: 'El mensaje no puede superar los 500 caracteres'
+                },
+                submit: 'Enviar mensaje',
+                success: {
+                    title: '¡Tus datos se enviaron correctamente!',
+                    message: 'Nos pondremos en contacto contigo en la brevedad.'
+                }
             }
         },
         en: {
@@ -178,6 +214,42 @@ export default defineI18nConfig(() => ({
             },
             footer: {
                 rights: 'All rights reserved.'
+            },
+            contact: {
+                title: 'Leave your details and we\'ll get in touch!',
+                name: {
+                    label: 'Name',
+                    placeholder: 'Enter your name',
+                    required: 'You must enter your name',
+                    minLength: 'Name must be at least 2 characters long',
+                    maxLength: 'Name cannot exceed 20 characters',
+                    onlyText: 'Name must be text only'
+                },
+                email: {
+                    label: 'Email',
+                    placeholder: 'Enter your email',
+                    required: 'You must enter your email',
+                    invalid: 'Invalid email format'
+                },
+                phone: {
+                    label: 'Phone number',
+                    prefix: 'Prefix',
+                    placeholder: 'Enter your phone number',
+                    required: 'You must enter a phone number',
+                    onlyNumbers: 'Phone number must be a number'
+                },
+                message: {
+                    label: 'Message',
+                    placeholder: 'Enter your message',
+                    required: 'You must enter your message',
+                    minLength: 'Message must be at least 10 characters long',
+                    maxLength: 'Message cannot exceed 500 characters'
+                },
+                submit: 'Send message',
+                success: {
+                    title: 'Your data has been sent successfully!',
+                    message: 'We will contact you shortly.'
+                }
             }
         },
         pt: {
@@ -266,6 +338,42 @@ export default defineI18nConfig(() => ({
             },
             footer: {
                 rights: 'Todos os direitos reservados.'
+            },
+            contact: {
+                title: 'Deixe seus dados e entraremos em contato!',
+                name: {
+                    label: 'Nome',
+                    placeholder: 'Digite seu nome',
+                    required: 'O nome é obrigatório',
+                    minLength: 'O nome deve ter pelo menos 2 caracteres',
+                    maxLength: 'O nome não pode exceder 20 caracteres',
+                    onlyText: 'O nome deve ser apenas texto'
+                },
+                email: {
+                    label: 'Email',
+                    placeholder: 'Digite seu email',
+                    required: 'O email é obrigatório',
+                    invalid: 'Formato de email inválido'
+                },
+                phone: {
+                    label: 'Número de telefone',
+                    prefix: 'Prefixo',
+                    placeholder: 'Digite seu número de telefone',
+                    required: 'O telefone é obrigatório',
+                    onlyNumbers: 'O número de telefone deve ser um número'
+                },
+                message: {
+                    label: 'Mensagem',
+                    placeholder: 'Digite sua mensagem',
+                    required: 'A mensagem é obrigatória',
+                    minLength: 'A mensagem deve ter pelo menos 10 caracteres',
+                    maxLength: 'A mensagem não pode exceder 500 caracteres'
+                },
+                submit: 'Enviar mensagem',
+                success: {
+                    title: 'Seus dados foram enviados com sucesso!',
+                    message: 'Entraremos em contato em breve.'
+                }
             }
         },
         fr: {
@@ -354,6 +462,42 @@ export default defineI18nConfig(() => ({
             },
             footer: {
                 rights: 'Tous droits réservés.'
+            },
+            contact: {
+                title: 'Laissez vos coordonnées et nous vous contacterons!',
+                name: {
+                    label: 'Nom',
+                    placeholder: 'Entrez votre nom',
+                    required: 'Le nom est requis',
+                    minLength: 'Le nom doit comporter au moins 2 caractères',
+                    maxLength: 'Le nom ne peut pas dépasser 20 caractères',
+                    onlyText: 'Le nom doit être uniquement du texte'
+                },
+                email: {
+                    label: 'Email',
+                    placeholder: 'Entrez votre email',
+                    required: 'L\'email est requis',
+                    invalid: 'Format d\'email invalide'
+                },
+                phone: {
+                    label: 'Numéro de téléphone',
+                    prefix: 'Préfixe',
+                    placeholder: 'Entrez votre numéro de téléphone',
+                    required: 'Le téléphone est requis',
+                    onlyNumbers: 'Le numéro de téléphone doit être un nombre'
+                },
+                message: {
+                    label: 'Message',
+                    placeholder: 'Entrez votre message',
+                    required: 'Le message est requis',
+                    minLength: 'Le message doit comporter au moins 10 caractères',
+                    maxLength: 'Le message ne peut pas dépasser 500 caractères'
+                },
+                submit: 'Envoyer le message',
+                success: {
+                    title: 'Vos données ont été envoyées avec succès !',
+                    message: 'Nous vous contacterons sous peu.'
+                }
             }
         },
         ru: {
@@ -442,6 +586,42 @@ export default defineI18nConfig(() => ({
             },
             footer: {
                 rights: 'Все права защищены.'
+            },
+            contact: {
+                title: 'Оставьте свои данные, и мы свяжемся с вами!',
+                name: {
+                    label: 'Имя',
+                    placeholder: 'Введите ваше имя',
+                    required: 'Имя обязательно',
+                    minLength: 'Имя должно быть не менее 2 символов',
+                    maxLength: 'Имя не должно превышать 20 символов',
+                    onlyText: 'Имя должно быть только текстом'
+                },
+                email: {
+                    label: 'Электронная почта',
+                    placeholder: 'Введите вашу электронную почту',
+                    required: 'Электронная почта обязательна',
+                    invalid: 'Неверный формат электронной почты'
+                },
+                phone: {
+                    label: 'Номер телефона',
+                    prefix: 'Префикс',
+                    placeholder: 'Введите ваш номер телефона',
+                    required: 'Телефон обязателен',
+                    onlyNumbers: 'Номер телефона должен быть числом'
+                },
+                message: {
+                    label: 'Сообщение',
+                    placeholder: 'Введите ваше сообщение',
+                    required: 'Сообщение обязательно',
+                    minLength: 'Сообщение должно быть не менее 10 символов',
+                    maxLength: 'Сообщение не должно превышать 500 символов'
+                },
+                submit: 'Отправить сообщение',
+                success: {
+                    title: 'Ваши данные успешно отправлены!',
+                    message: 'Мы свяжемся с вами в ближайшее время.'
+                }
             }
         }
     }
