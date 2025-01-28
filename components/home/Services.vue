@@ -9,7 +9,8 @@
                         <h3>{{ $t(`services.items.${key}.title`) }}</h3>
                         <p v-html="formatText($t(`services.items.${key}.text`))"></p>
                     </div>
-                    <img :src="`/images/home/${service.video}`" :alt="$t(`services.items.${key}.title`)">
+                    <video :src="`/videos/home/${service.video}.mp4`" :alt="$t(`services.items.${key}.title`)" class="serviceAnimation" autoplay
+                        muted playsinline></video>
                 </div>
             </div>
             <button @click="$emit('open-dialog')" class="primaryButton">{{ $t('services.cta') }}</button>
@@ -24,19 +25,19 @@ export default {
         return {
             servicesList: {
                 globalGap: {
-                    video: "Video-Service.png",
+                    video: "certificacion-global-GAP",
                     zIndex: 0,
                 },
                 consistency: {
-                    video: "Video-Service.png",
+                    video: "consistencia-en-tus-pedidos",
                     zIndex: 1,
                 },
-                import: {
-                    video: "Video-Service.png",
+                export: {
+                    video: "exporta-granadas-al-mundo",
                     zIndex: 2,
                 },
-                assistance: {
-                    video: "Video-Service.png",
+                harvest: {
+                    video: "cosechas-en-marzo-abril",
                     zIndex: 3,
                 }
             }
@@ -74,7 +75,7 @@ export default {
         text-align: start;
     }
 
-    .service img {
+    .service .serviceAnimation {
         width: 100%;
         max-width: 360px;
     }

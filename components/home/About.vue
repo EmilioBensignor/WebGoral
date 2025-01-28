@@ -13,8 +13,8 @@
                         {{ $t(`about.info.${type}.title`) }}
                     </button>
                 </div>
-                <div class="videoContainer allCenter">
-                    {{ $t(`about.info.${selectedInfo}.video`) }}
+                <div class="imageContainer allCenter">
+                    <img :src="`/images/home/${images[selectedInfo]}.webp`" :alt="$t(`about.info.${selectedInfo}.title`)" />
                 </div>
             </div>
         </div>
@@ -30,6 +30,11 @@ export default {
                 climate: 'sun-cloudy-line',
                 quality: 'diamond-2-line',
                 location: 'location-line'
+            },
+            images: {
+                climate: 'clima-ideal-cultivo',
+                quality: 'calidad-garantizada',
+                location: 'ubicacion-estrategica'
             }
         }
     },
@@ -52,6 +57,7 @@ export default {
 }
 
 .infosVideo {
+    max-width: 442px;
     gap: 1.25rem;
 }
 
@@ -69,10 +75,15 @@ export default {
     padding: 0.5rem;
 }
 
-.videoContainer {
+.imageContainer {
     width: 100%;
-    height: 10rem;
-    background: #D9D9D9;
+    overflow: hidden;
+}
+
+.imageContainer img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 @media (width >=700px) {
@@ -81,6 +92,7 @@ export default {
     }
 
     .infosVideo {
+        max-width: 550px;
         gap: 2rem;
     }
 
@@ -97,11 +109,6 @@ export default {
     .infosContainer button span {
         font-size: 1.25rem !important;
     }
-
-    .videoContainer {
-        width: 24.75rem;
-        height: 15rem;
-    }
 }
 
 @media (width >=1080px) {
@@ -111,6 +118,7 @@ export default {
 
     .infosVideo {
         width: 100%;
+        max-width: 922px;
         flex-direction: row;
         justify-content: center;
         gap: 2.75rem;
@@ -136,14 +144,11 @@ export default {
     .infosContainer button span {
         font-size: 1.375rem !important;
     }
-
-    .videoContainer {
-        height: 22.5rem;
-    }
 }
 
 @media (width >=1440px) {
     .infosVideo {
+        max-width: 980px;
         gap: 3.875rem;
     }
     

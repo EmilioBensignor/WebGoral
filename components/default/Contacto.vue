@@ -262,6 +262,7 @@ export default {
 
 .dialogContent .header {
     font-size: 1rem;
+    margin-right: 1rem;
 }
 
 form,

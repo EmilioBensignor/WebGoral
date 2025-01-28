@@ -8,7 +8,8 @@
             <AccordionContent>
                 <div class="columnAlignCenter">
                     <p v-html="formatText($t(`services.items.${key}.text`))"></p>
-                    <img :src="`/images/home/${service.video}`" :alt="$t(`services.items.${key}.title`)">
+                    <video :ref="el => { if (el) videos[index] = el }" :src="`/videos/home/${service.video}.mp4`"
+                        :alt="$t(`services.items.${key}.title`)" class="serviceAnimation" autoplay muted playsinline></video>
                 </div>
             </AccordionContent>
         </AccordionPanel>
@@ -25,7 +26,18 @@ export default {
     },
     data() {
         return {
-            activePanel: 0
+            activePanel: 0,
+            videos: []
+        }
+    },
+    watch: {
+        activePanel(newValue) {
+            this.$nextTick(() => {
+                if (this.videos[newValue]) {
+                    this.videos[newValue].currentTime = 0;
+                    this.videos[newValue].play();
+                }
+            });
         }
     },
     methods: {
@@ -153,7 +165,16 @@ export default {
     font-weight: bold;
 }
 
+.servicesAccordion .serviceAnimation {
+    width: 100%;
+    max-width: 400px;
+}
+
 @media (width >=700px) {
+    .servicesAccordion {
+        max-width: 690px;
+    }
+
     .servicesAccordion .p-accordionpanel {
         padding: 1rem 1.5rem 2rem 1.5rem;
     }
@@ -178,6 +199,10 @@ export default {
     .servicesAccordion .p-accordioncontent-content div p {
         text-align: start;
         font-size: 1rem;
+    }
+
+    .servicesAccordion .serviceAnimation {
+        width: 40%;
     }
 }
 

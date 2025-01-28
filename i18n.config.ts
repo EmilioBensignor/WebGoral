@@ -75,13 +75,17 @@ export default defineI18nConfig(() => ({
                         title: 'Consistencia en tus pedidos',
                         text: 'Granadas con el mismo estándar, siempre. Garantizamos que cada lote tenga la *misma calidad y tamaño* siempre recibas el producto que esperas.'
                     },
-                    import: {
-                        title: 'Importa granadas a tu país',
-                        text: '*Desde San Juan al mundo.* Proveemos un servicio de exportación confiable para que puedas importar el mejor producto a tu mercado.'
+                    export: {
+                        title: 'Exporta granadas al mundo',
+                        text: '*Desde San Juan al mundo.* Proveemos un servicio de exportación confiable para que puedas llevar el mejor producto a tu mercado.'
                     },
                     assistance: {
                         title: 'Asistencia personalizada',
                         text: 'Nuestro equipo te acompaña en cada etapa con *atención personalizada*, para que nunca estés solo en el proceso.'
+                    },
+                    harvest: {
+                        title: 'Cosechas en Marzo y Abril',
+                        text: '*Planificación perfecta para tu negocio.* Nuestras cosechas están programadas estratégicamente en los meses de marzo y abril, garantizando el mejor momento para cada variedad.'
                     }
                 }
             },
@@ -199,13 +203,17 @@ export default defineI18nConfig(() => ({
                         title: 'Consistency in your orders',
                         text: 'Pomegranates with the same standard, always. We guarantee that each batch has the *same quality and size* you always receive the product you expect.'
                     },
-                    import: {
-                        title: 'Import pomegranates to your country',
-                        text: '*From San Juan to the world.* We provide a reliable export service so you can import the best product to your market.'
+                    export: {
+                        title: 'Export pomegranates to the world',
+                        text: '*From San Juan to the world.* We provide a reliable export service so you can take the best product to your market.'
                     },
                     assistance: {
                         title: 'Personalized assistance',
                         text: 'Our team accompanies you at every stage with *personalized attention*, so you\'re never alone in the process.'
+                    },
+                    harvest: {
+                        title: 'Harvests in March and April',
+                        text: '*Perfect planning for your business.* Our harvests are strategically scheduled in March and April, ensuring the best timing for each variety.'
                     }
                 }
             },
@@ -323,13 +331,17 @@ export default defineI18nConfig(() => ({
                         title: 'Consistência em seus pedidos',
                         text: 'Romãs com o mesmo padrão, sempre. Garantimos que cada lote tenha a *mesma qualidade e tamanho* você sempre recebe o produto que espera.'
                     },
-                    import: {
-                        title: 'Importe romãs para o seu país',
-                        text: '*De San Juan para o mundo.* Fornecemos um serviço de exportação confiável para que você possa importar o melhor produto para o seu mercado.'
+                    export: {
+                        title: 'Exporte romãs para o mundo',
+                        text: '*De San Juan para o mundo.* Fornecemos um serviço de exportação confiável para que você possa levar o melhor produto ao seu mercado.'
                     },
                     assistance: {
                         title: 'Assistência personalizada',
                         text: 'Nossa equipe acompanha você em cada etapa com *atenção personalizada*, para que você nunca esteja sozinho no processo.'
+                    },
+                    harvest: {
+                        title: 'Colheitas em Março e Abril',
+                        text: '*Planejamento perfeito para seu negócio.* Nossas colheitas são programadas estrategicamente nos meses de março e abril, garantindo o melhor momento para cada variedade.'
                     }
                 }
             },
@@ -447,13 +459,17 @@ export default defineI18nConfig(() => ({
                         title: 'Cohérence dans vos commandes',
                         text: 'Grenades avec le même standard, toujours. Nous garantissons que chaque lot a la *même qualité et taille* vous recevez toujours le produit que vous attendez.'
                     },
-                    import: {
-                        title: 'Importez des grenades dans votre pays',
-                        text: '*De San Juan au monde.* Nous fournissons un service d\'exportation fiable pour que vous puissiez importer le meilleur produit sur votre marché.'
+                    export: {
+                        title: 'Exportez des grenades dans le monde',
+                        text: '*De San Juan au monde.* Nous fournissons un service d\'exportation fiable pour que vous puissiez apporter le meilleur produit à votre marché.'
                     },
                     assistance: {
                         title: 'Assistance personnalisée',
                         text: 'Notre équipe vous accompagne à chaque étape avec une *attention personnalisée*, pour que vous ne soyez jamais seul dans le processus.'
+                    },
+                    harvest: {
+                        title: 'Récoltes en Mars et Avril',
+                        text: '*Planification parfaite pour votre entreprise.* Nos récoltes sont programmées stratégiquement en mars et avril, garantissant le meilleur moment pour chaque variété.'
                     }
                 }
             },
@@ -571,13 +587,17 @@ export default defineI18nConfig(() => ({
                         title: 'Стабильность в ваших заказах',
                         text: 'Гранаты с одинаковым стандартом, всегда. Мы гарантируем, что каждая партия имеет *одинаковое качество и размер*, и вы всегда получаете ожидаемый продукт.'
                     },
-                    import: {
-                        title: 'Импортируйте гранаты в вашу страну',
-                        text: '*Из Сан-Хуана в мир.* Мы предоставляем надежный экспортный сервис, чтобы вы могли импортировать лучший продукт на ваш рынок.'
+                    export: {
+                        title: 'Экспортируйте гранаты в мир',
+                        text: '*Из Сан-Хуана в мир.* Мы предоставляем надежный экспортный сервис, чтобы вы могли поставлять лучший продукт на свой рынок.'
                     },
                     assistance: {
                         title: 'Персонализированная помощь',
                         text: 'Наша команда сопровождает вас на каждом этапе с *персонализированным вниманием*, чтобы вы никогда не были одни в процессе.'
+                    },
+                    harvest: {
+                        title: 'Сбор урожая в марте и апреле',
+                        text: '*Идеальное планирование для вашего бизнеса.* Наш сбор урожая стратегически запланирован на март и апрель, обеспечивая лучшее время для каждого сорта.'
                     }
                 }
             },
