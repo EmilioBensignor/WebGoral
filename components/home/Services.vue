@@ -4,13 +4,28 @@
             <h2 class="text-primary">{{ $t('services.title') }}</h2>
             <HomeServiceAccordion :servicesList="servicesList" />
             <div class="servicesContainer">
-                <div v-for="(service, key) in servicesList" :key="key" class="service rowSpaceBetweenCenter">
-                    <div class="column">
-                        <h3>{{ $t(`services.items.${key}.title`) }}</h3>
-                        <p v-html="formatText($t(`services.items.${key}.text`))"></p>
+                <div class="contentWrapper">
+                    <!-- Columna de textos -->
+                    <div class="textColumn">
+                        <div v-for="(service, key) in servicesList" :key="key" class="serviceText rowCenter"
+                            :class="{ inactive: currentService !== key }" :id="`service-${key}`"
+                            @intersect="handleIntersect">
+                            <div class="column">
+                                <h3>{{ $t(`services.items.${key}.title`) }}</h3>
+                                <p v-html="formatText($t(`services.items.${key}.text`))"></p>
+                            </div>
+                        </div>
                     </div>
-                    <video :src="`/videos/home/${service.video}.mp4`" :alt="$t(`services.items.${key}.title`)" class="serviceAnimation" autoplay
-                        muted playsinline></video>
+
+                    <!-- Columna de videos (sticky) -->
+                    <div class="videoColumn">
+                        <div class="stickyWrapper center">
+                            <video v-for="(service, key) in servicesList" :key="key"
+                                :src="`/videos/home/${service.video}.mp4`" :alt="$t(`services.items.${key}.title`)"
+                                :ref="`video-${key}`" class="serviceAnimation"
+                                :class="{ active: currentService === key }" preload="auto" muted playsinline></video>
+                        </div>
+                    </div>
                 </div>
             </div>
             <button @click="$emit('open-dialog')" class="primaryButton">{{ $t('services.cta') }}</button>
@@ -40,13 +55,61 @@ export default {
                     video: "cosechas-en-marzo-abril",
                     zIndex: 3,
                 }
-            }
+            },
+            currentService: null,
+            previousService: null
         }
+    },
+    watch: {
+        currentService(newValue, oldValue) {
+            if (!newValue) return
+
+            this.previousService = oldValue
+            this.$nextTick(() => {
+                const currentVideo = this.$refs[`video-${newValue}`]?.[0]
+                if (currentVideo) {
+                    currentVideo.currentTime = 0
+                    currentVideo.play()
+                }
+
+                if (oldValue) {
+                    const previousVideo = this.$refs[`video-${oldValue}`]?.[0]
+                    if (previousVideo) {
+                        previousVideo.pause()
+                        previousVideo.currentTime = 0
+                    }
+                }
+            })
+        }
+    },
+    mounted() {
+        this.setupIntersectionObserver()
     },
     methods: {
         formatText(text) {
             return text.replace(/\*(.*?)\*/g, '<span>$1</span>')
         },
+        setupIntersectionObserver() {
+            const options = {
+                root: null,
+                rootMargin: '-45% 0px -45% 0px',
+                threshold: 0.1
+            }
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const serviceId = entry.target.id.replace('service-', '')
+                        this.currentService = serviceId
+                    }
+                })
+            }, options)
+
+            Object.keys(this.servicesList).forEach(key => {
+                const element = document.getElementById(`service-${key}`)
+                if (element) observer.observe(element)
+            })
+        }
     }
 }
 </script>
@@ -58,26 +121,63 @@ export default {
 
 @media (width >=1080px) {
     .servicesContainer {
-        display: flex;
-        flex-direction: column;
-        gap: 5rem;
+        display: block;
     }
 
-    .service {
+    .contentWrapper {
+        display: flex;
         gap: 3.5rem;
     }
 
-    .service div {
+    .textColumn {
+        flex: 1;
+        padding-bottom: 5rem;
+    }
+
+    .videoColumn {
+        flex: 1;
+        position: relative;
+        padding-top: 12.5rem;
+    }
+
+    .stickyWrapper {
+        position: sticky;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .serviceText {
+        min-height: 40vh;
+        transition: opacity 0.3s ease;
+    }
+
+    .serviceText.inactive {
+        opacity: 0.3;
+    }
+
+    .serviceText div {
         gap: 0.75rem;
     }
 
-    .service h3 {
+    .serviceText h3 {
         text-align: start;
     }
 
-    .service .serviceAnimation {
+    .serviceAnimation {
         width: 100%;
         max-width: 360px;
+        display: none;
+        border: 1px solid black;
+    }
+
+    .serviceAnimation.active {
+        display: block;
+    }
+}
+
+@media (width >=1440px) {
+    .videoColumn {
+        padding-top: 10rem;
     }
 }
 </style>
