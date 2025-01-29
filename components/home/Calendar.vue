@@ -121,8 +121,7 @@ export default {
             const months = Math.floor(totalDays / 30)
             const days = Math.floor(totalDays % 30)
 
-            // Calcular el progreso (asumiendo 6 meses como período total)
-            const totalPeriod = 360 // 6 meses en días
+            const totalPeriod = 360
             const progress = 100 - ((totalDays / totalPeriod) * 100)
 
             return {

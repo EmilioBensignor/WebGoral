@@ -5,7 +5,6 @@
             <HomeServiceAccordion :servicesList="servicesList" />
             <div class="servicesContainer">
                 <div class="contentWrapper">
-                    <!-- Columna de textos -->
                     <div class="textColumn">
                         <div v-for="(service, key) in servicesList" :key="key" class="serviceText rowCenter"
                             :class="{ inactive: currentService !== key }" :id="`service-${key}`"
@@ -16,8 +15,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- Columna de videos (sticky) -->
                     <div class="videoColumn">
                         <div class="stickyWrapper center">
                             <video v-for="(service, key) in servicesList" :key="key"
@@ -165,13 +162,18 @@ export default {
 
     .serviceAnimation {
         width: 100%;
-        max-width: 360px;
+        max-width: 400px;
         display: none;
-        border: 1px solid black;
     }
 
     .serviceAnimation.active {
         display: block;
+    }
+}
+
+@media (width >=1080px) {
+    .serviceAnimation {
+        max-width: 450px;
     }
 }
 
