@@ -58,7 +58,7 @@ export default {
       menu: menu,
       languages: [
         { code: 'es', label: 'Español', icon: 'ar' },
-        { code: 'en', label: 'English', icon: 'gb' },
+        { code: 'en', label: 'English', icon: 'us' },
         { code: 'pt', label: 'Português', icon: 'pt' },
         { code: 'fr', label: 'Français', icon: 'fr' },
         { code: 'ru', label: 'Русский', icon: 'ru' }
