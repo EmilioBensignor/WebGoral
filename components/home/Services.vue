@@ -65,7 +65,7 @@ export default {
             this.$nextTick(() => {
                 const currentVideo = this.$refs[`video-${newValue}`]?.[0]
                 if (currentVideo) {
-                    currentVideo.currentTime = 0
+                    currentVideo.currentTime = 0.5
                     currentVideo.play()
                 }
 
@@ -158,6 +158,7 @@ export default {
 
     .serviceText h3 {
         text-align: start;
+        color: var(--secondary-color);
     }
 
     .serviceAnimation {
