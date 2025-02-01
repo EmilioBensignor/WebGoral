@@ -1,5 +1,5 @@
 <template>
-    <section>
+    <section class="heroSection">
         <div class="hero columnAlignCenter">
             <h1>{{ $t('title') }}</h1>
             <p class="text-center font-medium"><span class="text-primary font-bold">{{ $t('pomegranates') }}</span>{{
@@ -12,6 +12,7 @@
                 </div>
             </div>
         </div>
+        <HomeCanvasArilos />
         <DefaultContacto ref="dialog" />
     </section>
 </template>
@@ -23,8 +24,19 @@ export default {
 </script>
 
 <style scoped>
+.heroSection {
+    height: 50vh;
+    position: relative;
+}
+
 .hero {
+    width: max-content;
     gap: 0.75rem;
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
 }
 
 .hero>div {
@@ -56,6 +68,7 @@ export default {
 @media (width >=1080px) {
     .hero {
         gap: 1.5rem;
+        padding: 5rem 1rem 1rem 1rem;
     }
 
     .hero>div {
