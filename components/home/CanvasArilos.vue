@@ -24,7 +24,7 @@ const BOTTOM_COLS = 14
 const SIDE_ROWS = 8
 const BOTTOM_ROWS = 2
 const SIDE_MARGIN = 50
-const CENTER_GAP = 800
+const CENTER_GAP = 750
 
 class Particle {
     constructor({ x, y, radius, minDist, pushFactor, pullFactor, dampFactor }) {
