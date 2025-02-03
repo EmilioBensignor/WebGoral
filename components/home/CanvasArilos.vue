@@ -16,7 +16,7 @@ const cursor = { x: 9999, y: 9999 }
 let animationFrameId = null
 
 const CANVAS_WIDTH = 1920
-const CANVAS_HEIGHT = 600
+const CANVAS_HEIGHT = 550
 const VISIBLE_HEIGHT = 300
 const BASE_PARTICLE_SIZE = 5
 const SIDE_COLS = 30
@@ -24,7 +24,7 @@ const BOTTOM_COLS = 14
 const SIDE_ROWS = 8
 const BOTTOM_ROWS = 2
 const SIDE_MARGIN = 50
-const CENTER_GAP = 750
+const CENTER_GAP = 900
 
 class Particle {
     constructor({ x, y, radius, minDist, pushFactor, pullFactor, dampFactor }) {
@@ -127,9 +127,9 @@ const initParticles = () => {
                 y: y + (Math.random() * randomPosition * 2 - randomPosition),
                 radius: particleRadius * (0.8 + Math.random() * 0.4),
                 minDist: (CANVAS_WIDTH / 20) + Math.random() * (CANVAS_WIDTH / 40),
-                pushFactor: 0.03 + Math.random() * 0.05,
-                pullFactor: 0.02,
-                dampFactor: 0.90 + Math.random() * 0.01
+                pushFactor: 0.03 + Math.random() * 0.04,
+                pullFactor: 0.03,
+                dampFactor: 0.80 + Math.random() * 0.01
             })
         }
         return null
