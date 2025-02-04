@@ -19,6 +19,8 @@
     "@nuxtjs/i18n": "^9.1.2",
     "@nuxtjs/seo": "^2.0.0-rc.23",
     "@primevue/nuxt-module": "^4.2.2",
+    "@types/nodemailer": "^6.4.17",
+    "nodemailer": "^6.10.0",
     "nuxt": "^3.15.1",
     "nuxt-anchorscroll": "^1.0.5",
     "nuxt-booster": "^3.1.9",

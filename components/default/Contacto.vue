@@ -43,7 +43,10 @@
                             <span class="errorText" v-if="errors.message">{{ errors.message }}</span>
                         </div>
                     </div>
-                    <button type="submit" class="primaryButton">{{ $t('contact.submit') }}</button>
+                    <button type="submit" class="primaryButton" :disabled="isLoading">
+                        <span v-if="!isLoading">{{ $t('contact.submit') }}</span>
+                        <span v-else class="loader allCenter"></span>
+                    </button>
                 </form>
             </div>
         </Dialog>
@@ -68,6 +71,7 @@ export default {
         return {
             isDialogVisible: false,
             isSuccessDialogVisible: false,
+            isLoading: false,
             formData: {
                 name: '',
                 email: '',
@@ -146,11 +150,29 @@ export default {
             return isValid
         },
 
-        handleSubmit() {
+        async handleSubmit() {
             if (this.validateForm()) {
-                console.log('Form submitted:', this.formData)
-                this.closeDialog()
-                this.showSuccessDialog()
+                this.isLoading = true;
+                const formattedMessage = `
+                    Nombre: ${this.formData.name}
+                    Email: ${this.formData.email}
+                    Teléfono: ${this.formData.phonePrefix}${this.formData.phone}
+                    Mensaje: ${this.formData.message}
+                    `;
+                try {
+                    await $fetch('/api/sendEmail', {
+                        method: 'POST',
+                        body: {
+                            body: formattedMessage
+                        }
+                    });
+                    this.closeDialog();
+                    this.showSuccessDialog();
+                } catch (error) {
+                    console.error('Error al enviar el formulario:', error);
+                } finally {
+                    this.isLoading = false;
+                }
             }
         },
 
@@ -262,6 +284,7 @@ export default {
 
 .dialogContent .header {
     font-size: 1rem;
+    font-family: "Marcellus", serif;
     margin-right: 1rem;
 }
 
@@ -340,6 +363,30 @@ form button {
     font-weight: 600;
 }
 
+.loader {
+    width: 1.25rem;
+    height: 1.25rem;
+    border: 3px solid #FFF;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
 @media (width >=660px) {
     .dialogContent {
         padding: 1.5rem;
@@ -388,7 +435,8 @@ form button {
         font-size: 1.375rem;
     }
 
-    .phoneField, .formField {
+    .phoneField,
+    .formField {
         gap: 0.5rem;
     }
 
