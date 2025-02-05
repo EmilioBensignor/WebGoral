@@ -156,7 +156,8 @@ export default {
         gap: 2.25rem;
     }
 
-    .variations, .featuresContainer {
+    .variations,
+    .featuresContainer {
         gap: 1.25rem;
     }
 
@@ -171,6 +172,10 @@ export default {
 }
 
 @media (width >=1080px) {
+    section>div {
+        padding-top: 12rem;
+    }
+
     .variationsContainer>img {
         width: 18.75rem;
     }
@@ -207,6 +212,10 @@ export default {
 }
 
 @media (width >=1440px) {
+    section>div {
+        padding-top: 15rem;
+    }
+
     .variationsContainer {
         gap: 7.5rem;
     }

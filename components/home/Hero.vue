@@ -24,15 +24,8 @@ export default {
 </script>
 
 <style scoped>
-.heroSection {
-    height: 50vh;
-    position: relative;
-}
-
 .hero {
-    width: max-content;
     gap: 0.75rem;
-    position: absolute;
     z-index: 2;
     left: 0;
     right: 0;
@@ -66,8 +59,15 @@ export default {
 }
 
 @media (width >=1080px) {
+    .heroSection {
+        height: 50vh;
+        position: relative;
+    }
+
     .hero {
+        width: max-content;
         gap: 1.5rem;
+        position: absolute;
         padding: 5rem 1rem 1rem 1rem;
     }
 

@@ -15,16 +15,41 @@ let particles = []
 const cursor = { x: 9999, y: 9999 }
 let animationFrameId = null
 
-const CANVAS_WIDTH = 1920
-const CANVAS_HEIGHT = 550
-const VISIBLE_HEIGHT = 300
-const BASE_PARTICLE_SIZE = 5
-const SIDE_COLS = 30
-const BOTTOM_COLS = 14
-const SIDE_ROWS = 8
-const BOTTOM_ROWS = 2
-const SIDE_MARGIN = 50
-const CENTER_GAP = 900
+const getResponsiveDimensions = () => {
+    if (typeof window === 'undefined') {
+        return {
+            CANVAS_WIDTH: 1920,
+            CANVAS_HEIGHT: window?.innerWidth >= 1440 ? 500 : 300,
+            VISIBLE_HEIGHT: window?.innerWidth >= 1440 ? 400 : 300,
+            BASE_PARTICLE_SIZE: 8,
+            SIDE_COLS: 25,
+            BOTTOM_COLS: 22,
+            SIDE_ROWS: 6,
+            BOTTOM_ROWS: 8,
+            SIDE_MARGIN: 50,
+            CENTER_GAP: 1000
+        }
+    }
+
+    const width = Math.min(window.innerWidth, 1920)
+    const particleSize = 6.5 + ((width - 1080) / (1920 - 1080)) * 1.5
+    const gapPercentage = 0.60 - ((width - 1080) / (1920 - 1080)) * 0.1
+
+    return {
+        CANVAS_WIDTH: width,
+        CANVAS_HEIGHT: width >= 1440 ? 500 : 500,
+        VISIBLE_HEIGHT: width >= 1440 ? 400 : 300,
+        BASE_PARTICLE_SIZE: particleSize,
+        SIDE_COLS: width < 1200 ? 18 : 25,
+        BOTTOM_COLS: width < 1200 ? 16 : 22,
+        SIDE_ROWS: 6,
+        BOTTOM_ROWS: 8,
+        SIDE_MARGIN: 50,
+        CENTER_GAP: width * gapPercentage
+    }
+}
+
+let dimensions = getResponsiveDimensions()
 
 class Particle {
     constructor({ x, y, radius, minDist, pushFactor, pullFactor, dampFactor }) {
@@ -113,20 +138,24 @@ class Particle {
 }
 
 const initParticles = () => {
+    dimensions = getResponsiveDimensions()
     const canvasEl = canvas.value
     if (!canvasEl) return
 
-    const particleRadius = (BASE_PARTICLE_SIZE * CANVAS_WIDTH) / 1000
+    const particleRadius = (dimensions.BASE_PARTICLE_SIZE * dimensions.CANVAS_WIDTH) / 1000
     const randomPosition = particleRadius * 2
     particles = []
 
-    const createParticle = (x, y) => {
-        if (Math.random() > 0.3) {
+    const createParticle = (x, y, forceCreate = false) => {
+        if (forceCreate || Math.random() > 0.3) {
+            // Añadir variación aleatoria más pronunciada en la posición
+            const randX = Math.random() * randomPosition * 3 - randomPosition * 1.5
+            const randY = Math.random() * randomPosition * 3 - randomPosition * 1.5
             return new Particle({
-                x: x + (Math.random() * randomPosition * 2 - randomPosition),
-                y: y + (Math.random() * randomPosition * 2 - randomPosition),
-                radius: particleRadius * (0.8 + Math.random() * 0.4),
-                minDist: (CANVAS_WIDTH / 20) + Math.random() * (CANVAS_WIDTH / 40),
+                x: x + randX,
+                y: y + randY,
+                radius: dimensions.BASE_PARTICLE_SIZE * (0.8 + Math.random() * 0.4),
+                minDist: 80 + Math.random() * 40,
                 pushFactor: 0.03 + Math.random() * 0.04,
                 pullFactor: 0.03,
                 dampFactor: 0.80 + Math.random() * 0.01
@@ -135,16 +164,18 @@ const initParticles = () => {
         return null
     }
 
-    const verticalOffset = (CANVAS_HEIGHT - VISIBLE_HEIGHT) / 2
-    const sideWidth = (CANVAS_WIDTH - CENTER_GAP) / 2
+    // Añadimos margen vertical
+    const verticalMargin = dimensions.BASE_PARTICLE_SIZE * 4
+    const verticalOffset = (dimensions.CANVAS_HEIGHT - dimensions.VISIBLE_HEIGHT) / 2 + verticalMargin
+    const sideWidth = (dimensions.CANVAS_WIDTH - dimensions.CENTER_GAP) / 2
 
     // Arilos laterales izquierdos
-    const leftColSpacing = sideWidth / (SIDE_COLS - 1)
-    const sideRowSpacing = VISIBLE_HEIGHT / (SIDE_ROWS - 1)
+    const leftColSpacing = sideWidth / (dimensions.SIDE_COLS - 1)
+    const sideRowSpacing = (dimensions.VISIBLE_HEIGHT - verticalMargin * 2) / (dimensions.SIDE_ROWS - 1)
 
-    for (let i = 0; i < SIDE_ROWS; i++) {
-        for (let j = 0; j < SIDE_COLS; j++) {
-            const x = SIDE_MARGIN + (j * leftColSpacing)
+    for (let i = 0; i < dimensions.SIDE_ROWS; i++) {
+        for (let j = 0; j < dimensions.SIDE_COLS; j++) {
+            const x = dimensions.SIDE_MARGIN + (j * leftColSpacing)
             const y = verticalOffset + (i * sideRowSpacing)
             const particle = createParticle(x, y)
             if (particle) particles.push(particle)
@@ -152,9 +183,9 @@ const initParticles = () => {
     }
 
     // Arilos laterales derechos
-    const rightStart = CANVAS_WIDTH - sideWidth
-    for (let i = 0; i < SIDE_ROWS; i++) {
-        for (let j = 0; j < SIDE_COLS; j++) {
+    const rightStart = dimensions.CANVAS_WIDTH - sideWidth
+    for (let i = 0; i < dimensions.SIDE_ROWS; i++) {
+        for (let j = 0; j < dimensions.SIDE_COLS; j++) {
             const x = rightStart + (j * leftColSpacing)
             const y = verticalOffset + (i * sideRowSpacing)
             const particle = createParticle(x, y)
@@ -162,17 +193,28 @@ const initParticles = () => {
         }
     }
 
-    // Arilos inferiores
-    const bottomStart = CANVAS_HEIGHT - verticalOffset - (VISIBLE_HEIGHT / 4)
-    const bottomColSpacing = CANVAS_WIDTH / (BOTTOM_COLS - 1)
-    const bottomRowSpacing = (VISIBLE_HEIGHT / 4) / (BOTTOM_ROWS - 1)
+    // Arilos inferiores modificados con mejor distribución
+    const bottomStart = dimensions.CANVAS_HEIGHT - (dimensions.VISIBLE_HEIGHT / 2) - verticalMargin
+    const bottomColSpacing = dimensions.CANVAS_WIDTH / (dimensions.BOTTOM_COLS - 1)
+    const bottomRowSpacing = (dimensions.VISIBLE_HEIGHT / 3) / (dimensions.BOTTOM_ROWS - 1)
 
-    for (let i = 0; i < BOTTOM_ROWS; i++) {
-        for (let j = 0; j < BOTTOM_COLS; j++) {
-            const x = (j * bottomColSpacing)
-            const y = bottomStart + (i * bottomRowSpacing)
-            const particle = createParticle(x, y)
-            if (particle) particles.push(particle)
+    // Primera fila espaciada - ajustamos la posición Y para empezar más abajo
+    for (let j = 0; j < Math.floor(dimensions.BOTTOM_COLS / 2); j++) {
+        const x = (dimensions.CANVAS_WIDTH / 4) + (j * bottomColSpacing * 2)
+        const y = bottomStart
+        const particle = createParticle(x, y)
+        if (particle) particles.push(particle)
+    }
+
+    // Filas adicionales - ajustamos para que empiecen desde la nueva posición
+    for (let i = 1; i < dimensions.BOTTOM_ROWS; i++) {
+        for (let j = 0; j < dimensions.BOTTOM_COLS * 1.2; j++) {
+            const x = (j * bottomColSpacing * 0.8)
+            const y = bottomStart + (i * bottomRowSpacing * 1.2)
+            if (Math.random() > 0.3) {
+                const particle = createParticle(x, y, true)
+                if (particle) particles.push(particle)
+            }
         }
     }
 }
@@ -188,7 +230,7 @@ const animate = () => {
     if (!context) return
 
     context.fillStyle = '#FDF9F9'
-    context.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT)
+    context.fillRect(0, 0, dimensions.CANVAS_WIDTH, dimensions.CANVAS_HEIGHT)
 
     particles.forEach(particle => {
         particle.update()
@@ -203,17 +245,17 @@ const updateCursorPosition = (clientX, clientY) => {
     if (!canvasEl) return
 
     const rect = canvasEl.getBoundingClientRect()
-    
+
     // Calculamos la escala actual del canvas
-    const scaleX = CANVAS_WIDTH / rect.width
-    const scaleY = CANVAS_HEIGHT / rect.height
-    
+    const scaleX = dimensions.CANVAS_WIDTH / rect.width
+    const scaleY = dimensions.CANVAS_HEIGHT / rect.height
+
     // Ajustamos las coordenadas considerando la escala
     const x = (clientX - rect.left) * scaleX
     const y = (clientY - rect.top) * scaleY
 
-    cursor.x = Math.min(Math.max(0, x), CANVAS_WIDTH)
-    cursor.y = Math.min(Math.max(0, y), CANVAS_HEIGHT)
+    cursor.x = Math.min(Math.max(0, x), dimensions.CANVAS_WIDTH)
+    cursor.y = Math.min(Math.max(0, y), dimensions.CANVAS_HEIGHT)
 }
 
 const handleTouch = (e) => {
@@ -236,20 +278,24 @@ const handleEnd = () => {
 }
 
 const resizeCanvas = () => {
+    dimensions = getResponsiveDimensions()
     const canvasEl = canvas.value
     const containerEl = container.value
     if (!canvasEl || !containerEl) return
 
-    canvasEl.width = CANVAS_WIDTH
-    canvasEl.height = CANVAS_HEIGHT
+    canvasEl.width = dimensions.CANVAS_WIDTH
+    canvasEl.height = dimensions.CANVAS_HEIGHT
+
+    // Ajustar la altura del contenedor dinámicamente
+    containerEl.style.height = `${dimensions.CANVAS_HEIGHT}px`
 
     // Calculamos la escala basada en el ancho del contenedor
     const containerWidth = containerEl.clientWidth
-    const scale = Math.min(containerWidth / CANVAS_WIDTH, 1)
-    
+    const scale = Math.min(containerWidth / dimensions.CANVAS_WIDTH, 1)
+
     // Aplicamos la transformación manteniendo el tamaño original
     canvasEl.style.transform = `translateX(-50%) scale(${scale})`
-    
+
     const context = canvasEl.getContext('2d', {
         alpha: false,
         desynchronized: true
@@ -262,29 +308,32 @@ const resizeCanvas = () => {
 
 onMounted(() => {
     nextTick(() => {
-        if (window.innerWidth >= 1080) {
+        // Actualizar dimensiones una vez que estemos en el cliente
+        dimensions = getResponsiveDimensions()
+        resizeCanvas()
+        initParticles()
+        animate()
+
+        window.addEventListener('resize', () => {
             resizeCanvas()
             initParticles()
-            animate()
-            
-            window.addEventListener('resize', resizeCanvas)
-            
-            const canvasEl = canvas.value
-            if (canvasEl) {
-                canvasEl.addEventListener('mousemove', handleMouseMove, { passive: false })
-                canvasEl.addEventListener('mouseleave', handleEnd)
-                canvasEl.addEventListener('touchstart', handleTouch, { passive: false })
-                canvasEl.addEventListener('touchmove', handleTouch, { passive: false })
-                canvasEl.addEventListener('touchend', handleEnd)
-                canvasEl.addEventListener('touchcancel', handleEnd)
-            }
+        })
+
+        const canvasEl = canvas.value
+        if (canvasEl) {
+            canvasEl.addEventListener('mousemove', handleMouseMove, { passive: false })
+            canvasEl.addEventListener('mouseleave', handleEnd)
+            canvasEl.addEventListener('touchstart', handleTouch, { passive: false })
+            canvasEl.addEventListener('touchmove', handleTouch, { passive: false })
+            canvasEl.addEventListener('touchend', handleEnd)
+            canvasEl.addEventListener('touchcancel', handleEnd)
         }
     })
 })
 
 onUnmounted(() => {
     window.removeEventListener('resize', resizeCanvas)
-    
+
     const canvasEl = canvas.value
     if (canvasEl) {
         canvasEl.removeEventListener('mousemove', handleMouseMove)
@@ -305,9 +354,9 @@ onUnmounted(() => {
     display: none;
     width: 100%;
     max-width: 1920px;
-    height: 600px;
+    height: 400px !important;
     position: absolute;
-    bottom: 0;
+    top: 5rem;
     left: 50%;
     transform: translateX(-50%);
     background: transparent;
@@ -316,15 +365,29 @@ onUnmounted(() => {
 
 canvas {
     position: absolute;
-    bottom: -150px;
+    top: 0;
     left: 50%;
-    transform-origin: center center;
+    transform-origin: top center;
     pointer-events: auto;
 }
 
 @media (min-width: 1080px) {
     .canvasWrapper {
+        height: 500px !important;
         display: block;
+    }
+}
+
+@media (min-width: 1440px) {
+    .canvasWrapper {
+        height: 600px !important;
+        top: 10rem;
+    }
+}
+
+@media (min-width: 1600px) {
+    .canvasWrapper {
+        height: 700px !important;
     }
 }
 </style>
