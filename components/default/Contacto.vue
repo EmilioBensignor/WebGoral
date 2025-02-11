@@ -313,6 +313,7 @@ form,
 .formField label,
 .formField input,
 .formField textarea {
+    font-family: "Urbanist", sans-serif;
     font-size: 0.875rem;
 }
 
