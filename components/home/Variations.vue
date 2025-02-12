@@ -3,7 +3,7 @@
         <div class="columnAlignCenter">
             <h2 class="text-primary">{{ $t('variationsTitle') }}</h2>
             <div class="variationsContainer columnAlignCenter">
-                <img src="/images/home/Granada3d.svg" alt="Granada">
+                <HomeGranada width="100%" height="600px" class="granada-container" />
                 <div class="columnAlignCenter">
                     <div class="variations rowCenter">
                         <button v-for="variation in variationsList" :key="variation" class="secondaryButton"
@@ -87,6 +87,12 @@ export default {
 
 .featureBtn.active span {
     color: var(--white-color);
+}
+
+.granada-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 @media (width >=700px) {
