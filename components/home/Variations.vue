@@ -3,7 +3,7 @@
         <div class="columnAlignCenter">
             <h2 class="text-primary">{{ $t('variationsTitle') }}</h2>
             <div class="variationsContainer columnAlignCenter">
-                <HomeGranada width="100%" height="600px" class="granada-container" />
+                <HomeGranada width="100%" class="granadaContainer" />
                 <div class="columnAlignCenter">
                     <div class="variations rowCenter">
                         <button v-for="variation in variationsList" :key="variation" class="secondaryButton"
@@ -89,7 +89,7 @@ export default {
     color: var(--white-color);
 }
 
-.granada-container {
+.granadaContainer {
     width: 100%;
     max-width: 600px;
     margin: 0 auto;
