@@ -3,7 +3,7 @@
         <div class="columnAlignCenter">
             <h2 class="text-primary">{{ $t('variationsTitle') }}</h2>
             <div class="variationsContainer columnAlignCenter">
-                <HomeGranada width="100%" class="granadaContainer" />
+                <HomeGranada class="granadaContainer" />
                 <div class="columnAlignCenter">
                     <div class="variations rowCenter">
                         <button v-for="variation in variationsList" :key="variation" class="secondaryButton"
