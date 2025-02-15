@@ -1,5 +1,5 @@
 <template>
-    <div ref="container" class="granadaViewer" @wheel.prevent>
+    <div ref="container" class="granadaViewer">
     </div>
 </template>
 
@@ -33,7 +33,7 @@ function init() {
         0.1,
         1000
     );
-    camera.position.set(0, 0, 12);
+    camera.position.set(0, 0, 2); // Aumentamos la distancia de la cámara
 
     renderer = new THREE.WebGLRenderer({
         antialias: true,
@@ -53,14 +53,14 @@ function init() {
     controls.enableDamping = true;
     controls.dampingFactor = 0.05;
     controls.enableZoom = false;
-    controls.minDistance = 8;
-    controls.maxDistance = 15;
+    controls.minDistance = 12; // Aumentamos la distancia mínima
+    controls.maxDistance = 20; // Aumentamos la distancia máxima
     controls.enablePan = false;
     controls.rotateSpeed = 0.8;
     controls.autoRotate = true;
     controls.autoRotateSpeed = 2.0;
-    controls.minPolarAngle = Math.PI / 2.5;
-    controls.maxPolarAngle = Math.PI / 1.8;
+    controls.minPolarAngle = Math.PI / 2.2; // Ajustamos el ángulo mínimo
+    controls.maxPolarAngle = Math.PI / 1.9; // Ajustamos el ángulo máximo
 
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
     scene.add(ambientLight);
@@ -86,11 +86,16 @@ function init() {
 
             const viewportHeight = container.value.clientHeight;
             const maxDim = Math.max(size.x, size.y, size.z);
-            const scale = (viewportHeight * 0.016);
-            model.scale.setScalar(scale);
+            let scale
+            if (window.innerWidth > 1280) {
+                scale = (viewportHeight * 0.015);
+            } else {
+                scale = (viewportHeight * 0.018);
+            }
 
+            model.scale.setScalar(scale);
             model.position.copy(center).multiplyScalar(-scale);
-            model.position.y -= 0.2;
+            model.position.y -= 0.1;
 
             model.rotation.x = THREE.MathUtils.degToRad(-10);
             model.rotation.y = THREE.MathUtils.degToRad(25);
@@ -132,5 +137,41 @@ canvas {
     width: 100% !important;
     height: 100% !important;
     touch-action: none;
+}
+
+@media (width >=700px) {
+    .granadaViewer {
+        width: 350px;
+        height: 350px;
+        margin: 0;
+    }
+}
+
+@media (width >=992px) {
+    .granadaViewer {
+        width: 350px;
+        height: 350px;
+    }
+}
+
+@media (width >=1280px) {
+    .granadaViewer {
+        width: 400px;
+        height: 400px;
+    }
+}
+
+@media (width >=1440px) {
+    .granadaViewer {
+        width: 425px;
+        height: 425px;
+    }
+}
+
+@media (width >=1920px) {
+    .granadaViewer {
+        width: 440px;
+        height: 440px;
+    }
 }
 </style>

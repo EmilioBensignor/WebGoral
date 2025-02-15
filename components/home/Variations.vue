@@ -2,7 +2,7 @@
     <section>
         <div class="columnAlignCenter">
             <h2 class="text-primary">{{ $t('variationsTitle') }}</h2>
-            <div class="variationsContainer columnAlignCenter">
+            <div class="w-full variationsContainer columnAlignCenter">
                 <HomeGranada class="granadaContainer" />
                 <div class="columnAlignCenter">
                     <div class="variations rowCenter">
@@ -149,6 +149,7 @@ export default {
 @media (width >=700px) {
     .variationsContainer {
         width: 100%;
+        flex-wrap: wrap;
         flex-direction: row;
         justify-content: center;
         gap: 5rem;
@@ -217,13 +218,20 @@ export default {
     }
 }
 
+@media (width >=1280px) {
+    .variationsContainer {
+        justify-content: center;
+        gap: 6rem;
+    }
+}
+
 @media (width >=1440px) {
     section>div {
         padding-top: 15rem;
     }
 
     .variationsContainer {
-        gap: 7.5rem;
+        gap: 8rem;
     }
 
     .variationsContainer>img {
