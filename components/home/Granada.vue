@@ -82,7 +82,7 @@ function init() {
 
             const box = new THREE.Box3().setFromObject(model);
             const center = box.getCenter(new THREE.Vector3());
-            let scale = 4.75;
+            let scale = 4;
             if (window.innerWidth > 480) {
                 scale = 6;
             } else if (window.innerWidth > 700) {
