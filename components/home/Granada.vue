@@ -125,6 +125,7 @@ function animate() {
     position: relative;
     height: 300px;
     width: 100%;
+    max-width: 90vw;
     overflow: hidden;
     touch-action: none;
     background: #FDF9F9;
