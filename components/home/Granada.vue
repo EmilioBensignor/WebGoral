@@ -1,5 +1,5 @@
 <template>
-    <div ref="container" class="granadaViewer">
+    <div ref="container" class="granadaViewer" @wheel.prevent>
     </div>
 </template>
 
@@ -52,7 +52,7 @@ function init() {
     controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
     controls.dampingFactor = 0.05;
-    controls.enableZoom = true;
+    controls.enableZoom = false;
     controls.minDistance = 8;
     controls.maxDistance = 15;
     controls.enablePan = false;
@@ -86,7 +86,7 @@ function init() {
 
             const viewportHeight = container.value.clientHeight;
             const maxDim = Math.max(size.x, size.y, size.z);
-            const scale = (viewportHeight * 0.006);
+            const scale = (viewportHeight * 0.016);
             model.scale.setScalar(scale);
 
             model.position.copy(center).multiplyScalar(-scale);
@@ -117,7 +117,7 @@ function animate() {
 .granadaViewer {
     position: relative;
     height: 300px;
-    width: 200px;
+    width: 100%;
     overflow: hidden;
     touch-action: none;
     background: #FDF9F9;
