@@ -1,5 +1,5 @@
 <template>
-    <section class="heroSection">
+    <section class="heroSection bgCover">
         <div class="hero columnAlignCenter">
             <h1>{{ $t('title') }}</h1>
             <p class="text-center font-medium"><span class="text-primary font-bold">{{ $t('pomegranates') }}</span>{{
@@ -24,6 +24,10 @@ export default {
 </script>
 
 <style scoped>
+    .heroSection {
+        background-image: url('/images/home/Goral-Granadas-Mobile.png');
+    }
+
 .hero {
     gap: 0.75rem;
     z-index: 2;
@@ -44,7 +48,17 @@ export default {
     width: 1.35rem;
 }
 
+@media (width >=480px) {
+    .heroSection {
+        background-image: url('/images/home/Goral-Granadas-Tablet.png');
+    }
+}
+
 @media (width >=700px) {
+    .heroSection {
+        background-image: url('/images/home/Goral-Granadas-Desktop.png');
+    }
+
     .hero {
         gap: 1rem;
     }
@@ -62,6 +76,7 @@ export default {
     .heroSection {
         height: 50vh;
         position: relative;
+        background-image: none;
     }
 
     .hero {

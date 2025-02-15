@@ -82,15 +82,17 @@ function init() {
 
             const box = new THREE.Box3().setFromObject(model);
             const center = box.getCenter(new THREE.Vector3());
-            const size = box.getSize(new THREE.Vector3());
-
-            const viewportHeight = container.value.clientHeight;
-            const maxDim = Math.max(size.x, size.y, size.z);
-            let scale
-            if (window.innerWidth > 1280) {
-                scale = (viewportHeight * 0.015);
-            } else {
-                scale = (viewportHeight * 0.018);
+            let scale = 4.75;
+            if (window.innerWidth > 480) {
+                scale = 6;
+            } else if (window.innerWidth > 700) {
+                scale = 8;
+            } else if (window.innerWidth > 992) {
+                scale = 10;
+            } else if (window.innerWidth > 1440) {
+                scale = 12;
+            } else if (window.innerWidth >= 1920) {
+                scale = 14;
             }
 
             model.scale.setScalar(scale);
