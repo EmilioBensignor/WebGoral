@@ -43,19 +43,19 @@ export default {
                 Acco: {
                     features: [
                         { icon: 'star-line' },
-                        { icon: 'star-line' },
-                        { icon: 'star-line' },
-                        { icon: 'star-line' },
-                        { icon: 'star-line' }
+                        { icon: 'happy-line' },
+                        { icon: 'drop-line' },
+                        { icon: 'calendar-month-line' },
+                        { icon: 'box-2-line' }
                     ]
                 },
                 Wonderful: {
                     features: [
                         { icon: 'star-line' },
-                        { icon: 'star-line' },
-                        { icon: 'star-line' },
-                        { icon: 'star-line' },
-                        { icon: 'star-line' }
+                        { icon: 'happy-line' },
+                        { icon: 'drop-line' },
+                        { icon: 'calendar-month-line' },
+                        { icon: 'box-2-line' }
                     ]
                 }
             }

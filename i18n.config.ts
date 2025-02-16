@@ -12,18 +12,18 @@ export default defineI18nConfig(() => ({
             globalGap: 'Certificados por Global GAP',
             variationsTitle: 'Nuestras variedades',
             acco: {
-                feature1: 'Característica 1 de Acco',
-                feature2: 'Característica 2 de Acco',
-                feature3: 'Característica 3 de Acco',
-                feature4: 'Característica 4 de Acco',
-                feature5: 'Característica 5 de Acco'
+                feature1: 'Color rojo brillante y atractivo',
+                feature2: 'Dulce y menos ácido, ideal para disfrutar fresca',
+                feature3: 'Granos jugosos y textura suave al paladar',
+                feature4: 'Maduración temprana, disponible al inicio de la temporada',
+                feature5: 'Semillas pequeñas y blandas, más fáciles de comer'
             },
             wonderful: {
-                feature1: 'Característica 1 de Wonderful',
-                feature2: 'Característica 2 de Wonderful',
-                feature3: 'Característica 3 de Wonderful',
-                feature4: 'Característica 4 de Wonderful',
-                feature5: 'Característica 5 de Wonderful'
+                feature1: 'Intenso color rojo oscuro y granos grandes',
+                feature2: 'Combinación perfecta entre dulzura y acidez',
+                feature3: 'Muy jugosa, rica en antioxidantes y nutrientes',
+                feature4: 'Maduración tardía, disponible al final de la temporada',
+                feature5: 'Se conserva en excelente estado por más tiempo después de la cosecha'
             },
             calendar: {
                 title: 'Calendario de cosecha',
@@ -140,18 +140,18 @@ export default defineI18nConfig(() => ({
             globalGap: 'Global GAP Certified',
             variationsTitle: 'Our varieties',
             acco: {
-                feature1: 'Acco feature 1',
-                feature2: 'Acco feature 2',
-                feature3: 'Acco feature 3',
-                feature4: 'Acco feature 4',
-                feature5: 'Acco feature 5'
+                feature1: 'Bright and attractive red color',
+                feature2: 'Sweet and less acidic, ideal for fresh consumption',
+                feature3: 'Juicy grains with smooth texture',
+                feature4: 'Early ripening, available at the start of the season',
+                feature5: 'Small and soft seeds, easier to eat'
             },
             wonderful: {
-                feature1: 'Wonderful feature 1',
-                feature2: 'Wonderful feature 2',
-                feature3: 'Wonderful feature 3',
-                feature4: 'Wonderful feature 4',
-                feature5: 'Wonderful feature 5'
+                feature1: 'Intense dark red color and large grains',
+                feature2: 'Perfect balance between sweetness and acidity',
+                feature3: 'Very juicy, rich in antioxidants and nutrients',
+                feature4: 'Late ripening, available at the end of the season',
+                feature5: 'Maintains excellent condition longer after harvest'
             },
             calendar: {
                 title: 'Harvest calendar',
@@ -268,18 +268,18 @@ export default defineI18nConfig(() => ({
             globalGap: 'Certificado Global GAP',
             variationsTitle: 'Nossas variedades',
             acco: {
-                feature1: 'Característica 1 da Acco',
-                feature2: 'Característica 2 da Acco',
-                feature3: 'Característica 3 da Acco',
-                feature4: 'Característica 4 da Acco',
-                feature5: 'Característica 5 da Acco'
+                feature1: 'Cor vermelha brilhante e atraente',
+                feature2: 'Doce e menos ácida, ideal para consumo fresco',
+                feature3: 'Grãos suculentos com textura suave',
+                feature4: 'Amadurecimento precoce, disponível no início da temporada',
+                feature5: 'Sementes pequenas e macias, mais fáceis de comer'
             },
             wonderful: {
-                feature1: 'Característica 1 da Wonderful',
-                feature2: 'Característica 2 da Wonderful',
-                feature3: 'Característica 3 da Wonderful',
-                feature4: 'Característica 4 da Wonderful',
-                feature5: 'Característica 5 da Wonderful'
+                feature1: 'Cor vermelha escura intensa e grãos grandes',
+                feature2: 'Equilíbrio perfeito entre doçura e acidez',
+                feature3: 'Muito suculenta, rica em antioxidantes e nutrientes',
+                feature4: 'Amadurecimento tardio, disponível no final da temporada',
+                feature5: 'Mantém excelente condição por mais tempo após a colheita'
             },
             calendar: {
                 title: 'Calendário de colheita',
@@ -396,18 +396,18 @@ export default defineI18nConfig(() => ({
             globalGap: 'Certifié Global GAP',
             variationsTitle: 'Nos variétés',
             acco: {
-                feature1: 'Caractéristique 1 d\'Acco',
-                feature2: 'Caractéristique 2 d\'Acco',
-                feature3: 'Caractéristique 3 d\'Acco',
-                feature4: 'Caractéristique 4 d\'Acco',
-                feature5: 'Caractéristique 5 d\'Acco'
+                feature1: 'Couleur rouge vif et attrayante',
+                feature2: 'Douce et moins acide, idéale pour la consommation fraîche',
+                feature3: 'Grains juteux à texture douce',
+                feature4: 'Maturation précoce, disponible en début de saison',
+                feature5: 'Petites graines tendres, plus faciles à manger'
             },
             wonderful: {
-                feature1: 'Caractéristique 1 de Wonderful',
-                feature2: 'Caractéristique 2 de Wonderful',
-                feature3: 'Caractéristique 3 de Wonderful',
-                feature4: 'Caractéristique 4 de Wonderful',
-                feature5: 'Caractéristique 5 de Wonderful'
+                feature1: 'Couleur rouge foncé intense et gros grains',
+                feature2: 'Équilibre parfait entre douceur et acidité',
+                feature3: 'Très juteuse, riche en antioxydants et nutriments',
+                feature4: 'Maturation tardive, disponible en fin de saison',
+                feature5: 'Conserve une excellente condition plus longtemps après la récolte'
             },
             calendar: {
                 title: 'Calendrier de récolte',
@@ -524,18 +524,18 @@ export default defineI18nConfig(() => ({
             globalGap: 'Сертификат Global GAP',
             variationsTitle: 'Наши сорта',
             acco: {
-                feature1: 'Характеристика 1 Acco',
-                feature2: 'Характеристика 2 Acco',
-                feature3: 'Характеристика 3 Acco',
-                feature4: 'Характеристика 4 Acco',
-                feature5: 'Характеристика 5 Acco'
+                feature1: 'Яркий и привлекательный красный цвет',
+                feature2: 'Сладкий и менее кислый, идеален для свежего потребления',
+                feature3: 'Сочные зерна с нежной текстурой',
+                feature4: 'Раннее созревание, доступен в начале сезона',
+                feature5: 'Мелкие и мягкие семена, легче есть'
             },
             wonderful: {
-                feature1: 'Характеристика 1 Wonderful',
-                feature2: 'Характеристика 2 Wonderful',
-                feature3: 'Характеристика 3 Wonderful',
-                feature4: 'Характеристика 4 Wonderful',
-                feature5: 'Характеристика 5 Wonderful'
+                feature1: 'Насыщенный темно-красный цвет и крупные зерна',
+                feature2: 'Идеальный баланс между сладостью и кислотностью',
+                feature3: 'Очень сочный, богат антиоксидантами и питательными веществами',
+                feature4: 'Позднее созревание, доступен в конце сезона',
+                feature5: 'Сохраняет отличное состояние дольше после сбора урожая'
             },
             calendar: {
                 title: 'Календарь сбора урожая',
