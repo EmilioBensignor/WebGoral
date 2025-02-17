@@ -14,7 +14,10 @@
                     </button>
                 </div>
                 <div class="imageContainer allCenter">
-                    <img :src="`/images/home/${images[selectedInfo]}.webp`" :alt="$t(`about.info.${selectedInfo}.title`)" />
+                    <video v-if="selectedInfo === 'location'" autoplay loop muted playsinline>
+                        <source src="/videos/home/ubicacion-estrategica.mp4" type="video/mp4" />
+                    </video>
+                    <img v-else :src="`/images/home/${images[selectedInfo]}.webp`" :alt="$t(`about.info.${selectedInfo}.title`)" />
                 </div>
             </div>
         </div>
@@ -81,6 +84,12 @@ export default {
 }
 
 .imageContainer img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+video {
     width: 100%;
     height: 100%;
     object-fit: cover;
