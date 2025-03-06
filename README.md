@@ -1,4 +1,6 @@
-# Nuxt Minimal Starter
+# Goral
+
+https://web-goral.vercel.app/
 
 Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
