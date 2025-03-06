@@ -15,7 +15,7 @@
             </li>
           </ul>
         </nav>
-        <button @click="toggleLanguages($event)" class="allCenter languages">
+        <button @click="toggleLanguages($event)" aria-label="Toggle languages" class="allCenter languages">
           <Icon :name="`circle-flags:${selectedLanguage.icon}`" />
         </button>
         <Menu ref="languagesMenu" id="account_menu" :model="languagesMenu" :popup="true">

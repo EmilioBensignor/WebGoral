@@ -13,7 +13,7 @@
                     </div>
                     <div class="featuresContainer columnAlignCenter">
                         <div class="features rowCenter">
-                            <button v-for="(feature, index) in activeFeatures" :key="index" class="featureBtn allCenter"
+                            <button v-for="(feature, index) in activeFeatures" aria-label="Pomegranate feature" :key="index" class="featureBtn allCenter"
                                 :class="{ active: selectedFeatureIndex === index }"
                                 @click="selectedFeatureIndex = index">
                                 <div class="allCenter">
