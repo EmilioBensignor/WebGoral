@@ -83,8 +83,8 @@ export default {
     emits: ['open-dialog'],
     data() {
         return {
-            accoHarvestDate: new Date('2025-02-20'),
-            wonderfulHarvestDate: new Date('2025-03-25')
+            accoHarvestDate: new Date('2025-03-25'),
+            wonderfulHarvestDate: new Date('2025-04-10')
         }
     },
 
