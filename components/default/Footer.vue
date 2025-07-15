@@ -15,7 +15,7 @@
     </div>
     <div class="bg-dark">
       <div class="rights">
-        <p class="text-center text-light">© Goral 2024. {{ $t('footer.rights') }}</p>
+        <p class="text-center text-light">© Goral {{ new Date().getFullYear() }}. {{ $t('footer.rights') }}</p>
       </div>
     </div>
   </footer>
