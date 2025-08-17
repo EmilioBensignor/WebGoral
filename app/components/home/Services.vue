@@ -2,7 +2,9 @@
     <section>
         <div class="columnAlignCenter">
             <h2 class="text-primary">{{ $t('services.title') }}</h2>
-            <HomeServiceAccordion :servicesList="servicesList" />
+            <ClientOnly>
+                <HomeServiceAccordion :servicesList="servicesList" />
+            </ClientOnly>
             <div class="servicesContainer">
                 <div class="contentWrapper">
                     <div class="textColumn">

@@ -1,65 +1,75 @@
 <template>
     <aside>
-        <Dialog v-model:visible="isDialogVisible" :modal="true" :closable="true" :closeOnEscape="true"
-            :dismissableMask="true" @hide="closeDialog">
-            <div class="dialogContent column">
-                <p class="header">
-                    {{ $t('contact.title') }}
-                </p>
-                <form id="contactForm" class="columnAlignCenter" @submit.prevent="handleSubmit">
-                    <div class="formGroup column">
-                        <div class="formField column">
-                            <label for="name">{{ $t('contact.name.label') }}</label>
-                            <input type="text" id="name" v-model="formData.name"
-                                :placeholder="$t('contact.name.placeholder')" :class="{ 'error': errors.name }"
-                                autocomplete="name">
-                            <span class="errorText" v-if="errors.name">{{ errors.name }}</span>
-                        </div>
-                        <div class="formField column">
-                            <label for="email">{{ $t('contact.email.label') }}</label>
-                            <input type="email" id="email" v-model="formData.email"
-                                :placeholder="$t('contact.email.placeholder')" :class="{ 'error': errors.email }"
-                                autocomplete="email">
-                            <span class="errorText" v-if="errors.email">{{ errors.email }}</span>
-                        </div>
-                    </div>
-                    <div class="formGroup column">
-                        <div class="formField column">
-                            <label for="phone">{{ $t('contact.phone.label') }}</label>
-                            <div class="phoneField rowCenter">
-                                <input type="text" id="phonePrefix" v-model="formData.phonePrefix"
-                                    :placeholder="$t('contact.phone.prefix')" autocomplete="tel-country-code">
-                                <input type="tel" id="phone" v-model="formData.phone"
-                                    :placeholder="$t('contact.phone.placeholder')" :class="{ 'error': errors.phone }"
-                                    autocomplete="tel">
+        <!-- Contact Modal -->
+        <div v-if="isDialogVisible" class="modal-overlay" @click="closeDialog">
+            <div class="modal-content" @click.stop>
+                <button @click="closeDialog" class="modal-close">
+                    <Icon name="mingcute:close-line" />
+                </button>
+                <div class="dialogContent column">
+                    <p class="header">
+                        {{ $t('contact.title') }}
+                    </p>
+                    <form id="contactForm" class="columnAlignCenter" @submit.prevent="handleSubmit">
+                        <div class="formGroup column">
+                            <div class="formField column">
+                                <label for="name">{{ $t('contact.name.label') }}</label>
+                                <input type="text" id="name" v-model="formData.name"
+                                    :placeholder="$t('contact.name.placeholder')" :class="{ 'error': errors.name }"
+                                    autocomplete="name">
+                                <span class="errorText" v-if="errors.name">{{ errors.name }}</span>
                             </div>
-                            <span class="errorText" v-if="errors.phone">{{ $t('contact.phone.required') }}</span>
+                            <div class="formField column">
+                                <label for="email">{{ $t('contact.email.label') }}</label>
+                                <input type="email" id="email" v-model="formData.email"
+                                    :placeholder="$t('contact.email.placeholder')" :class="{ 'error': errors.email }"
+                                    autocomplete="email">
+                                <span class="errorText" v-if="errors.email">{{ errors.email }}</span>
+                            </div>
                         </div>
-                        <div class="formField column">
-                            <label for="message">{{ $t('contact.message.label') }}</label>
-                            <textarea id="message" v-model="formData.message"
-                                :placeholder="$t('contact.message.placeholder')"
-                                :class="{ 'error': errors.message }"></textarea>
-                            <span class="errorText" v-if="errors.message">{{ errors.message }}</span>
+                        <div class="formGroup column">
+                            <div class="formField column">
+                                <label for="phone">{{ $t('contact.phone.label') }}</label>
+                                <div class="phoneField rowCenter">
+                                    <input type="text" id="phonePrefix" v-model="formData.phonePrefix"
+                                        :placeholder="$t('contact.phone.prefix')" autocomplete="tel-country-code">
+                                    <input type="tel" id="phone" v-model="formData.phone"
+                                        :placeholder="$t('contact.phone.placeholder')" :class="{ 'error': errors.phone }"
+                                        autocomplete="tel">
+                                </div>
+                                <span class="errorText" v-if="errors.phone">{{ $t('contact.phone.required') }}</span>
+                            </div>
+                            <div class="formField column">
+                                <label for="message">{{ $t('contact.message.label') }}</label>
+                                <textarea id="message" v-model="formData.message"
+                                    :placeholder="$t('contact.message.placeholder')"
+                                    :class="{ 'error': errors.message }"></textarea>
+                                <span class="errorText" v-if="errors.message">{{ errors.message }}</span>
+                            </div>
                         </div>
-                    </div>
-                    <button type="submit" class="primaryButton" :disabled="isLoading">
-                        <span v-if="!isLoading">{{ $t('contact.submit') }}</span>
-                        <span v-else class="loader allCenter"></span>
-                    </button>
-                </form>
+                        <button type="submit" class="primaryButton" :disabled="isLoading">
+                            <span v-if="!isLoading">{{ $t('contact.submit') }}</span>
+                            <span v-else class="loader allCenter"></span>
+                        </button>
+                    </form>
+                </div>
             </div>
-        </Dialog>
+        </div>
 
-        <Dialog v-model:visible="isSuccessDialogVisible" :modal="true" :closable="true" :closeOnEscape="true"
-            :dismissableMask="true" @hide="closeSuccessDialog">
-            <div class="dialogContent column">
-                <p class="header text-center">{{ $t('contact.success.title') }}</p>
+        <!-- Success Modal -->
+        <div v-if="isSuccessDialogVisible" class="modal-overlay" @click="closeSuccessDialog">
+            <div class="modal-content" @click.stop>
+                <button @click="closeSuccessDialog" class="modal-close">
+                    <Icon name="mingcute:close-line" />
+                </button>
+                <div class="dialogContent column">
+                    <p class="header text-center">{{ $t('contact.success.title') }}</p>
+                </div>
+                <div class="successDialog">
+                    <p class="text-center text-light">{{ $t('contact.success.message') }}</p>
+                </div>
             </div>
-            <div class="successDialog">
-                <p class="text-center text-light">{{ $t('contact.success.message') }}</p>
-            </div>
-        </Dialog>
+        </div>
     </aside>
 </template>
 
@@ -88,7 +98,25 @@ export default {
         }
     },
 
+    mounted() {
+        document.addEventListener('keydown', this.handleKeyDown)
+    },
+
+    beforeUnmount() {
+        document.removeEventListener('keydown', this.handleKeyDown)
+    },
+
     methods: {
+        handleKeyDown(event) {
+            if (event.key === 'Escape') {
+                if (this.isDialogVisible) {
+                    this.closeDialog()
+                } else if (this.isSuccessDialogVisible) {
+                    this.closeSuccessDialog()
+                }
+            }
+        },
+
         validateEmail(email) {
             return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
         },
@@ -209,67 +237,80 @@ export default {
 </script>
 
 <style>
-.p-dialog-mask {
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background: rgba(72, 3, 17, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
 }
 
-.p-dialog {
+.modal-content {
     width: 100%;
     max-width: 280px;
-    background: var(--white-color) !important;
-    border-radius: 7px !important;
+    background: var(--white-color);
+    border-radius: 7px;
     padding: 3px;
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
 }
 
-.p-dialog-header {
+.modal-close {
     position: absolute;
     top: 1.25rem;
     right: 1.25rem;
-}
-
-.p-dialog-header .p-icon {
+    background: none;
+    border: none;
+    cursor: pointer;
     color: var(--secondary-color);
+    z-index: 1;
 }
 
 @media (width >=660px) {
-    .p-dialog {
+    .modal-content {
         max-width: 620px;
-        border-radius: 20px !important;
+        border-radius: 20px;
     }
 
-    .p-dialog-header {
+    .modal-close {
         top: 1.5rem;
         right: 1.5rem;
     }
 
-    .p-dialog-header .p-icon {
+    .modal-close span {
         width: 1rem;
         height: 1rem;
     }
 }
 
 @media (width >=1080px) {
-    .p-dialog {
+    .modal-content {
         max-width: 800px;
     }
 
-    .p-dialog-header {
+    .modal-close {
         top: 2rem;
         right: 2rem;
     }
 
-    .p-dialog-header .p-icon {
+    .modal-close span {
         width: 1.25rem;
         height: 1.25rem;
     }
 }
 
 @media (width >=1440px) {
-    .p-dialog {
+    .modal-content {
         max-width: 940px;
     }
 
-    .p-dialog-header {
+    .modal-close {
         top: 2.5rem;
         right: 2.5rem;
     }

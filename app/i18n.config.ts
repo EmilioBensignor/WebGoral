@@ -79,10 +79,6 @@ export default defineI18nConfig(() => ({
                         title: 'Exporta granadas al mundo',
                         text: '*Desde San Juan al mundo.* Proveemos un servicio de exportación confiable para que puedas llevar el mejor producto a tu mercado.'
                     },
-                    assistance: {
-                        title: 'Asistencia personalizada',
-                        text: 'Nuestro equipo te acompaña en cada etapa con *atención personalizada*, para que nunca estés solo en el proceso.'
-                    },
                     harvest: {
                         title: 'Cosechas en Marzo y Abril',
                         text: '*Planificación perfecta para tu negocio.* Nuestras cosechas están programadas estratégicamente en los meses de marzo y abril, garantizando el mejor momento para cada variedad.'

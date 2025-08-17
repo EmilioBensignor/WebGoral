@@ -11,7 +11,7 @@
         <nav class="navMenu">
           <ul class="rowCenter">
             <li v-for="(item, index) in menu" :key="index">
-              <NuxtLink :to="item.route">{{ $t(item.translationKey) }}</NuxtLink>
+              <button @click="openContact" class="contact-link">{{ $t(item.translationKey) }}</button>
             </li>
           </ul>
         </nav>
@@ -38,7 +38,7 @@
       <nav class="w-full h-full navMenu columnSpaceBetween">
         <ul class="column">
           <li v-for="(item, index) in menu" :key="index">
-            <NuxtLink :to="item.route">{{ $t(item.translationKey) }}</NuxtLink>
+            <button @click="openContact(); closeDrawer()" class="contact-link">{{ $t(item.translationKey) }}</button>
           </li>
         </ul>
       </nav>
@@ -94,6 +94,9 @@ export default {
     document.removeEventListener("keydown", this.handleKeyDown);
   },
   methods: {
+    openContact() {
+      window.dispatchEvent(new CustomEvent('open-contact-modal'));
+    },
     toggleDrawer() {
       this.drawerMenu = !this.drawerMenu;
     },
@@ -253,10 +256,17 @@ export default {
   gap: 2rem;
 }
 
-.navMenu ul li a {
+.navMenu ul li a, .contact-link {
+  background: none;
+  border: none;
   text-decoration: none;
   color: var(--primary-color);
   font-size: 1rem;
+  cursor: pointer;
+}
+
+.contact-link:hover, .contact-link:hover {
+  color: var(--primary-color) !important;
 }
 
 @media (width >=1080px) {
@@ -284,7 +294,7 @@ export default {
     display: flex;
   }
 
-  .navMenu ul li a {
+  .navMenu ul li a, .contact-link {
     font-size: 1.375rem;
   }
 
@@ -309,7 +319,7 @@ export default {
     gap: 3.25rem;
   }
 
-  .navMenu ul li a {
+  .navMenu ul li a, .contact-link {
     font-size: 1.5rem;
   }
 
