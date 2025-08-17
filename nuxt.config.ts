@@ -4,15 +4,12 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ["~/assets/main.css"],
   modules: [
-    "@primevue/nuxt-module",
     "@nuxt/image",
     "@nuxt/icon",
-    '@nuxtjs/seo',
-    'nuxt-vitalizer',
-    'nuxt-booster',
-    '@nuxtjs/fontaine',
+    ['@nuxtjs/seo', {
+      ogImage: false
+    }],
     'nuxt-anchorscroll',
-    '@nuxt/scripts',
     '@nuxt/fonts',
     '@nuxtjs/i18n',
   ],
@@ -38,33 +35,19 @@ export default defineNuxtConfig({
     }
   },
   i18n: {
-    vueI18n: './i18n.config.ts',
+    vueI18n: '~/i18n.config.ts',
     strategy: 'prefix_except_default',
     defaultLocale: 'es',
     locales: ['es', 'en', 'fr', 'pt', 'ru'],
+    bundle: {
+      optimizeTranslationDirective: false
+    }
   },
   site: {
     url: 'https://goral.com',
     name: 'Goral',
     description: 'Goral',
     defaultLocale: 'es',
-  },
-  booster: {
-    detection: {
-      performance: true,
-      browserSupport: true,
-      battery: true
-    },
-    performanceMetrics: {
-      timing: {
-        fcp: 800,
-        dcl: 1200
-      }
-    },
-    lazyOffset: {
-      component: '0%',
-      asset: '0%'
-    }
   },
   image: {
     screens: {
@@ -83,9 +66,5 @@ export default defineNuxtConfig({
       youtube: 'https://img.youtube.com',
       vimeo: 'https://i.vimeocdn.com',
     }
-  },
-  vitalizer: {
-    disableStylesheets: 'entry',
-    disablePrefetchLinks: true
   },
 })
