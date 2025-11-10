@@ -31,8 +31,8 @@ export default {
       contact: [
         {
           icon: "mail-line",
-          text: "info@goral.com",
-          link: "mailto:info@goral.com",
+          text: "info@goral.com.ar",
+          link: "mailto:info@goral.com.ar",
         },
       ],
     }
