@@ -59,7 +59,7 @@ export default {
       languages: [
         { code: 'es', label: 'Español', icon: 'ar' },
         { code: 'en', label: 'English', icon: 'us' },
-        { code: 'pt', label: 'Português', icon: 'pt' },
+        { code: 'pt', label: 'Português', icon: 'br' },
         { code: 'fr', label: 'Français', icon: 'fr' },
         { code: 'ru', label: 'Русский', icon: 'ru' }
       ],
