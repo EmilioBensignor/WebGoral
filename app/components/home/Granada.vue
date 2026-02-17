@@ -83,7 +83,7 @@ function init() {
             const box = new THREE.Box3().setFromObject(model);
             const center = box.getCenter(new THREE.Vector3());
             const viewerWidth = container.value.clientWidth;
-            const scale = viewerWidth / 80;
+            const scale = Math.min(viewerWidth / 80, 6.5);
 
             model.scale.setScalar(scale);
             model.position.copy(center).multiplyScalar(-scale);
