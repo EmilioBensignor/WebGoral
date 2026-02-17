@@ -25,7 +25,7 @@ export default {
 
 <style scoped>
     .heroSection {
-        background-image: url('/images/home/Goral-Granadas-Mobile.png');
+        background-image: url('/images/home/Goral-Granadas-Mobile.webp');
     }
 
 .hero {
@@ -50,13 +50,13 @@ export default {
 
 @media (width >=480px) {
     .heroSection {
-        background-image: url('/images/home/Goral-Granadas-Tablet.png');
+        background-image: url('/images/home/Goral-Granadas-Tablet.webp');
     }
 }
 
 @media (width >=700px) {
     .heroSection {
-        background-image: url('/images/home/Goral-Granadas-Desktop.png');
+        background-image: url('/images/home/Goral-Granadas-Desktop.webp');
     }
 
     .hero {

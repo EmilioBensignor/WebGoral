@@ -2,10 +2,10 @@
   <footer id="footer">
     <div class="bg-secondary">
       <div class="upperFooter rowSpaceBetween">
-        <NuxtImg src="/images/Logo-Goral-Blanco.svg" alt="Logo Goral" class="logo" />
+        <NuxtImg src="/images/Logo-Goral-Blanco.svg" alt="Logo Goral" class="logo" width="160" height="35" />
         <ul class="contact column">
           <li v-for="(item, index) in contact" :key="index">
-            <a :href="item.link" class="rowCenter text-light font-miedum no-underline">
+            <a :href="item.link" class="rowCenter text-light font-medium no-underline">
               <Icon :name="`mingcute:${item.icon}`" class="text-light" />
               {{ item.text }}
             </a>

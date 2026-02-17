@@ -3,13 +3,13 @@
         <!-- Contact Modal -->
         <div v-if="isDialogVisible" class="modal-overlay" @click="closeDialog">
             <div class="modal-content" @click.stop>
-                <button @click="closeDialog" class="modal-close">
+                <button @click="closeDialog" class="modal-close" aria-label="Cerrar">
                     <Icon name="mingcute:close-line" />
                 </button>
                 <div class="dialogContent column">
-                    <p class="header">
+                    <h2 class="header">
                         {{ $t('contact.title') }}
-                    </p>
+                    </h2>
                     <form id="contactForm" class="columnAlignCenter" @submit.prevent="handleSubmit">
                         <div class="formGroup column">
                             <div class="formField column">
@@ -59,11 +59,11 @@
         <!-- Success Modal -->
         <div v-if="isSuccessDialogVisible" class="modal-overlay" @click="closeSuccessDialog">
             <div class="modal-content" @click.stop>
-                <button @click="closeSuccessDialog" class="modal-close">
+                <button @click="closeSuccessDialog" class="modal-close" aria-label="Cerrar">
                     <Icon name="mingcute:close-line" />
                 </button>
                 <div class="dialogContent column">
-                    <p class="header text-center">{{ $t('contact.success.title') }}</p>
+                    <h2 class="header text-center">{{ $t('contact.success.title') }}</h2>
                 </div>
                 <div class="successDialog">
                     <p class="text-center text-light">{{ $t('contact.success.message') }}</p>
@@ -130,7 +130,6 @@ export default {
                 message: ''
             }
 
-            // Validación nombre
             if (!this.formData.name) {
                 this.errors.name = this.$t('contact.name.required')
                 isValid = false
@@ -145,7 +144,6 @@ export default {
                 isValid = false
             }
 
-            // Validación email
             if (!this.formData.email) {
                 this.errors.email = this.$t('contact.email.required')
                 isValid = false
@@ -154,7 +152,6 @@ export default {
                 isValid = false
             }
 
-            // Validación teléfono
             if (!this.formData.phone) {
                 this.errors.phone = this.$t('contact.phone.required')
                 isValid = false
@@ -163,7 +160,6 @@ export default {
                 isValid = false
             }
 
-            // Validación mensaje
             if (!this.formData.message) {
                 this.errors.message = this.$t('contact.message.required')
                 isValid = false

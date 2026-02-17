@@ -16,7 +16,6 @@ function openContactDialog() {
   dialog.value?.openDialog()
 }
 
-// Listen for contact modal events
 onMounted(() => {
   window.addEventListener('open-contact-modal', openContactDialog)
 })
@@ -25,12 +24,14 @@ onUnmounted(() => {
   window.removeEventListener('open-contact-modal', openContactDialog)
 })
 
+const { t } = useI18n()
+
 useSeoMeta({
-  title: 'Goral',
-  description: 'Descripción de tu sitio',
-  ogTitle: 'Goral',
-  ogDescription: 'Descripción para redes sociales',
-  ogImage: 'https://goral.com/imagen.jpg',
+  title: () => t('seo.title'),
+  description: () => t('seo.description'),
+  keywords: () => t('seo.keywords'),
+  ogTitle: () => t('seo.ogTitle'),
+  ogDescription: () => t('seo.description'),
   twitterCard: 'summary_large_image'
 })
 </script>

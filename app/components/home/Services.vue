@@ -20,7 +20,7 @@
                     <div class="videoColumn">
                         <div class="stickyWrapper center">
                             <video v-for="(service, key) in servicesList" :key="key"
-                                :src="`/videos/home/${service.video}.mp4`" :alt="$t(`services.items.${key}.title`)"
+                                :src="`/videos/home/${service.video}.mp4`" :aria-label="$t(`services.items.${key}.title`)"
                                 :ref="`video-${key}`" class="serviceAnimation"
                                 :class="{ active: currentService === key }" preload="auto" muted playsinline></video>
                         </div>

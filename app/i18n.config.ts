@@ -5,6 +5,12 @@ export default defineI18nConfig(() => ({
     availableLocales: ['es', 'en', 'pt', 'fr', 'ru'],
     messages: {
         es: {
+            seo: {
+                title: 'Granadas Premium de San Juan, Argentina',
+                description: 'Producción y exportación de granadas premium Acco y Wonderful desde San Juan, Argentina. Calidad consistente y entregas confiables.',
+                keywords: 'granadas, granadas premium, exportación de granadas, granadas argentina, pomegranate exporter, Acco, Wonderful, San Juan Argentina',
+                ogTitle: 'Goral | Granadas Premium de Argentina',
+            },
             title: 'Calidad. Frescura. Consistencia.',
             pomegranates: 'Granadas',
             subtitle: ' seleccionadas con entregas rápidas y consistentes.',
@@ -130,6 +136,12 @@ export default defineI18nConfig(() => ({
             }
         },
         en: {
+            seo: {
+                title: 'Premium Pomegranates from San Juan, Argentina',
+                description: 'Production and export of premium Acco and Wonderful pomegranates from San Juan, Argentina. Consistent quality and reliable deliveries.',
+                keywords: 'pomegranates, premium pomegranates, pomegranate export, argentina pomegranates, Acco, Wonderful, San Juan Argentina',
+                ogTitle: 'Goral | Premium Pomegranates from Argentina',
+            },
             title: 'Quality. Freshness. Consistency.',
             pomegranates: 'Pomegranates',
             subtitle: ' selected with fast and consistent deliveries.',
@@ -259,6 +271,12 @@ export default defineI18nConfig(() => ({
             }
         },
         pt: {
+            seo: {
+                title: 'Romãs Premium de San Juan, Argentina',
+                description: 'Produção e exportação de romãs premium Acco e Wonderful de San Juan, Argentina. Qualidade consistente e entregas confiáveis.',
+                keywords: 'romãs, romãs premium, exportação de romãs, romãs argentina, Acco, Wonderful, San Juan Argentina',
+                ogTitle: 'Goral | Romãs Premium da Argentina',
+            },
             title: 'Qualidade. Frescura. Consistência.',
             pomegranates: 'Romãs',
             subtitle: ' selecionadas com entregas rápidas e consistentes.',
@@ -388,6 +406,12 @@ export default defineI18nConfig(() => ({
             }
         },
         fr: {
+            seo: {
+                title: 'Grenades Premium de San Juan, Argentine',
+                description: 'Production et exportation de grenades premium Acco et Wonderful de San Juan, Argentine. Qualité constante et livraisons fiables.',
+                keywords: 'grenades, grenades premium, exportation de grenades, grenades argentine, Acco, Wonderful, San Juan Argentine',
+                ogTitle: 'Goral | Grenades Premium d\'Argentine',
+            },
             title: 'Qualité. Fraîcheur. Constance.',
             pomegranates: 'Grenades',
             subtitle: ' sélectionnées avec des livraisons rapides et régulières.',
@@ -517,6 +541,12 @@ export default defineI18nConfig(() => ({
             }
         },
         ru: {
+            seo: {
+                title: 'Премиальные гранаты из Сан-Хуана, Аргентина',
+                description: 'Производство и экспорт премиальных гранатов Acco и Wonderful из Сан-Хуана, Аргентина. Стабильное качество и надежные поставки.',
+                keywords: 'гранаты, премиальные гранаты, экспорт гранатов, гранаты аргентина, Acco, Wonderful, Сан-Хуан Аргентина',
+                ogTitle: 'Goral | Премиальные гранаты из Аргентины',
+            },
             title: 'Качество. Свежесть. Стабильность.',
             pomegranates: 'Гранаты',
             subtitle: ' отборные с быстрой и надежной доставкой.',

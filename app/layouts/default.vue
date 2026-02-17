@@ -1,8 +1,6 @@
 <template>
   <div class="layout">
-    <ClientOnly>
-      <DefaultHeader />
-    </ClientOnly>
+    <DefaultHeader />
     <slot />
     <DefaultFooter />
   </div>

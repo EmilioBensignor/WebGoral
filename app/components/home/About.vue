@@ -14,7 +14,7 @@
                     </button>
                 </div>
                 <div class="imageContainer allCenter">
-                    <video v-if="selectedInfo === 'location'" autoplay loop muted playsinline>
+                    <video v-if="selectedInfo === 'location'" :aria-label="$t('about.info.location.title')" autoplay loop muted playsinline>
                         <source src="/videos/home/ubicacion-estrategica.mp4" type="video/mp4" />
                     </video>
                     <img v-else :src="`/images/home/${images[selectedInfo]}.webp`" :alt="$t(`about.info.${selectedInfo}.title`)" />
@@ -80,6 +80,7 @@ export default {
 
 .imageContainer {
     width: 100%;
+    aspect-ratio: 639 / 384;
     overflow: hidden;
 }
 

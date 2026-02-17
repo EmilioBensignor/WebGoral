@@ -33,7 +33,7 @@ function init() {
         0.1,
         1000
     );
-    camera.position.set(0, 0, 2); // Aumentamos la distancia de la cámara
+    camera.position.set(0, 0, 2);
 
     renderer = new THREE.WebGLRenderer({
         antialias: true,
@@ -53,14 +53,14 @@ function init() {
     controls.enableDamping = true;
     controls.dampingFactor = 0.05;
     controls.enableZoom = false;
-    controls.minDistance = 12; // Aumentamos la distancia mínima
-    controls.maxDistance = 20; // Aumentamos la distancia máxima
+    controls.minDistance = 12;
+    controls.maxDistance = 20;
     controls.enablePan = false;
     controls.rotateSpeed = 0.8;
     controls.autoRotate = true;
     controls.autoRotateSpeed = 2.0;
-    controls.minPolarAngle = Math.PI / 2.2; // Ajustamos el ángulo mínimo
-    controls.maxPolarAngle = Math.PI / 1.9; // Ajustamos el ángulo máximo
+    controls.minPolarAngle = Math.PI / 2.2;
+    controls.maxPolarAngle = Math.PI / 1.9;
 
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
     scene.add(ambientLight);

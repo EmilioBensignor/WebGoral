@@ -5,7 +5,7 @@
         <Icon size="1.25rem" name="mingcute:menu-line" />
       </button>
       <NuxtLink :to="routes.HOME">
-        <NuxtImg class="logo" src="/images/Logo-Goral.svg" alt="Logo Infosystema" />
+        <NuxtImg class="logo" src="/images/Logo-Goral.svg" alt="Logo Goral" width="200" height="44" />
       </NuxtLink>
       <div class="desktopMenu">
         <nav class="navMenu">
@@ -18,31 +18,35 @@
         <button @click="toggleLanguages($event)" aria-label="Toggle languages" class="allCenter languages">
           <Icon :name="`circle-flags:${selectedLanguage.icon}`" />
         </button>
-        <Menu ref="languagesMenu" id="account_menu" :model="languagesMenu" :popup="true">
-          <template #item="{ item }">
-            <button @click="item.command">
-              <Icon :name="`circle-flags:${item.icon}`" />
-              {{ item.label }}
-            </button>
-          </template>
-        </Menu>
+        <ClientOnly>
+          <Menu ref="languagesMenu" id="account_menu" :model="languagesMenu" :popup="true">
+            <template #item="{ item }">
+              <button @click="item.command">
+                <Icon :name="`circle-flags:${item.icon}`" />
+                {{ item.label }}
+              </button>
+            </template>
+          </Menu>
+        </ClientOnly>
       </div>
     </div>
-    <Drawer :visible="drawerMenu" :modal="true" :dismissable="true" :closeOnEscape="true" class="column"
-      @hide="closeDrawer">
-      <template #header>
-        <button @click="closeDrawer" class="closeButton allCenter">
-          <Icon size="1.25rem" name="mingcute:close-line" class="text-primary" />
-        </button>
-      </template>
-      <nav class="w-full h-full navMenu columnSpaceBetween">
-        <ul class="column">
-          <li v-for="(item, index) in menu" :key="index">
-            <button @click="openContact(); closeDrawer()" class="contact-link">{{ $t(item.translationKey) }}</button>
-          </li>
-        </ul>
-      </nav>
-    </Drawer>
+    <ClientOnly>
+      <Drawer :visible="drawerMenu" :modal="true" :dismissable="true" :closeOnEscape="true" class="column"
+        @hide="closeDrawer">
+        <template #header>
+          <button @click="closeDrawer" class="closeButton allCenter" aria-label="Cerrar menú">
+            <Icon size="1.25rem" name="mingcute:close-line" class="text-primary" />
+          </button>
+        </template>
+        <nav class="w-full h-full navMenu columnSpaceBetween">
+          <ul class="column">
+            <li v-for="(item, index) in menu" :key="index">
+              <button @click="openContact(); closeDrawer()" class="contact-link">{{ $t(item.translationKey) }}</button>
+            </li>
+          </ul>
+        </nav>
+      </Drawer>
+    </ClientOnly>
   </header>
 </template>
 

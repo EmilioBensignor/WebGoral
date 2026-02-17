@@ -1,19 +1,21 @@
 <template>
-    <Accordion :value="activePanel" @update:activeIndex="activePanel = $event" class="w-full servicesAccordion">
-        <AccordionPanel v-for="(service, key, index) in servicesList" :key="key" :value="index"
-            :class="[getPanelBackgroundClass(index), { 'p-accordionpanel-active': activePanel === index }]">
-            <AccordionHeader>
-                <h3>{{ $t(`services.items.${key}.title`) }}</h3>
-            </AccordionHeader>
-            <AccordionContent>
-                <div class="columnAlignCenter">
-                    <p v-html="formatText($t(`services.items.${key}.text`))"></p>
-                    <video :ref="el => { if (el) videos[index] = el }" :src="`/videos/home/${service.video}.mp4`"
-                        :alt="$t(`services.items.${key}.title`)" class="serviceAnimation" autoplay muted playsinline></video>
-                </div>
-            </AccordionContent>
-        </AccordionPanel>
-    </Accordion>
+    <ClientOnly>
+        <Accordion :value="activePanel" @update:activeIndex="activePanel = $event" class="w-full servicesAccordion">
+            <AccordionPanel v-for="(service, key, index) in servicesList" :key="key" :value="index"
+                :class="panelClasses[index]">
+                <AccordionHeader>
+                    <h3>{{ $t(`services.items.${key}.title`) }}</h3>
+                </AccordionHeader>
+                <AccordionContent>
+                    <div class="columnAlignCenter">
+                        <p v-html="formatText($t(`services.items.${key}.text`))"></p>
+                        <video :ref="el => { if (el) videos[index] = el }" :src="`/videos/home/${service.video}.mp4`"
+                            :aria-label="$t(`services.items.${key}.title`)" class="serviceAnimation" autoplay muted playsinline></video>
+                    </div>
+                </AccordionContent>
+            </AccordionPanel>
+        </Accordion>
+    </ClientOnly>
 </template>
 
 <script>
@@ -30,6 +32,22 @@ export default {
             videos: []
         }
     },
+    computed: {
+        panelClasses() {
+            const backgroundClasses = {
+                0: ['bg-light', 'bg-secondary', 'bg-terciary', 'bg-dark'],
+                1: ['bg-secondary', 'bg-light', 'bg-terciary', 'bg-dark'],
+                2: ['bg-secondary', 'bg-terciary', 'bg-light', 'bg-dark'],
+                3: ['bg-secondary', 'bg-terciary', 'bg-dark', 'bg-light']
+            }
+            const classes = backgroundClasses[this.activePanel] || backgroundClasses[0]
+            return classes.map((cls, i) => {
+                const bg = i === this.activePanel ? 'bg-light' : cls
+                const active = i === this.activePanel ? 'p-accordionpanel-active' : ''
+                return `${bg} ${active}`.trim()
+            })
+        }
+    },
     watch: {
         activePanel(newValue) {
             this.$nextTick(() => {
@@ -43,20 +61,6 @@ export default {
     methods: {
         formatText(text) {
             return text.replace(/\*(.*?)\*/g, '<span>$1</span>')
-        },
-        getPanelBackgroundClass(index) {
-            if (index === this.activePanel) {
-                return 'bg-light'
-            }
-
-            const backgroundClasses = {
-                0: ['bg-light', 'bg-secondary', 'bg-terciary', 'bg-dark'],
-                1: ['bg-secondary', 'bg-light', 'bg-terciary', 'bg-dark'],
-                2: ['bg-secondary', 'bg-terciary', 'bg-light', 'bg-dark'],
-                3: ['bg-secondary', 'bg-terciary', 'bg-dark', 'bg-light']
-            }
-
-            return backgroundClasses[this.activePanel]?.[index] || ''
         }
     }
 }

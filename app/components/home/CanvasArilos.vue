@@ -148,7 +148,6 @@ const initParticles = () => {
 
     const createParticle = (x, y, forceCreate = false) => {
         if (forceCreate || Math.random() > 0.3) {
-            // Añadir variación aleatoria más pronunciada en la posición
             const randX = Math.random() * randomPosition * 3 - randomPosition * 1.5
             const randY = Math.random() * randomPosition * 3 - randomPosition * 1.5
             return new Particle({
@@ -164,12 +163,10 @@ const initParticles = () => {
         return null
     }
 
-    // Añadimos margen vertical
     const verticalMargin = dimensions.BASE_PARTICLE_SIZE * 4
     const verticalOffset = (dimensions.CANVAS_HEIGHT - dimensions.VISIBLE_HEIGHT) / 2 + verticalMargin
     const sideWidth = (dimensions.CANVAS_WIDTH - dimensions.CENTER_GAP) / 2
 
-    // Arilos laterales izquierdos
     const leftColSpacing = sideWidth / (dimensions.SIDE_COLS - 1)
     const sideRowSpacing = (dimensions.VISIBLE_HEIGHT - verticalMargin * 2) / (dimensions.SIDE_ROWS - 1)
 
@@ -182,7 +179,6 @@ const initParticles = () => {
         }
     }
 
-    // Arilos laterales derechos
     const rightStart = dimensions.CANVAS_WIDTH - sideWidth
     for (let i = 0; i < dimensions.SIDE_ROWS; i++) {
         for (let j = 0; j < dimensions.SIDE_COLS; j++) {
@@ -193,12 +189,10 @@ const initParticles = () => {
         }
     }
 
-    // Arilos inferiores modificados con mejor distribución
     const bottomStart = dimensions.CANVAS_HEIGHT - (dimensions.VISIBLE_HEIGHT / 2) - verticalMargin
     const bottomColSpacing = dimensions.CANVAS_WIDTH / (dimensions.BOTTOM_COLS - 1)
     const bottomRowSpacing = (dimensions.VISIBLE_HEIGHT / 3) / (dimensions.BOTTOM_ROWS - 1)
 
-    // Primera fila espaciada - ajustamos la posición Y para empezar más abajo
     for (let j = 0; j < Math.floor(dimensions.BOTTOM_COLS / 2); j++) {
         const x = (dimensions.CANVAS_WIDTH / 4) + (j * bottomColSpacing * 2)
         const y = bottomStart
@@ -206,7 +200,6 @@ const initParticles = () => {
         if (particle) particles.push(particle)
     }
 
-    // Filas adicionales - ajustamos para que empiecen desde la nueva posición
     for (let i = 1; i < dimensions.BOTTOM_ROWS; i++) {
         for (let j = 0; j < dimensions.BOTTOM_COLS * 1.2; j++) {
             const x = (j * bottomColSpacing * 0.8)
@@ -246,11 +239,9 @@ const updateCursorPosition = (clientX, clientY) => {
 
     const rect = canvasEl.getBoundingClientRect()
 
-    // Calculamos la escala actual del canvas
     const scaleX = dimensions.CANVAS_WIDTH / rect.width
     const scaleY = dimensions.CANVAS_HEIGHT / rect.height
 
-    // Ajustamos las coordenadas considerando la escala
     const x = (clientX - rect.left) * scaleX
     const y = (clientY - rect.top) * scaleY
 
@@ -286,14 +277,11 @@ const resizeCanvas = () => {
     canvasEl.width = dimensions.CANVAS_WIDTH
     canvasEl.height = dimensions.CANVAS_HEIGHT
 
-    // Ajustar la altura del contenedor dinámicamente
     containerEl.style.height = `${dimensions.CANVAS_HEIGHT}px`
 
-    // Calculamos la escala basada en el ancho del contenedor
     const containerWidth = containerEl.clientWidth
     const scale = Math.min(containerWidth / dimensions.CANVAS_WIDTH, 1)
 
-    // Aplicamos la transformación manteniendo el tamaño original
     canvasEl.style.transform = `translateX(-50%) scale(${scale})`
 
     const context = canvasEl.getContext('2d', {
@@ -308,7 +296,6 @@ const resizeCanvas = () => {
 
 onMounted(() => {
     nextTick(() => {
-        // Actualizar dimensiones una vez que estemos en el cliente
         dimensions = getResponsiveDimensions()
         resizeCanvas()
         initParticles()

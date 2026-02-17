@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
-  css: ["~/assets/main.css"],
+  css: ["primeflex/primeflex.min.css", "~/assets/main.css"],
   modules: [
     "@nuxt/image",
     "@nuxt/icon",
@@ -26,12 +26,12 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
-      link: [
-        {
-          rel: 'stylesheet',
-          href: 'https://unpkg.com/primeflex@latest/primeflex.css'
-        },
+      htmlAttrs: { lang: 'es' },
+      meta: [
+        { charset: 'utf-8' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       ],
+      link: [],
     }
   },
   i18n: {
@@ -44,9 +44,9 @@ export default defineNuxtConfig({
     }
   },
   site: {
-    url: 'https://goral.com',
+    url: 'https://goral.com.ar',
     name: 'Goral',
-    description: 'Goral',
+    description: 'Producción y exportación de granadas premium Acco y Wonderful desde San Juan, Argentina. Calidad consistente y entregas confiables.',
     defaultLocale: 'es',
   },
   image: {
