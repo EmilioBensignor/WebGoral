@@ -149,8 +149,8 @@ export default {
 @media (width >=700px) {
     .variationsContainer {
         width: 100%;
-        flex-wrap: wrap;
         flex-direction: row;
+        flex-wrap: wrap;
         justify-content: center;
         gap: 5rem;
     }
@@ -183,8 +183,9 @@ export default {
         padding-top: 12rem;
     }
 
-    .variationsContainer>img {
-        width: 18.75rem;
+    .variationsContainer {
+        flex-wrap: nowrap;
+        gap: 2rem;
     }
 
     .variationsContainer>div {
@@ -200,7 +201,7 @@ export default {
     }
 
     .features {
-        gap: 3rem;
+        gap: 1.5rem;
     }
 
     .featureBtn {
@@ -221,7 +222,7 @@ export default {
 @media (width >=1280px) {
     .variationsContainer {
         justify-content: center;
-        gap: 6rem;
+        gap: 4rem;
     }
 }
 
@@ -247,7 +248,7 @@ export default {
     }
 
     .features {
-        gap: 5rem;
+        gap: 2rem;
     }
 
     .featureBtn {

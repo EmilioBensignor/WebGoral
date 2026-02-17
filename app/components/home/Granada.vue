@@ -82,18 +82,8 @@ function init() {
 
             const box = new THREE.Box3().setFromObject(model);
             const center = box.getCenter(new THREE.Vector3());
-            let scale = 3;
-            if (window.innerWidth > 480) {
-                scale = 3.5;
-            } else if (window.innerWidth > 700) {
-                scale = 4.5;
-            } else if (window.innerWidth > 992) {
-                scale = 5.5;
-            } else if (window.innerWidth > 1440) {
-                scale = 6.5;
-            } else if (window.innerWidth >= 1920) {
-                scale = 7.5;
-            }
+            const viewerWidth = container.value.clientWidth;
+            const scale = viewerWidth / 80;
 
             model.scale.setScalar(scale);
             model.position.copy(center).multiplyScalar(-scale);
@@ -152,29 +142,29 @@ canvas {
 
 @media (width >=992px) {
     .granadaViewer {
-        width: 350px;
-        height: 350px;
-    }
-}
-
-@media (width >=1280px) {
-    .granadaViewer {
         width: 400px;
         height: 400px;
     }
 }
 
+@media (width >=1280px) {
+    .granadaViewer {
+        width: 450px;
+        height: 450px;
+    }
+}
+
 @media (width >=1440px) {
     .granadaViewer {
-        width: 425px;
-        height: 425px;
+        width: 520px;
+        height: 520px;
     }
 }
 
 @media (width >=1920px) {
     .granadaViewer {
-        width: 440px;
-        height: 440px;
+        width: 580px;
+        height: 580px;
     }
 }
 </style>
