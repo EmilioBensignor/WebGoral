@@ -6,10 +6,10 @@
                 $t('subtitle') }}</p>
             <div class="w-full columnAlignCenter">
                 <button @click="$emit('open-dialog')" class="primaryButton">{{ $t('ctaHero') }}</button>
-                <div class="rowCenter">
+                <!-- <div class="rowCenter">
                     <NuxtImg src="/images/home/Logo-Global-GAP.svg" alt="Logo Global GAP" />
                     <p class="text-dark-gray font-medium">{{ $t('globalGap') }}</p>
-                </div>
+                </div> -->
             </div>
         </div>
         <HomeCanvasArilos />

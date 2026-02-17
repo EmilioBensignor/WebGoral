@@ -81,14 +81,15 @@
 <script>
 export default {
     emits: ['open-dialog'],
-    data() {
-        return {
-            accoHarvestDate: new Date('2025-03-25'),
-            wonderfulHarvestDate: new Date('2025-04-10')
-        }
-    },
-
     computed: {
+        accoHarvestDate() {
+            return this.getHarvestDate(3, 2)
+        },
+
+        wonderfulHarvestDate() {
+            return this.getHarvestDate(3, 16)
+        },
+
         accoData() {
             return this.calculateTimeLeft(this.accoHarvestDate)
         },
@@ -115,8 +116,31 @@ export default {
     },
 
     methods: {
+        getHarvestDate(month, day) {
+            const now = new Date()
+            const currentYear = now.getFullYear()
+            const harvestDate = new Date(currentYear, month - 1, day)
+            const harvestEnd = new Date(harvestDate)
+            harvestEnd.setDate(harvestEnd.getDate() + 15)
+
+            if (now > harvestEnd) {
+                return new Date(currentYear + 1, month - 1, day)
+            }
+            return harvestDate
+        },
+
         calculateTimeLeft(targetDate) {
             const now = new Date()
+            const harvestEnd = new Date(targetDate)
+            harvestEnd.setDate(harvestEnd.getDate() + 15)
+
+            if (now >= targetDate && now <= harvestEnd) {
+                return {
+                    timeLeft: this.$t("calendar.nowText"),
+                    progress: 100,
+                }
+            }
+
             const totalDays = (targetDate - now) / (1000 * 60 * 60 * 24)
             const months = Math.floor(totalDays / 30)
             const days = Math.floor(totalDays % 30)

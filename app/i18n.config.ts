@@ -36,6 +36,7 @@ export default defineI18nConfig(() => ({
                     6: 'JUN-DIC'
                 },
                 timeLeftText: 'Faltan {months} meses y {days} días',
+                nowText: 'Ahora',
                 cta: 'Pedí más información',
                 harvestMonth: {
                     acco: 'MAR',
@@ -160,6 +161,7 @@ export default defineI18nConfig(() => ({
                     6: 'JUN-DEC'
                 },
                 timeLeftText: '{months} months and {days} days left',
+                nowText: 'Now',
                 cta: 'Request more information',
                 harvestMonth: {
                     acco: 'MAR',
@@ -288,6 +290,7 @@ export default defineI18nConfig(() => ({
                     6: 'JUN-DEZ'
                 },
                 timeLeftText: 'Faltam {months} meses e {days} dias',
+                nowText: 'Agora',
                 cta: 'Peça mais informações',
                 harvestMonth: {
                     acco: 'MAR',
@@ -416,6 +419,7 @@ export default defineI18nConfig(() => ({
                     6: 'JUN-DÉC'
                 },
                 timeLeftText: 'Il reste {months} mois et {days} jours',
+                nowText: 'Maintenant',
                 cta: 'Demander plus d\'informations',
                 harvestMonth: {
                     acco: 'MAR',
@@ -544,6 +548,7 @@ export default defineI18nConfig(() => ({
                     6: 'ИЮН-ДЕК'
                 },
                 timeLeftText: 'Осталось {months} месяцев и {days} дней',
+                nowText: 'Сейчас',
                 cta: 'Запросить информацию',
                 harvestMonth: {
                     acco: 'МАР',

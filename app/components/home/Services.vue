@@ -38,10 +38,10 @@ export default {
     data() {
         return {
             servicesList: {
-                globalGap: {
-                    video: "certificacion-global-GAP",
-                    zIndex: 0,
-                },
+                // globalGap: {
+                //     video: "certificacion-global-GAP",
+                //     zIndex: 0,
+                // },
                 consistency: {
                     video: "consistencia-en-tus-pedidos",
                     zIndex: 1,
