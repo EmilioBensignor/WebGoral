@@ -7,15 +7,15 @@ export default defineI18nConfig(() => ({
         es: {
             seo: {
                 title: 'Granadas Premium de San Juan, Argentina',
-                description: 'Producción y exportación de granadas premium Acco y Wonderful desde San Juan, Argentina. Certificación Global GAP, calidad consistente y entregas confiables.',
-                keywords: 'granadas, granadas premium, exportación de granadas, granadas argentina, pomegranate exporter, Acco, Wonderful, Global GAP, San Juan Argentina',
+                description: 'Producción y exportación de granadas premium Acco y Wonderful desde San Juan, Argentina. Certificación GLOBALG.A.P., calidad consistente y entregas confiables.',
+                keywords: 'granadas, granadas premium, exportación de granadas, granadas argentina, pomegranate exporter, Acco, Wonderful, GLOBALG.A.P., San Juan Argentina',
                 ogTitle: 'Goral | Granadas Premium de Argentina',
             },
             title: 'Calidad. Frescura. Consistencia.',
             pomegranates: 'Granadas',
             subtitle: ' seleccionadas con entregas rápidas y consistentes.',
             ctaHero: 'Reservá tus granadas',
-            globalGap: 'Certificados por Global GAP',
+            globalGap: 'Certificados por GLOBALG.A.P.',
             variationsTitle: 'Nuestras variedades',
             acco: {
                 feature1: 'Color rojo brillante y atractivo',
@@ -75,8 +75,8 @@ export default defineI18nConfig(() => ({
                 cta: 'Consultá ahora',
                 items: {
                     globalGap: {
-                        title: 'Certificados por Global GAP',
-                        text: '*Cumplimos con los más altos estándares.* Nuestras prácticas agrícolas están certificadas por Global GAP, garantizando productos seguros y responsables.'
+                        title: 'Certificados por GLOBALG.A.P.',
+                        text: '*Cumplimos con los más altos estándares.* Nuestras prácticas agrícolas están certificadas por GLOBALG.A.P., garantizando productos seguros y responsables.'
                     },
                     consistency: {
                         title: 'Consistencia en tus pedidos',
@@ -102,6 +102,7 @@ export default defineI18nConfig(() => ({
                     ggn: 'GGN',
                     validity: 'Vigencia',
                     cta: 'Ver certificación',
+                    verify: 'Verificar en GLOBALG.A.P.',
                     copy: 'Copiar GGN',
                     copied: 'Copiado'
                 }
@@ -146,15 +147,15 @@ export default defineI18nConfig(() => ({
         en: {
             seo: {
                 title: 'Premium Pomegranates from San Juan, Argentina',
-                description: 'Production and export of premium Acco and Wonderful pomegranates from San Juan, Argentina. Global GAP certified, consistent quality and reliable deliveries.',
-                keywords: 'pomegranates, premium pomegranates, pomegranate export, argentina pomegranates, Acco, Wonderful, Global GAP, San Juan Argentina',
+                description: 'Production and export of premium Acco and Wonderful pomegranates from San Juan, Argentina. GLOBALG.A.P. certified, consistent quality and reliable deliveries.',
+                keywords: 'pomegranates, premium pomegranates, pomegranate export, argentina pomegranates, Acco, Wonderful, GLOBALG.A.P., San Juan Argentina',
                 ogTitle: 'Goral | Premium Pomegranates from Argentina',
             },
             title: 'Quality. Freshness. Consistency.',
             pomegranates: 'Pomegranates',
             subtitle: ' selected with fast and consistent deliveries.',
             ctaHero: 'Reserve your pomegranates',
-            globalGap: 'Global GAP Certified',
+            globalGap: 'GLOBALG.A.P. Certified',
             variationsTitle: 'Our varieties',
             acco: {
                 feature1: 'Bright and attractive red color',
@@ -214,8 +215,8 @@ export default defineI18nConfig(() => ({
                 cta: 'Consult now',
                 items: {
                     globalGap: {
-                        title: 'Global GAP Certified',
-                        text: '*We meet the highest standards.* Our agricultural practices are certified by Global GAP, ensuring safe and responsible products.'
+                        title: 'GLOBALG.A.P. Certified',
+                        text: '*We meet the highest standards.* Our agricultural practices are certified by GLOBALG.A.P., ensuring safe and responsible products.'
                     },
                     consistency: {
                         title: 'Consistency in your orders',
@@ -245,6 +246,7 @@ export default defineI18nConfig(() => ({
                     ggn: 'GGN',
                     validity: 'Valid',
                     cta: 'View certificate',
+                    verify: 'Verify on GLOBALG.A.P.',
                     copy: 'Copy GGN',
                     copied: 'Copied'
                 }
@@ -289,15 +291,15 @@ export default defineI18nConfig(() => ({
         pt: {
             seo: {
                 title: 'Romãs Premium de San Juan, Argentina',
-                description: 'Produção e exportação de romãs premium Acco e Wonderful de San Juan, Argentina. Certificação Global GAP, qualidade consistente e entregas confiáveis.',
-                keywords: 'romãs, romãs premium, exportação de romãs, romãs argentina, Acco, Wonderful, Global GAP, San Juan Argentina',
+                description: 'Produção e exportação de romãs premium Acco e Wonderful de San Juan, Argentina. Certificação GLOBALG.A.P., qualidade consistente e entregas confiáveis.',
+                keywords: 'romãs, romãs premium, exportação de romãs, romãs argentina, Acco, Wonderful, GLOBALG.A.P., San Juan Argentina',
                 ogTitle: 'Goral | Romãs Premium da Argentina',
             },
             title: 'Qualidade. Frescura. Consistência.',
             pomegranates: 'Romãs',
             subtitle: ' selecionadas com entregas rápidas e consistentes.',
             ctaHero: 'Reserve suas romãs',
-            globalGap: 'Certificado Global GAP',
+            globalGap: 'Certificado GLOBALG.A.P.',
             variationsTitle: 'Nossas variedades',
             acco: {
                 feature1: 'Cor vermelha brilhante e atraente',
@@ -357,8 +359,8 @@ export default defineI18nConfig(() => ({
                 cta: 'Consulte agora',
                 items: {
                     globalGap: {
-                        title: 'Certificado Global GAP',
-                        text: '*Cumprimos com os mais altos padrões.* Nossas práticas agrícolas são certificadas pelo Global GAP, garantindo produtos seguros e responsáveis.'
+                        title: 'Certificado GLOBALG.A.P.',
+                        text: '*Cumprimos com os mais altos padrões.* Nossas práticas agrícolas são certificadas pelo GLOBALG.A.P., garantindo produtos seguros e responsáveis.'
                     },
                     consistency: {
                         title: 'Consistência em seus pedidos',
@@ -388,6 +390,7 @@ export default defineI18nConfig(() => ({
                     ggn: 'GGN',
                     validity: 'Validade',
                     cta: 'Ver certificado',
+                    verify: 'Verificar no GLOBALG.A.P.',
                     copy: 'Copiar GGN',
                     copied: 'Copiado'
                 }
@@ -432,15 +435,15 @@ export default defineI18nConfig(() => ({
         fr: {
             seo: {
                 title: 'Grenades Premium de San Juan, Argentine',
-                description: 'Production et exportation de grenades premium Acco et Wonderful de San Juan, Argentine. Certification Global GAP, qualité constante et livraisons fiables.',
-                keywords: 'grenades, grenades premium, exportation de grenades, grenades argentine, Acco, Wonderful, Global GAP, San Juan Argentine',
+                description: 'Production et exportation de grenades premium Acco et Wonderful de San Juan, Argentine. Certification GLOBALG.A.P., qualité constante et livraisons fiables.',
+                keywords: 'grenades, grenades premium, exportation de grenades, grenades argentine, Acco, Wonderful, GLOBALG.A.P., San Juan Argentine',
                 ogTitle: 'Goral | Grenades Premium d\'Argentine',
             },
             title: 'Qualité. Fraîcheur. Constance.',
             pomegranates: 'Grenades',
             subtitle: ' sélectionnées avec des livraisons rapides et régulières.',
             ctaHero: 'Réservez vos grenades',
-            globalGap: 'Certifié Global GAP',
+            globalGap: 'Certifié GLOBALG.A.P.',
             variationsTitle: 'Nos variétés',
             acco: {
                 feature1: 'Couleur rouge vif et attrayante',
@@ -500,8 +503,8 @@ export default defineI18nConfig(() => ({
                 cta: 'Consultez maintenant',
                 items: {
                     globalGap: {
-                        title: 'Certifié Global GAP',
-                        text: '*Nous respectons les normes les plus élevées.* Nos pratiques agricoles sont certifiées par Global GAP, garantissant des produits sûrs et responsables.'
+                        title: 'Certifié GLOBALG.A.P.',
+                        text: '*Nous respectons les normes les plus élevées.* Nos pratiques agricoles sont certifiées par GLOBALG.A.P., garantissant des produits sûrs et responsables.'
                     },
                     consistency: {
                         title: 'Cohérence dans vos commandes',
@@ -531,6 +534,7 @@ export default defineI18nConfig(() => ({
                     ggn: 'GGN',
                     validity: 'Validité',
                     cta: 'Voir le certificat',
+                    verify: 'Vérifier sur GLOBALG.A.P.',
                     copy: 'Copier le GGN',
                     copied: 'Copié'
                 }
@@ -575,15 +579,15 @@ export default defineI18nConfig(() => ({
         ru: {
             seo: {
                 title: 'Премиальные гранаты из Сан-Хуана, Аргентина',
-                description: 'Производство и экспорт премиальных гранатов Acco и Wonderful из Сан-Хуана, Аргентина. Сертификат Global GAP, стабильное качество и надежные поставки.',
-                keywords: 'гранаты, премиальные гранаты, экспорт гранатов, гранаты аргентина, Acco, Wonderful, Global GAP, Сан-Хуан Аргентина',
+                description: 'Производство и экспорт премиальных гранатов Acco и Wonderful из Сан-Хуана, Аргентина. Сертификат GLOBALG.A.P., стабильное качество и надежные поставки.',
+                keywords: 'гранаты, премиальные гранаты, экспорт гранатов, гранаты аргентина, Acco, Wonderful, GLOBALG.A.P., Сан-Хуан Аргентина',
                 ogTitle: 'Goral | Премиальные гранаты из Аргентины',
             },
             title: 'Качество. Свежесть. Стабильность.',
             pomegranates: 'Гранаты',
             subtitle: ' отборные с быстрой и надежной доставкой.',
             ctaHero: 'Заказать гранаты',
-            globalGap: 'Сертификат Global GAP',
+            globalGap: 'Сертификат GLOBALG.A.P.',
             variationsTitle: 'Наши сорта',
             acco: {
                 feature1: 'Яркий и привлекательный красный цвет',
@@ -643,8 +647,8 @@ export default defineI18nConfig(() => ({
                 cta: 'Консультируйтесь сейчас',
                 items: {
                     globalGap: {
-                        title: 'Сертификат Global GAP',
-                        text: '*Мы соответствуем самым высоким стандартам.* Наши сельскохозяйственные практики сертифицированы Global GAP, что гарантирует безопасную и ответственную продукцию.'
+                        title: 'Сертификат GLOBALG.A.P.',
+                        text: '*Мы соответствуем самым высоким стандартам.* Наши сельскохозяйственные практики сертифицированы GLOBALG.A.P., что гарантирует безопасную и ответственную продукцию.'
                     },
                     consistency: {
                         title: 'Стабильность в ваших заказах',
@@ -674,6 +678,7 @@ export default defineI18nConfig(() => ({
                     ggn: 'GGN',
                     validity: 'Срок действия',
                     cta: 'Посмотреть сертификат',
+                    verify: 'Проверить на GLOBALG.A.P.',
                     copy: 'Копировать GGN',
                     copied: 'Скопировано'
                 }

@@ -46,7 +46,7 @@ export default defineNuxtConfig({
   site: {
     url: 'https://goral.com.ar',
     name: 'Goral',
-    description: 'Producción y exportación de granadas premium Acco y Wonderful desde San Juan, Argentina. Certificación Global GAP, calidad consistente y entregas confiables.',
+    description: 'Producción y exportación de granadas premium Acco y Wonderful desde San Juan, Argentina. Certificación GLOBALG.A.P., calidad consistente y entregas confiables.',
     defaultLocale: 'es',
   },
   image: {

@@ -48,15 +48,26 @@
             {{ validity }}
           </p>
         </div>
-        <a
-          :href="certificateUrl"
-          target="_blank"
-          rel="noopener"
-          class="rowCenter text-light font-medium no-underline certCta"
-        >
-          {{ $t('footer.certification.cta') }}
-          <Icon name="mingcute:external-link-line" class="text-light" />
-        </a>
+        <div class="certActions column">
+          <a
+            :href="certificateUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="rowCenter text-light font-medium no-underline certCta"
+          >
+            {{ $t('footer.certification.cta') }}
+            <Icon name="mingcute:external-link-line" class="text-light" />
+          </a>
+          <a
+            href="https://prod.osapiens.cloud/portal/webbundle/foodplus/field-service-os/supply-chain-portal?app-route-hash=%252Fcertificates"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="rowCenter no-underline certVerify"
+          >
+            {{ $t('footer.certification.verify') }}
+            <Icon name="mingcute:external-link-line" />
+          </a>
+        </div>
       </div>
     </div>
     <div class="bg-dark">
@@ -184,14 +195,8 @@ footer .contact {
   cursor: pointer;
   gap: 0.4rem;
   padding: 0.45rem 0.7rem;
-  transition: border-color 0.2s ease, background-color 0.2s ease;
   font-family: "Urbanist", sans-serif;
   font-size: 0.75rem;
-}
-
-.ggnButton:hover {
-  border-color: rgba(253, 249, 249, 0.5);
-  background-color: rgba(253, 249, 249, 0.05);
 }
 
 .ggnNumber {
@@ -222,16 +227,29 @@ footer .contact {
   opacity: 0;
 }
 
+.certActions {
+  align-items: center;
+  gap: 0.375rem;
+  flex-shrink: 0;
+}
+
 .certCta {
   gap: 0.375rem;
   font-size: 0.75rem;
   border-bottom: 1px solid rgba(253, 249, 249, 0.4);
   padding-bottom: 0.125rem;
-  transition: border-color 0.2s ease;
 }
 
-.certCta:hover {
-  border-bottom-color: var(--white-color);
+.certVerify,
+.certVerify :deep(*) {
+  color: var(--white-color);
+}
+
+.certVerify {
+  gap: 0.25rem;
+  font-size: 0.6875rem;
+  letter-spacing: 0.01em;
+  font-family: "Urbanist", sans-serif;
 }
 
 .rights {
