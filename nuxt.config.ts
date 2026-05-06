@@ -46,7 +46,7 @@ export default defineNuxtConfig({
   site: {
     url: 'https://goral.com.ar',
     name: 'Goral',
-    description: 'Producción y exportación de granadas premium Acco y Wonderful desde San Juan, Argentina. Calidad consistente y entregas confiables.',
+    description: 'Producción y exportación de granadas premium Acco y Wonderful desde San Juan, Argentina. Certificación Global GAP, calidad consistente y entregas confiables.',
     defaultLocale: 'es',
   },
   image: {
@@ -66,5 +66,34 @@ export default defineNuxtConfig({
       youtube: 'https://img.youtube.com',
       vimeo: 'https://i.vimeocdn.com',
     }
+  },
+  vite: {
+    optimizeDeps: {
+      include: [
+        '@vue/devtools-core',
+        '@vue/devtools-kit',
+        'primevue/config',
+        'primevue/toast',
+        'primevue/button',
+        'primevue/dialog',
+        'primevue/inputtext',
+        'primevue/password',
+        'primevue/progressspinner',
+        'primevue/drawer',
+        'primevue/fileupload',
+        'primevue/select',
+        'primevue/inputnumber',
+        'primevue/textarea',
+        'primevue/toastservice',
+        'primevue/menu',
+        'primevue/accordion',
+        'primevue/accordionheader',
+        'primevue/accordioncontent',
+        'primevue/accordionpanel',
+        'three',
+        'three/examples/jsm/loaders/GLTFLoader',
+        'three/examples/jsm/controls/OrbitControls',
+      ],
+    },
   },
 })
