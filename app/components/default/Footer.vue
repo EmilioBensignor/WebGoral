@@ -13,6 +13,52 @@
         </ul>
       </div>
     </div>
+    <div class="bg-secondary certDivider">
+      <div class="certBlock">
+        <div class="certLogoClaim rowCenter">
+          <NuxtImg
+            src="/images/home/Logo-Global-GAP.svg"
+            alt="GLOBALG.A.P."
+            class="certLogo"
+            width="64"
+            height="64"
+          />
+          <p class="text-light font-medium">{{ $t('footer.certification.claim') }}</p>
+        </div>
+        <div class="certMeta rowCenter">
+          <button
+            type="button"
+            @click="copyGgn"
+            :aria-label="$t('footer.certification.copy')"
+            class="ggnButton rowCenter text-light"
+          >
+            <span class="text-light/70">{{ $t('footer.certification.ggn') }}</span>
+            <span class="ggnNumber">{{ ggn }}</span>
+            <Icon
+              :name="copied ? 'mingcute:check-line' : 'mingcute:copy-2-line'"
+              class="text-light"
+            />
+            <Transition name="fade">
+              <span v-if="copied" class="copiedFeedback text-light">{{ $t('footer.certification.copied') }}</span>
+            </Transition>
+          </button>
+          <span class="separator text-light/40">·</span>
+          <p class="text-light">
+            <span class="text-light">{{ $t('footer.certification.validity') }}:</span>
+            {{ validity }}
+          </p>
+        </div>
+        <a
+          :href="certificateUrl"
+          target="_blank"
+          rel="noopener"
+          class="rowCenter text-light font-medium no-underline certCta"
+        >
+          {{ $t('footer.certification.cta') }}
+          <Icon name="mingcute:external-link-line" class="text-light" />
+        </a>
+      </div>
+    </div>
     <div class="bg-dark">
       <div class="rights">
         <p class="text-center text-light">© Goral {{ new Date().getFullYear() }}. {{ $t('footer.rights') }}</p>
@@ -21,21 +67,40 @@
   </footer>
 </template>
 
-<script>
-import { menu } from '~/shared/menu';
+<script setup>
+import { ref } from 'vue'
 
-export default {
-  data() {
-    return {
-      menu: menu,
-      contact: [
-        {
-          icon: "mail-line",
-          text: "info@goral.com.ar",
-          link: "mailto:info@goral.com.ar",
-        },
-      ],
+const contact = [
+  {
+    icon: 'mail-line',
+    text: 'info@goral.com.ar',
+    link: 'mailto:info@goral.com.ar',
+  },
+]
+
+const ggn = '4069453583276'
+const validity = '04/05/2026 – 03/05/2027'
+const certificateUrl = '/certificados/globalgap-goral-2026.pdf'
+const copied = ref(false)
+
+async function copyGgn() {
+  try {
+    if (navigator?.clipboard?.writeText) {
+      await navigator.clipboard.writeText(ggn)
+    } else {
+      const textarea = document.createElement('textarea')
+      textarea.value = ggn
+      textarea.style.position = 'fixed'
+      textarea.style.opacity = '0'
+      document.body.appendChild(textarea)
+      textarea.select()
+      document.execCommand('copy')
+      document.body.removeChild(textarea)
     }
+    copied.value = true
+    setTimeout(() => { copied.value = false }, 1800)
+  } catch (e) {
+    console.error('Error copiando GGN', e)
   }
 }
 </script>
@@ -67,6 +132,108 @@ footer .contact {
   gap: 0.375rem;
 }
 
+.certDivider {
+  border-top: 1px solid rgba(253, 249, 249, 0.12);
+}
+
+.certBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.25rem;
+  text-align: center;
+}
+
+.certLogoClaim {
+  gap: 0.625rem;
+  flex-direction: column;
+}
+
+.certLogo {
+  width: 2.75rem;
+  height: auto;
+  filter: brightness(0) invert(1);
+}
+
+.certBlock p,
+.certBlock a,
+.certBlock button {
+  font-size: 0.75rem;
+}
+
+.certLogoClaim p {
+  letter-spacing: 0.01em;
+}
+
+.certMeta {
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+}
+
+.certMeta .separator {
+  display: none;
+}
+
+.ggnButton {
+  position: relative;
+  background: transparent;
+  border: 1px solid rgba(253, 249, 249, 0.2);
+  border-radius: 6px;
+  cursor: pointer;
+  gap: 0.4rem;
+  padding: 0.45rem 0.7rem;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+  font-family: "Urbanist", sans-serif;
+  font-size: 0.75rem;
+}
+
+.ggnButton:hover {
+  border-color: rgba(253, 249, 249, 0.5);
+  background-color: rgba(253, 249, 249, 0.05);
+}
+
+.ggnNumber {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.04em;
+}
+
+.copiedFeedback {
+  position: absolute;
+  top: -1.6rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--dark-color);
+  border: 1px solid rgba(253, 249, 249, 0.2);
+  border-radius: 4px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  padding: 0.2rem 0.5rem;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.certCta {
+  gap: 0.375rem;
+  font-size: 0.75rem;
+  border-bottom: 1px solid rgba(253, 249, 249, 0.4);
+  padding-bottom: 0.125rem;
+  transition: border-color 0.2s ease;
+}
+
+.certCta:hover {
+  border-bottom-color: var(--white-color);
+}
+
 .rights {
   padding: 0.5rem;
 }
@@ -91,6 +258,36 @@ footer .contact {
 
   .rights p {
     font-size: 0.875rem;
+  }
+
+  .certBlock {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding: 1rem 2.5rem;
+    text-align: start;
+  }
+
+  .certLogoClaim {
+    flex-direction: row;
+    gap: 0.875rem;
+    flex-shrink: 0;
+  }
+
+  .certLogo {
+    width: 2.5rem;
+  }
+
+  .certMeta {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.625rem;
+    flex: 1;
+    justify-content: center;
+  }
+
+  .certMeta .separator {
+    display: inline;
   }
 }
 
@@ -118,6 +315,29 @@ footer .contact {
   .rights p {
     font-size: 1rem;
   }
+
+  .certBlock {
+    padding: 1.25rem 5rem;
+    gap: 2rem;
+  }
+
+  .certBlock p,
+  .certBlock a,
+  .certBlock button {
+    font-size: 0.875rem;
+  }
+
+  .certLogo {
+    width: 3rem;
+  }
+
+  .certMeta {
+    gap: 0.875rem;
+  }
+
+  .ggnButton {
+    padding: 0.5rem 0.85rem;
+  }
 }
 
 @media (width >=1440px) {
@@ -139,6 +359,14 @@ footer .contact {
 
   .contact li a span {
     font-size: 1.5rem !important;
+  }
+
+  .certBlock {
+    padding: 1.5rem 5.75rem;
+  }
+
+  .certLogo {
+    width: 3.25rem;
   }
 }
 </style>

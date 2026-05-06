@@ -96,7 +96,15 @@ export default defineI18nConfig(() => ({
                 contact: 'Contacto'
             },
             footer: {
-                rights: 'Todos los derechos reservados.'
+                rights: 'Todos los derechos reservados.',
+                certification: {
+                    claim: 'Productores certificados GLOBALG.A.P. IFA v6',
+                    ggn: 'GGN',
+                    validity: 'Vigencia',
+                    cta: 'Ver certificación',
+                    copy: 'Copiar GGN',
+                    copied: 'Copiado'
+                }
             },
             contact: {
                 title: '¡Deja tus datos y nos pondremos en contacto!',
@@ -231,7 +239,15 @@ export default defineI18nConfig(() => ({
                 contact: 'Contact'
             },
             footer: {
-                rights: 'All rights reserved.'
+                rights: 'All rights reserved.',
+                certification: {
+                    claim: 'GLOBALG.A.P. IFA v6 certified producers',
+                    ggn: 'GGN',
+                    validity: 'Valid',
+                    cta: 'View certificate',
+                    copy: 'Copy GGN',
+                    copied: 'Copied'
+                }
             },
             contact: {
                 title: 'Leave your details and we\'ll get in touch!',
@@ -366,7 +382,15 @@ export default defineI18nConfig(() => ({
                 contact: 'Contato'
             },
             footer: {
-                rights: 'Todos os direitos reservados.'
+                rights: 'Todos os direitos reservados.',
+                certification: {
+                    claim: 'Produtores certificados GLOBALG.A.P. IFA v6',
+                    ggn: 'GGN',
+                    validity: 'Validade',
+                    cta: 'Ver certificado',
+                    copy: 'Copiar GGN',
+                    copied: 'Copiado'
+                }
             },
             contact: {
                 title: 'Deixe seus dados e entraremos em contato!',
@@ -501,7 +525,15 @@ export default defineI18nConfig(() => ({
                 contact: 'Contact'
             },
             footer: {
-                rights: 'Tous droits réservés.'
+                rights: 'Tous droits réservés.',
+                certification: {
+                    claim: 'Producteurs certifiés GLOBALG.A.P. IFA v6',
+                    ggn: 'GGN',
+                    validity: 'Validité',
+                    cta: 'Voir le certificat',
+                    copy: 'Copier le GGN',
+                    copied: 'Copié'
+                }
             },
             contact: {
                 title: 'Laissez vos coordonnées et nous vous contacterons!',
@@ -636,7 +668,15 @@ export default defineI18nConfig(() => ({
                 contact: 'Контакты'
             },
             footer: {
-                rights: 'Все права защищены.'
+                rights: 'Все права защищены.',
+                certification: {
+                    claim: 'Производители, сертифицированные GLOBALG.A.P. IFA v6',
+                    ggn: 'GGN',
+                    validity: 'Срок действия',
+                    cta: 'Посмотреть сертификат',
+                    copy: 'Копировать GGN',
+                    copied: 'Скопировано'
+                }
             },
             contact: {
                 title: 'Оставьте свои данные, и мы свяжемся с вами!',
