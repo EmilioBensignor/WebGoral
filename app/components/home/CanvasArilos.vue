@@ -1,6 +1,6 @@
 <template>
     <ClientOnly>
-        <div ref="container" class="canvasWrapper">
+        <div ref="container" class="canvasWrapper" aria-hidden="true">
             <canvas ref="canvas"></canvas>
         </div>
     </ClientOnly>
@@ -14,13 +14,49 @@ const canvas = ref(null)
 let particles = []
 const cursor = { x: 9999, y: 9999 }
 let animationFrameId = null
+let isVisible = false
+let prefersReducedMotion = false
+let intersectionObserver = null
+
+// Imágenes compartidas — se cargan UNA sola vez para todas las partículas
+const sharedImages = []
+let sharedImagesLoaded = false
+
+const loadSharedImages = () => {
+    return new Promise((resolve) => {
+        const sources = [
+            '/images/arilos/Goral-Granada-Arilo.png',
+            '/images/arilos/Goral-Granada-Arilo-2.png'
+        ]
+        let loaded = 0
+        sources.forEach((src) => {
+            const img = new Image()
+            img.src = src
+            img.onload = () => {
+                sharedImages.push(img)
+                loaded++
+                if (loaded === sources.length) {
+                    sharedImagesLoaded = true
+                    resolve()
+                }
+            }
+            img.onerror = () => {
+                loaded++
+                if (loaded === sources.length) {
+                    sharedImagesLoaded = true
+                    resolve()
+                }
+            }
+        })
+    })
+}
 
 const getResponsiveDimensions = () => {
     if (typeof window === 'undefined') {
         return {
             CANVAS_WIDTH: 1920,
-            CANVAS_HEIGHT: window?.innerWidth >= 1440 ? 500 : 300,
-            VISIBLE_HEIGHT: window?.innerWidth >= 1440 ? 400 : 300,
+            CANVAS_HEIGHT: 500,
+            VISIBLE_HEIGHT: 400,
             BASE_PARTICLE_SIZE: 8,
             SIDE_COLS: 25,
             BOTTOM_COLS: 22,
@@ -71,18 +107,7 @@ class Particle {
         this.scaleY = 0.9 + Math.random() * 0.2
         this.rotation = Math.random() * Math.PI * 2
 
-        const ariloImages = [
-            '/images/arilos/Goral-Granada-Arilo.png',
-            '/images/arilos/Goral-Granada-Arilo-2.png'
-        ]
-        const randomImage = ariloImages[Math.floor(Math.random() * ariloImages.length)]
-
-        this.image = new Image()
-        this.image.src = randomImage
-        this.imageLoaded = false
-        this.image.onload = () => {
-            this.imageLoaded = true
-        }
+        this.imageIndex = Math.floor(Math.random() * sharedImages.length)
     }
 
     update() {
@@ -90,7 +115,6 @@ class Particle {
 
         dx = this.ix - this.x
         dy = this.iy - this.y
-        dd = Math.sqrt(dx * dx + dy * dy)
 
         this.ax = dx * this.pullFactor
         this.ay = dy * this.pullFactor
@@ -117,7 +141,9 @@ class Particle {
     }
 
     draw(context) {
-        if (!this.imageLoaded) return
+        if (!sharedImagesLoaded) return
+        const image = sharedImages[this.imageIndex]
+        if (!image) return
 
         context.save()
         context.translate(this.x, this.y)
@@ -125,13 +151,7 @@ class Particle {
         context.scale(this.scaleX, this.scaleY)
 
         const size = this.radius * 2
-        context.drawImage(
-            this.image,
-            -size,
-            -size,
-            size * 2,
-            size * 2
-        )
+        context.drawImage(image, -size, -size, size * 2, size * 2)
 
         context.restore()
     }
@@ -212,7 +232,21 @@ const initParticles = () => {
     }
 }
 
+const renderStatic = () => {
+    const canvasEl = canvas.value
+    if (!canvasEl) return
+    const context = canvasEl.getContext('2d', { alpha: false, desynchronized: true })
+    if (!context) return
+    context.fillStyle = '#FDF9F9'
+    context.fillRect(0, 0, dimensions.CANVAS_WIDTH, dimensions.CANVAS_HEIGHT)
+    particles.forEach(p => p.draw(context))
+}
+
 const animate = () => {
+    if (!isVisible || prefersReducedMotion) {
+        animationFrameId = null
+        return
+    }
     const canvasEl = canvas.value
     if (!canvasEl) return
 
@@ -231,6 +265,18 @@ const animate = () => {
     })
 
     animationFrameId = requestAnimationFrame(animate)
+}
+
+const startAnimation = () => {
+    if (animationFrameId || prefersReducedMotion) return
+    animationFrameId = requestAnimationFrame(animate)
+}
+
+const stopAnimation = () => {
+    if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId)
+        animationFrameId = null
+    }
 }
 
 const updateCursorPosition = (clientX, clientY) => {
@@ -294,17 +340,49 @@ const resizeCanvas = () => {
     }
 }
 
-onMounted(() => {
+const handleResize = () => {
+    resizeCanvas()
+    initParticles()
+    if (prefersReducedMotion) renderStatic()
+}
+
+onMounted(async () => {
+    // Respetar prefers-reduced-motion
+    if (typeof window !== 'undefined' && window.matchMedia) {
+        prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    }
+
+    await loadSharedImages()
+
     nextTick(() => {
         dimensions = getResponsiveDimensions()
         resizeCanvas()
         initParticles()
-        animate()
 
-        window.addEventListener('resize', () => {
-            resizeCanvas()
-            initParticles()
-        })
+        // Pausar animacion cuando el canvas no es visible
+        if ('IntersectionObserver' in window && container.value) {
+            intersectionObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    isVisible = entry.isIntersecting
+                    if (isVisible) {
+                        if (prefersReducedMotion) {
+                            renderStatic()
+                        } else {
+                            startAnimation()
+                        }
+                    } else {
+                        stopAnimation()
+                    }
+                })
+            }, { threshold: 0 })
+            intersectionObserver.observe(container.value)
+        } else {
+            isVisible = true
+            if (prefersReducedMotion) renderStatic()
+            else startAnimation()
+        }
+
+        window.addEventListener('resize', handleResize)
 
         const canvasEl = canvas.value
         if (canvasEl) {
@@ -319,7 +397,8 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
-    window.removeEventListener('resize', resizeCanvas)
+    window.removeEventListener('resize', handleResize)
+    if (intersectionObserver) intersectionObserver.disconnect()
 
     const canvasEl = canvas.value
     if (canvasEl) {
@@ -330,9 +409,7 @@ onUnmounted(() => {
         canvasEl.removeEventListener('touchend', handleEnd)
         canvasEl.removeEventListener('touchcancel', handleEnd)
     }
-    if (animationFrameId) {
-        cancelAnimationFrame(animationFrameId)
-    }
+    stopAnimation()
 })
 </script>
 

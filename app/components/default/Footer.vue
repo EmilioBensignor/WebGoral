@@ -111,7 +111,7 @@ async function copyGgn() {
     copied.value = true
     setTimeout(() => { copied.value = false }, 1800)
   } catch (e) {
-    console.error('Error copiando GGN', e)
+    if (import.meta.dev) console.error('Error copiando GGN', e)
   }
 }
 </script>

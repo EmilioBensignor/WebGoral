@@ -4,9 +4,10 @@
             <h2 class="text-primary">{{ $t('about.title') }}</h2>
             <p class="text-center font-medium">{{ $t('about.description') }}</p>
             <div class="infosVideo columnAlignCenter">
-                <div class="w-full infosContainer">
+                <div class="w-full infosContainer" role="tablist">
                     <button v-for="type in infoTypes" :key="type"
-                        class="secondaryButton columnAlignCenter" 
+                        class="secondaryButton columnAlignCenter"
+                        role="tab" :aria-selected="selectedInfo === type"
                         :class="{ active: selectedInfo === type }"
                         @click="selectInfo(type)">
                         <Icon :name="`mingcute:${icons[type]}`" class="text-primary" />
@@ -14,7 +15,7 @@
                     </button>
                 </div>
                 <div class="imageContainer allCenter">
-                    <video v-if="selectedInfo === 'location'" :aria-label="$t('about.info.location.title')" autoplay loop muted playsinline>
+                    <video v-if="selectedInfo === 'location'" :aria-label="$t('about.info.location.title')" preload="none" autoplay loop muted playsinline>
                         <source src="/videos/home/ubicacion-estrategica.mp4" type="video/mp4" />
                     </video>
                     <img v-else :src="`/images/home/${images[selectedInfo]}.webp`" :alt="$t(`about.info.${selectedInfo}.title`)" />

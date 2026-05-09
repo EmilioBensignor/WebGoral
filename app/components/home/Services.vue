@@ -22,7 +22,7 @@
                             <video v-for="(service, key) in servicesList" :key="key"
                                 :src="`/videos/home/${service.video}.mp4`" :aria-label="$t(`services.items.${key}.title`)"
                                 :ref="`video-${key}`" class="serviceAnimation"
-                                :class="{ active: currentService === key }" preload="auto" muted playsinline></video>
+                                :class="{ active: currentService === key }" preload="metadata" muted playsinline loop></video>
                         </div>
                     </div>
                 </div>

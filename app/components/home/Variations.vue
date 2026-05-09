@@ -5,15 +5,19 @@
             <div class="w-full variationsContainer columnAlignCenter">
                 <HomeGranada class="granadaContainer" />
                 <div class="columnAlignCenter">
-                    <div class="variations rowCenter">
+                    <div class="variations rowCenter" role="tablist">
                         <button v-for="variation in variationsList" :key="variation" class="secondaryButton"
+                            role="tab" :aria-selected="selectedVariation == variation"
                             :class="{ active: selectedVariation == variation }" @click="selectVariation(variation)">
                             {{ variation }}
                         </button>
                     </div>
                     <div class="featuresContainer columnAlignCenter">
                         <div class="features rowCenter">
-                            <button v-for="(feature, index) in activeFeatures" aria-label="Pomegranate feature" :key="index" class="featureBtn allCenter"
+                            <button v-for="(feature, index) in activeFeatures"
+                                :aria-label="`${$t('a11y.pomegranateFeature')} ${index + 1}`"
+                                :aria-pressed="selectedFeatureIndex === index"
+                                :key="index" class="featureBtn allCenter"
                                 :class="{ active: selectedFeatureIndex === index }"
                                 @click="selectedFeatureIndex = index">
                                 <div class="allCenter">

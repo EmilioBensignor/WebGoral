@@ -1,30 +1,30 @@
 <template>
   <header>
     <div class="rowCenter">
-      <button class="hamburger" @click="toggleDrawer" aria-label="Open or close menu">
+      <button class="hamburger" @click="toggleDrawer" :aria-label="$t('a11y.toggleMenu')">
         <Icon size="1.25rem" name="mingcute:menu-line" />
       </button>
-      <NuxtLink :to="routes.HOME">
-        <NuxtImg class="logo" src="/images/Logo-Goral.svg" alt="Logo Goral" width="200" height="44" />
-      </NuxtLink>
+      <NuxtLinkLocale :to="routes.HOME">
+        <NuxtImg class="logo" src="/images/Logo-Goral.svg" alt="Goral" width="200" height="44" />
+      </NuxtLinkLocale>
       <div class="desktopMenu">
-        <nav class="navMenu">
+        <nav class="navMenu" :aria-label="$t('a11y.mainNav')">
           <ul class="rowCenter">
             <li v-for="(item, index) in menu" :key="index">
               <button @click="openContact" class="contact-link">{{ $t(item.translationKey) }}</button>
             </li>
           </ul>
         </nav>
-        <button @click="toggleLanguages($event)" aria-label="Toggle languages" class="allCenter languages">
+        <button @click="toggleLanguages($event)" :aria-label="$t('a11y.toggleLanguages')" class="allCenter languages">
           <Icon :name="`circle-flags:${selectedLanguage.icon}`" />
         </button>
         <ClientOnly>
           <Menu ref="languagesMenu" id="account_menu" :model="languagesMenu" :popup="true">
             <template #item="{ item }">
-              <button @click="item.command">
+              <NuxtLink :to="item.to" hreflang="item.hreflang" @click="onLanguageClick">
                 <Icon :name="`circle-flags:${item.icon}`" />
                 {{ item.label }}
-              </button>
+              </NuxtLink>
             </template>
           </Menu>
         </ClientOnly>
@@ -34,11 +34,11 @@
       <Drawer :visible="drawerMenu" :modal="true" :dismissable="true" :closeOnEscape="true" class="column"
         @hide="closeDrawer">
         <template #header>
-          <button @click="closeDrawer" class="closeButton allCenter" aria-label="Cerrar menú">
+          <button @click="closeDrawer" class="closeButton allCenter" :aria-label="$t('a11y.closeMenu')">
             <Icon size="1.25rem" name="mingcute:close-line" class="text-primary" />
           </button>
         </template>
-        <nav class="w-full h-full navMenu columnSpaceBetween">
+        <nav class="w-full h-full navMenu columnSpaceBetween" :aria-label="$t('a11y.mainNav')">
           <ul class="column">
             <li v-for="(item, index) in menu" :key="index">
               <button @click="openContact(); closeDrawer()" class="contact-link">{{ $t(item.translationKey) }}</button>
@@ -61,30 +61,31 @@ export default {
       routes: ROUTES_NAMES,
       menu: menu,
       languages: [
-        { code: 'es', label: 'Español', icon: 'ar' },
-        { code: 'en', label: 'English', icon: 'us' },
-        { code: 'pt', label: 'Português', icon: 'br' },
-        { code: 'fr', label: 'Français', icon: 'fr' },
-        { code: 'ru', label: 'Русский', icon: 'ru' }
+        { code: 'es', label: 'Español', icon: 'ar', hreflang: 'es-AR' },
+        { code: 'en', label: 'English', icon: 'us', hreflang: 'en-US' },
+        { code: 'pt', label: 'Português', icon: 'br', hreflang: 'pt-BR' },
+        { code: 'fr', label: 'Français', icon: 'fr', hreflang: 'fr-FR' },
+        { code: 'ru', label: 'Русский', icon: 'ru', hreflang: 'ru-RU' }
       ],
       selectedLanguage: { icon: 'ar' },
     }
   },
   computed: {
     languagesMenu() {
+      const switchLocalePath = useSwitchLocalePath()
       return this.languages.map(lang => ({
         label: lang.label,
         icon: lang.icon,
-        command: () => {
-          this.$i18n.setLocale(lang.code);
-          this.selectedLanguage = { icon: lang.icon };
-        }
+        hreflang: lang.hreflang,
+        to: switchLocalePath(lang.code),
       }))
     }
   },
   watch: {
     $route() {
       this.closeDrawer();
+      const currentLang = this.languages.find(lang => lang.code === this.$i18n.locale);
+      this.selectedLanguage = { icon: currentLang?.icon || 'ar' };
     }
   },
   mounted() {
@@ -100,6 +101,9 @@ export default {
   methods: {
     openContact() {
       window.dispatchEvent(new CustomEvent('open-contact-modal'));
+    },
+    onLanguageClick() {
+      this.$refs.languagesMenu?.hide()
     },
     toggleDrawer() {
       this.drawerMenu = !this.drawerMenu;
@@ -169,7 +173,7 @@ export default {
   margin-top: 0.5rem;
 }
 
-.p-menu button {
+.p-menu a {
   width: 100% !important;
   display: flex !important;
   align-items: center !important;
@@ -179,16 +183,17 @@ export default {
   border-radius: 8px;
   font-size: 0.875rem;
   color: var(--dark-color);
+  text-decoration: none;
   transition: background-color 0.3s !important;
   cursor: pointer !important;
   padding: 0.5rem 1rem !important;
 }
 
-.p-menu button:hover {
+.p-menu a:hover {
   background-color: #f0f0f0 !important;
 }
 
-.p-menu button span {
+.p-menu a span {
   border: 1px solid var(--dark-color);
   border-radius: 999px;
   font-size: 1.8755rem !important;
@@ -209,12 +214,12 @@ export default {
 }
 
 @media (width >=1080px) {
-  .p-menu button {
+  .p-menu a {
     gap: 1rem !important;
     font-size: 1rem;
   }
 
-  .p-menu button span {
+  .p-menu a span {
     font-size: 2rem !important;
   }
 }

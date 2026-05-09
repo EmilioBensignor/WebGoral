@@ -2,15 +2,22 @@
     <aside>
         <!-- Contact Modal -->
         <div v-if="isDialogVisible" class="modal-overlay" @click="closeDialog">
-            <div class="modal-content" @click.stop>
-                <button @click="closeDialog" class="modal-close" aria-label="Cerrar">
+            <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="contactDialogTitle"
+                ref="dialogEl" @click.stop @keydown="handleFocusTrap">
+                <button @click="closeDialog" class="modal-close" :aria-label="$t('a11y.close')">
                     <Icon name="mingcute:close-line" />
                 </button>
                 <div class="dialogContent column">
-                    <h2 class="header">
+                    <h2 id="contactDialogTitle" class="header">
                         {{ $t('contact.title') }}
                     </h2>
                     <form id="contactForm" class="columnAlignCenter" @submit.prevent="handleSubmit">
+                        <!-- Honeypot anti-spam (no debe verse ni ser tabulado) -->
+                        <div class="honeypot" aria-hidden="true">
+                            <label for="website">Website</label>
+                            <input type="text" id="website" name="website" v-model="formData.website"
+                                tabindex="-1" autocomplete="off" />
+                        </div>
                         <div class="formGroup column">
                             <div class="formField column">
                                 <label for="name">{{ $t('contact.name.label') }}</label>
@@ -58,12 +65,13 @@
 
         <!-- Success Modal -->
         <div v-if="isSuccessDialogVisible" class="modal-overlay" @click="closeSuccessDialog">
-            <div class="modal-content" @click.stop>
-                <button @click="closeSuccessDialog" class="modal-close" aria-label="Cerrar">
+            <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="successDialogTitle"
+                @click.stop>
+                <button @click="closeSuccessDialog" class="modal-close" :aria-label="$t('a11y.close')">
                     <Icon name="mingcute:close-line" />
                 </button>
                 <div class="dialogContent column">
-                    <h2 class="header text-center">{{ $t('contact.success.title') }}</h2>
+                    <h2 id="successDialogTitle" class="header text-center">{{ $t('contact.success.title') }}</h2>
                 </div>
                 <div class="successDialog">
                     <p class="text-center text-light">{{ $t('contact.success.message') }}</p>
@@ -82,12 +90,14 @@ export default {
             isDialogVisible: false,
             isSuccessDialogVisible: false,
             isLoading: false,
+            previousFocus: null,
             formData: {
                 name: '',
                 email: '',
                 phonePrefix: '',
                 phone: '',
-                message: ''
+                message: '',
+                website: '' // honeypot
             },
             errors: {
                 name: '',
@@ -114,6 +124,25 @@ export default {
                 } else if (this.isSuccessDialogVisible) {
                     this.closeSuccessDialog()
                 }
+            }
+        },
+
+        handleFocusTrap(event) {
+            if (event.key !== 'Tab') return
+            const dialog = this.$refs.dialogEl
+            if (!dialog) return
+            const focusable = dialog.querySelectorAll(
+                'button, [href], input, textarea, select, [tabindex]:not([tabindex="-1"])'
+            )
+            if (focusable.length === 0) return
+            const first = focusable[0]
+            const last = focusable[focusable.length - 1]
+            if (event.shiftKey && document.activeElement === first) {
+                event.preventDefault()
+                last.focus()
+            } else if (!event.shiftKey && document.activeElement === last) {
+                event.preventDefault()
+                first.focus()
             }
         },
 
@@ -187,13 +216,16 @@ export default {
                     await $fetch('/api/sendEmail', {
                         method: 'POST',
                         body: {
-                            body: formattedMessage
+                            body: formattedMessage,
+                            website: this.formData.website // honeypot
                         }
                     });
                     this.closeDialog();
                     this.showSuccessDialog();
                 } catch (error) {
-                    console.error('Error al enviar el formulario:', error);
+                    if (import.meta.dev) {
+                        console.error('Error al enviar el formulario:', error);
+                    }
                 } finally {
                     this.isLoading = false;
                 }
@@ -206,10 +238,19 @@ export default {
 
         closeSuccessDialog() {
             this.isSuccessDialogVisible = false
+            this.restoreFocus()
         },
 
         openDialog() {
+            if (typeof document !== 'undefined') {
+                this.previousFocus = document.activeElement
+            }
             this.isDialogVisible = true
+            this.$nextTick(() => {
+                const dialog = this.$refs.dialogEl
+                const firstInput = dialog?.querySelector('input, textarea, button')
+                firstInput?.focus()
+            })
         },
 
         closeDialog() {
@@ -219,13 +260,22 @@ export default {
                 email: '',
                 phonePrefix: '',
                 phone: '',
-                message: ''
+                message: '',
+                website: ''
             }
             this.errors = {
                 name: '',
                 email: '',
                 phone: '',
                 message: ''
+            }
+            this.restoreFocus()
+        },
+
+        restoreFocus() {
+            if (this.previousFocus && typeof this.previousFocus.focus === 'function') {
+                this.previousFocus.focus()
+                this.previousFocus = null
             }
         }
     }
@@ -378,6 +428,15 @@ form,
 
 form button {
     width: max-content;
+}
+
+.honeypot {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
 }
 
 .error {

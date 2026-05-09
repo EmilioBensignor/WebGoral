@@ -6,9 +6,7 @@ export default defineNuxtConfig({
   modules: [
     "@nuxt/image",
     "@nuxt/icon",
-    ['@nuxtjs/seo', {
-      ogImage: false
-    }],
+    '@nuxtjs/seo',
     'nuxt-anchorscroll',
     '@nuxt/fonts',
     '@nuxtjs/i18n',
@@ -26,7 +24,6 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
-      htmlAttrs: { lang: 'es' },
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -38,7 +35,14 @@ export default defineNuxtConfig({
     vueI18n: '~/i18n.config.ts',
     strategy: 'prefix_except_default',
     defaultLocale: 'es',
-    locales: ['es', 'en', 'fr', 'pt', 'ru'],
+    baseUrl: 'https://goral.com.ar',
+    locales: [
+      { code: 'es', language: 'es-AR', name: 'Español' },
+      { code: 'en', language: 'en-US', name: 'English' },
+      { code: 'pt', language: 'pt-BR', name: 'Português' },
+      { code: 'fr', language: 'fr-FR', name: 'Français' },
+      { code: 'ru', language: 'ru-RU', name: 'Русский' },
+    ],
     bundle: {
       optimizeTranslationDirective: false
     }
@@ -48,6 +52,20 @@ export default defineNuxtConfig({
     name: 'Goral',
     description: 'Producción y exportación de granadas premium Acco y Wonderful desde San Juan, Argentina. Certificación GLOBALG.A.P., calidad consistente y entregas confiables.',
     defaultLocale: 'es',
+  },
+  robots: {
+    disallow: ['/api/'],
+    sitemap: 'https://goral.com.ar/sitemap.xml',
+  },
+  routeRules: {
+    '/**': {
+      headers: {
+        'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload',
+        'X-Content-Type-Options': 'nosniff',
+        'Referrer-Policy': 'strict-origin-when-cross-origin',
+        'Permissions-Policy': 'camera=(), microphone=(), geolocation=()',
+      }
+    }
   },
   image: {
     screens: {
@@ -70,29 +88,21 @@ export default defineNuxtConfig({
   vite: {
     optimizeDeps: {
       include: [
-        '@vue/devtools-core',
-        '@vue/devtools-kit',
         'primevue/config',
         'primevue/toast',
-        'primevue/button',
-        'primevue/dialog',
-        'primevue/inputtext',
-        'primevue/password',
-        'primevue/progressspinner',
-        'primevue/drawer',
-        'primevue/fileupload',
-        'primevue/select',
-        'primevue/inputnumber',
-        'primevue/textarea',
         'primevue/toastservice',
+        'primevue/drawer',
         'primevue/menu',
         'primevue/accordion',
         'primevue/accordionheader',
         'primevue/accordioncontent',
         'primevue/accordionpanel',
         'three',
-        'three/examples/jsm/loaders/GLTFLoader',
-        'three/examples/jsm/controls/OrbitControls',
+        'three/examples/jsm/loaders/GLTFLoader.js',
+        'three/examples/jsm/controls/OrbitControls.js',
+        '@unhead/schema-org/vue',
+        '@vue/devtools-core',
+        '@vue/devtools-kit',
       ],
     },
   },

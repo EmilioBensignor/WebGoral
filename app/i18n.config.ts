@@ -142,6 +142,16 @@ export default defineI18nConfig(() => ({
                     title: '¡Tus datos se enviaron correctamente!',
                     message: 'Nos pondremos en contacto contigo en la brevedad.'
                 }
+            },
+            a11y: {
+                toggleMenu: 'Abrir o cerrar menú',
+                closeMenu: 'Cerrar menú',
+                mainNav: 'Navegación principal',
+                toggleLanguages: 'Cambiar idioma',
+                close: 'Cerrar',
+                contactDialog: 'Formulario de contacto',
+                pomegranateFeature: 'Característica de la granada',
+                harvestCalendar: 'Calendario de cosecha de granadas Acco y Wonderful'
             }
         },
         en: {
@@ -286,6 +296,16 @@ export default defineI18nConfig(() => ({
                     title: 'Your data has been sent successfully!',
                     message: 'We will contact you shortly.'
                 }
+            },
+            a11y: {
+                toggleMenu: 'Open or close menu',
+                closeMenu: 'Close menu',
+                mainNav: 'Main navigation',
+                toggleLanguages: 'Change language',
+                close: 'Close',
+                contactDialog: 'Contact form',
+                pomegranateFeature: 'Pomegranate feature',
+                harvestCalendar: 'Harvest calendar for Acco and Wonderful pomegranates'
             }
         },
         pt: {
@@ -430,6 +450,16 @@ export default defineI18nConfig(() => ({
                     title: 'Seus dados foram enviados com sucesso!',
                     message: 'Entraremos em contato em breve.'
                 }
+            },
+            a11y: {
+                toggleMenu: 'Abrir ou fechar menu',
+                closeMenu: 'Fechar menu',
+                mainNav: 'Navegação principal',
+                toggleLanguages: 'Mudar idioma',
+                close: 'Fechar',
+                contactDialog: 'Formulário de contato',
+                pomegranateFeature: 'Característica da romã',
+                harvestCalendar: 'Calendário de colheita das romãs Acco e Wonderful'
             }
         },
         fr: {
@@ -574,6 +604,16 @@ export default defineI18nConfig(() => ({
                     title: 'Vos données ont été envoyées avec succès !',
                     message: 'Nous vous contacterons sous peu.'
                 }
+            },
+            a11y: {
+                toggleMenu: 'Ouvrir ou fermer le menu',
+                closeMenu: 'Fermer le menu',
+                mainNav: 'Navigation principale',
+                toggleLanguages: 'Changer de langue',
+                close: 'Fermer',
+                contactDialog: 'Formulaire de contact',
+                pomegranateFeature: 'Caractéristique de la grenade',
+                harvestCalendar: 'Calendrier de récolte des grenades Acco et Wonderful'
             }
         },
         ru: {
@@ -718,6 +758,16 @@ export default defineI18nConfig(() => ({
                     title: 'Ваши данные успешно отправлены!',
                     message: 'Мы свяжемся с вами в ближайшее время.'
                 }
+            },
+            a11y: {
+                toggleMenu: 'Открыть или закрыть меню',
+                closeMenu: 'Закрыть меню',
+                mainNav: 'Главная навигация',
+                toggleLanguages: 'Сменить язык',
+                close: 'Закрыть',
+                contactDialog: 'Контактная форма',
+                pomegranateFeature: 'Характеристика граната',
+                harvestCalendar: 'Календарь сбора урожая гранатов Acco и Wonderful'
             }
         }
     }

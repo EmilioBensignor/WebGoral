@@ -3,19 +3,20 @@
         <div class="columnAlignCenter">
             <h2>{{ $t("calendar.title") }}</h2>
             <table class="harvestCalendar">
+                <caption class="srOnly">{{ $t('a11y.harvestCalendar') }}</caption>
                 <thead>
                     <tr>
-                        <th></th>
-                        <th v-for="i in 6" :key="i">
+                        <th scope="col"><span class="srOnly">{{ $t('variationsTitle') }}</span></th>
+                        <th scope="col" v-for="i in 6" :key="i">
                             <p>{{ $t(`calendar.months.${i}`) }}</p>
                         </th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="variety">
+                        <th scope="row" class="variety">
                             <p>Acco</p>
-                        </td>
+                        </th>
                         <td v-for="i in 6" :key="i" class="month" :class="$t(`calendar.months.${i}`) === $t('calendar.harvestMonth.acco')
                             ? 'active'
                             : ''
@@ -27,9 +28,9 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="variety">
+                        <th scope="row" class="variety">
                             <p>Wonderful</p>
-                        </td>
+                        </th>
                         <td v-for="i in 6" :key="i" class="month" :class="$t(`calendar.months.${i}`) ===
                             $t('calendar.harvestMonth.wonderful')
                             ? 'active'

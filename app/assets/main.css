@@ -12,11 +12,13 @@
 
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 * {
     box-sizing: border-box;
     list-style: none;
-    font-family: "Marcellus", serif;
-    scroll-behavior: smooth;
     padding: 0;
     margin: 0;
 }
@@ -24,8 +26,55 @@
 body {
     background-color: var(--white-color);
     color: var(--dark-color);
+    font-family: "Marcellus", serif;
     overflow-x: hidden;
-    scroll-behavior: smooth;
+}
+
+p,
+p span,
+li,
+input,
+textarea,
+label,
+button {
+    font-family: "Urbanist", sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Marcellus", serif;
+}
+
+/* Accesibilidad: focus visible para teclado */
+:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+button:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* Utility para texto solo accesible a screen readers */
+.srOnly {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
 }
 
 .layout {
@@ -157,11 +206,6 @@ a,
 p,
 li {
     font-size: 0.75rem;
-}
-
-p,
-p span {
-    font-family: "Urbanist", sans-serif;
 }
 
 /* Buttons */

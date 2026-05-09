@@ -7,7 +7,7 @@
             <div class="w-full columnAlignCenter">
                 <button @click="$emit('open-dialog')" class="primaryButton">{{ $t('ctaHero') }}</button>
                 <div class="rowCenter">
-                    <NuxtImg src="/images/home/Logo-Global-GAP.svg" alt="Logo GLOBALG.A.P." />
+                    <NuxtImg src="/images/home/Logo-Global-GAP.svg" alt="Logo GLOBALG.A.P." width="30" height="30" />
                     <p class="text-dark-gray font-medium">{{ $t('globalGap') }}</p>
                 </div>
             </div>
@@ -17,10 +17,36 @@
     </section>
 </template>
 
-<script>
-export default {
-    emits: ['open-dialog']
-}
+<script setup>
+defineEmits(['open-dialog'])
+
+// Preload de la imagen de hero correcta segun viewport.
+// Mantiene LCP optimizado sin cambiar el background-image visual original.
+useHead({
+    link: [
+        {
+            rel: 'preload',
+            as: 'image',
+            href: '/images/home/Goral-Granadas-Mobile.webp',
+            media: '(max-width: 479px)',
+            fetchpriority: 'high',
+        },
+        {
+            rel: 'preload',
+            as: 'image',
+            href: '/images/home/Goral-Granadas-Tablet.webp',
+            media: '(min-width: 480px) and (max-width: 699px)',
+            fetchpriority: 'high',
+        },
+        {
+            rel: 'preload',
+            as: 'image',
+            href: '/images/home/Goral-Granadas-Desktop.webp',
+            media: '(min-width: 700px) and (max-width: 1079px)',
+            fetchpriority: 'high',
+        },
+    ],
+})
 </script>
 
 <style scoped>
