@@ -41,7 +41,7 @@ useSchemaOrg([
   defineWebSite({
     name: 'Goral',
     url: 'https://goral.com.ar',
-    inLanguage: ['es-AR', 'en-US', 'pt-BR', 'fr-FR', 'ru-RU'],
+    inLanguage: ['es-AR', 'en-US', 'pt-BR', 'fr-FR', 'ru-RU', 'nl-NL'],
   }),
 ])
 </script>

@@ -2,13 +2,12 @@ export default defineI18nConfig(() => ({
     legacy: false,
     locale: 'es',
     fallbackLocale: 'es',
-    availableLocales: ['es', 'en', 'pt', 'fr', 'ru'],
+    availableLocales: ['es', 'en', 'pt', 'fr', 'ru', 'nl'],
     messages: {
         es: {
             seo: {
                 title: 'Granadas Premium de San Juan, Argentina',
                 description: 'Producción y exportación de granadas premium Acco y Wonderful desde San Juan, Argentina. Certificación GLOBALG.A.P., calidad consistente y entregas confiables.',
-                keywords: 'granadas, granadas premium, exportación de granadas, granadas argentina, pomegranate exporter, Acco, Wonderful, GLOBALG.A.P., San Juan Argentina',
                 ogTitle: 'Goral | Granadas Premium de Argentina',
             },
             title: 'Calidad. Frescura. Consistencia.',
@@ -158,7 +157,6 @@ export default defineI18nConfig(() => ({
             seo: {
                 title: 'Premium Pomegranates from San Juan, Argentina',
                 description: 'Production and export of premium Acco and Wonderful pomegranates from San Juan, Argentina. GLOBALG.A.P. certified, consistent quality and reliable deliveries.',
-                keywords: 'pomegranates, premium pomegranates, pomegranate export, argentina pomegranates, Acco, Wonderful, GLOBALG.A.P., San Juan Argentina',
                 ogTitle: 'Goral | Premium Pomegranates from Argentina',
             },
             title: 'Quality. Freshness. Consistency.',
@@ -312,7 +310,6 @@ export default defineI18nConfig(() => ({
             seo: {
                 title: 'Romãs Premium de San Juan, Argentina',
                 description: 'Produção e exportação de romãs premium Acco e Wonderful de San Juan, Argentina. Certificação GLOBALG.A.P., qualidade consistente e entregas confiáveis.',
-                keywords: 'romãs, romãs premium, exportação de romãs, romãs argentina, Acco, Wonderful, GLOBALG.A.P., San Juan Argentina',
                 ogTitle: 'Goral | Romãs Premium da Argentina',
             },
             title: 'Qualidade. Frescura. Consistência.',
@@ -466,7 +463,6 @@ export default defineI18nConfig(() => ({
             seo: {
                 title: 'Grenades Premium de San Juan, Argentine',
                 description: 'Production et exportation de grenades premium Acco et Wonderful de San Juan, Argentine. Certification GLOBALG.A.P., qualité constante et livraisons fiables.',
-                keywords: 'grenades, grenades premium, exportation de grenades, grenades argentine, Acco, Wonderful, GLOBALG.A.P., San Juan Argentine',
                 ogTitle: 'Goral | Grenades Premium d\'Argentine',
             },
             title: 'Qualité. Fraîcheur. Constance.',
@@ -620,7 +616,6 @@ export default defineI18nConfig(() => ({
             seo: {
                 title: 'Премиальные гранаты из Сан-Хуана, Аргентина',
                 description: 'Производство и экспорт премиальных гранатов Acco и Wonderful из Сан-Хуана, Аргентина. Сертификат GLOBALG.A.P., стабильное качество и надежные поставки.',
-                keywords: 'гранаты, премиальные гранаты, экспорт гранатов, гранаты аргентина, Acco, Wonderful, GLOBALG.A.P., Сан-Хуан Аргентина',
                 ogTitle: 'Goral | Премиальные гранаты из Аргентины',
             },
             title: 'Качество. Свежесть. Стабильность.',
@@ -768,6 +763,159 @@ export default defineI18nConfig(() => ({
                 contactDialog: 'Контактная форма',
                 pomegranateFeature: 'Характеристика граната',
                 harvestCalendar: 'Календарь сбора урожая гранатов Acco и Wonderful'
+            }
+        },
+        nl: {
+            seo: {
+                title: 'Premium Granaatappels uit San Juan, Argentinië',
+                description: 'Productie en export van premium Acco- en Wonderful-granaatappels uit San Juan, Argentinië. GLOBALG.A.P.-gecertificeerd, constante kwaliteit en betrouwbare leveringen.',
+                ogTitle: 'Goral | Premium Granaatappels uit Argentinië',
+            },
+            title: 'Kwaliteit. Versheid. Constantheid.',
+            pomegranates: 'Granaatappels',
+            subtitle: ' geselecteerd met snelle en constante leveringen.',
+            ctaHero: 'Reserveer uw granaatappels',
+            globalGap: 'GLOBALG.A.P.-gecertificeerd',
+            variationsTitle: 'Onze variëteiten',
+            acco: {
+                feature1: 'Heldere en aantrekkelijke rode kleur',
+                feature2: 'Zoet en minder zuur, ideaal voor directe consumptie',
+                feature3: 'Sappige arillen met een zachte textuur',
+                feature4: 'Vroege rijping, beschikbaar aan het begin van het seizoen',
+                feature5: 'Kleine en zachte pitten, makkelijker te eten'
+            },
+            wonderful: {
+                feature1: 'Intense donkerrode kleur en grote arillen',
+                feature2: 'Perfecte balans tussen zoet en zuur',
+                feature3: 'Zeer sappig, rijk aan antioxidanten en voedingsstoffen',
+                feature4: 'Late rijping, beschikbaar aan het einde van het seizoen',
+                feature5: 'Blijft na de oogst langer in uitstekende staat'
+            },
+            calendar: {
+                title: 'Oogstkalender',
+                months: {
+                    1: 'JAN',
+                    2: 'FEB',
+                    3: 'MRT',
+                    4: 'APR',
+                    5: 'MEI',
+                    6: 'JUN-DEC'
+                },
+                timeLeftText: 'Nog {months} maanden en {days} dagen',
+                nowText: 'Nu',
+                cta: 'Informatie aanvragen',
+                harvestMonth: {
+                    acco: 'MRT',
+                    wonderful: 'APR'
+                }
+            },
+            about: {
+                title: 'Het hart van onze productie',
+                description: 'Gelegen in San Juan, Argentinië, geniet ons bedrijf van ideale omstandigheden voor de teelt van granaatappels van hoge kwaliteit.',
+                info: {
+                    climate: {
+                        name: 'Klimaat',
+                        title: 'Ideaal klimaat voor de teelt',
+                        video: 'Video over het klimaat'
+                    },
+                    quality: {
+                        name: 'Kwaliteit',
+                        title: 'Gegarandeerde kwaliteit',
+                        video: 'Video over de kwaliteit'
+                    },
+                    location: {
+                        name: 'Ligging',
+                        title: 'Strategische ligging',
+                        video: 'Video over de ligging'
+                    }
+                }
+            },
+            services: {
+                title: 'Versterk uw bedrijf met kwaliteitsproducten',
+                cta: 'Neem nu contact op',
+                items: {
+                    globalGap: {
+                        title: 'GLOBALG.A.P.-certificering',
+                        text: '*Wij voldoen aan de hoogste normen.* Onze landbouwpraktijken zijn GLOBALG.A.P.-gecertificeerd, wat een veilig en verantwoord product garandeert.'
+                    },
+                    consistency: {
+                        title: 'Constantheid in uw bestellingen',
+                        text: 'Granaatappels met dezelfde standaard, altijd. Wij zorgen ervoor dat elke partij *dezelfde kwaliteit en hetzelfde kaliber* heeft, zodat u altijd het verwachte product ontvangt.'
+                    },
+                    export: {
+                        title: 'Exporteer granaatappels naar de wereld',
+                        text: '*Van San Juan naar de wereld.* Wij bieden een betrouwbare exportservice zodat u het beste product op uw markt kunt aanbieden.'
+                    },
+                    assistance: {
+                        title: 'Persoonlijke begeleiding',
+                        text: 'Ons team begeleidt u bij elke stap met *persoonlijke aandacht*, zodat u er nooit alleen voor staat.'
+                    },
+                    harvest: {
+                        title: 'Oogst in maart en april',
+                        text: '*De perfecte planning voor uw bedrijf.* Onze oogst is strategisch gepland in maart en april, wat het beste moment voor elke variëteit garandeert.'
+                    }
+                }
+            },
+            menu: {
+                contact: 'Contact'
+            },
+            footer: {
+                rights: 'Alle rechten voorbehouden.',
+                certification: {
+                    claim: 'Producenten gecertificeerd volgens GLOBALG.A.P. IFA v6',
+                    ggn: 'GGN',
+                    validity: 'Geldigheid',
+                    cta: 'Certificaat bekijken',
+                    verify: 'Verifiëren bij GLOBALG.A.P.',
+                    copy: 'GGN kopiëren',
+                    copied: 'Gekopieerd'
+                }
+            },
+            contact: {
+                title: 'Laat uw gegevens achter en wij nemen contact met u op!',
+                name: {
+                    label: 'Naam',
+                    placeholder: 'Voer uw naam in',
+                    required: 'Naam is verplicht',
+                    minLength: 'De naam moet minstens 2 tekens bevatten',
+                    maxLength: 'De naam mag niet langer zijn dan 20 tekens',
+                    onlyText: 'De naam mag alleen tekst bevatten'
+                },
+                email: {
+                    label: 'E-mail',
+                    placeholder: 'Voer uw e-mailadres in',
+                    required: 'E-mail is verplicht',
+                    invalid: 'Ongeldig e-mailformaat'
+                },
+                phone: {
+                    label: 'Telefoonnummer',
+                    prefix: 'Netnummer',
+                    placeholder: 'Voer uw telefoonnummer in',
+                    required: 'Telefoon is verplicht',
+                    onlyNumbers: 'Het telefoonnummer moet numeriek zijn'
+                },
+                message: {
+                    label: 'Bericht',
+                    placeholder: 'Voer uw bericht in',
+                    required: 'Bericht is verplicht',
+                    minLength: 'Het bericht moet minstens 10 tekens bevatten',
+                    maxLength: 'Het bericht mag niet langer zijn dan 500 tekens'
+                },
+                submit: 'Bericht versturen',
+                success: {
+                    title: 'Uw gegevens zijn succesvol verzonden!',
+                    message: 'Wij nemen zo spoedig mogelijk contact met u op.'
+                }
+            },
+            a11y: {
+                toggleMenu: 'Menu openen of sluiten',
+                closeMenu: 'Menu sluiten',
+                mainNav: 'Hoofdnavigatie',
+                toggleLanguages: 'Taal wijzigen',
+                close: 'Sluiten',
+                contactDialog: 'Contactformulier',
+                pomegranateFeature: 'Kenmerk van de granaatappel',
+                harvestCalendar: 'Oogstkalender van Acco- en Wonderful-granaatappels'
             }
         }
     }

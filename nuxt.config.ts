@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
-  css: ["primeflex/primeflex.min.css", "~/assets/main.css"],
+  css: ["~/assets/main.css"],
   modules: [
     "@nuxt/image",
     "@nuxt/icon",
@@ -42,6 +42,7 @@ export default defineNuxtConfig({
       { code: 'pt', language: 'pt-BR', name: 'Português' },
       { code: 'fr', language: 'fr-FR', name: 'Français' },
       { code: 'ru', language: 'ru-RU', name: 'Русский' },
+      { code: 'nl', language: 'nl-NL', name: 'Nederlands' },
     ],
     bundle: {
       optimizeTranslationDirective: false
@@ -55,7 +56,7 @@ export default defineNuxtConfig({
   },
   robots: {
     disallow: ['/api/'],
-    sitemap: 'https://goral.com.ar/sitemap.xml',
+    sitemap: 'https://goral.com.ar/sitemap_index.xml',
   },
   routeRules: {
     '/**': {
@@ -100,9 +101,6 @@ export default defineNuxtConfig({
         'three',
         'three/examples/jsm/loaders/GLTFLoader.js',
         'three/examples/jsm/controls/OrbitControls.js',
-        '@unhead/schema-org/vue',
-        '@vue/devtools-core',
-        '@vue/devtools-kit',
       ],
     },
   },

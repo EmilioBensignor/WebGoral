@@ -32,6 +32,7 @@ const ogLocaleMap = {
   pt: 'pt_BR',
   fr: 'fr_FR',
   ru: 'ru_RU',
+  nl: 'nl_NL',
 }
 
 useSeoMeta({

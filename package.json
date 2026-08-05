@@ -5,7 +5,7 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
-    "start": "git pull origin main && npm i && nuxt dev --open",
+    "start": "git pull origin main && pnpm i && nuxt dev --open",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
@@ -20,9 +20,9 @@
     "@types/nodemailer": "^6.4.17",
     "@types/three": "^0.173.0",
     "nodemailer": "^6.10.0",
-    "nuxt": "^4.0.3",
+    "nuxt": "4.4.4",
     "nuxt-anchorscroll": "^1.0.5",
-    "primeflex": "^4.0.0",
+    "primevue": "^4.5.5",
     "three": "^0.173.0",
     "vue": "latest",
     "vue-router": "latest"

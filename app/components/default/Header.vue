@@ -19,9 +19,9 @@
           <Icon :name="`circle-flags:${selectedLanguage.icon}`" />
         </button>
         <ClientOnly>
-          <Menu ref="languagesMenu" id="account_menu" :model="languagesMenu" :popup="true">
+          <Menu ref="languagesMenuRef" id="account_menu" :model="languagesMenu" :popup="true">
             <template #item="{ item }">
-              <NuxtLink :to="item.to" hreflang="item.hreflang" @click="onLanguageClick">
+              <NuxtLink :to="item.to" :hreflang="item.hreflang" @click="onLanguageClick">
                 <Icon :name="`circle-flags:${item.icon}`" />
                 {{ item.label }}
               </NuxtLink>
@@ -50,90 +50,91 @@
   </header>
 </template>
 
-<script>
+<script setup>
 import { ROUTES_NAMES } from "~/constants/ROUTES_NAMES";
 import { menu } from '~/shared/menu';
 
-export default {
-  data() {
-    return {
-      drawerMenu: false,
-      routes: ROUTES_NAMES,
-      menu: menu,
-      languages: [
-        { code: 'es', label: 'Español', icon: 'ar', hreflang: 'es-AR' },
-        { code: 'en', label: 'English', icon: 'us', hreflang: 'en-US' },
-        { code: 'pt', label: 'Português', icon: 'br', hreflang: 'pt-BR' },
-        { code: 'fr', label: 'Français', icon: 'fr', hreflang: 'fr-FR' },
-        { code: 'ru', label: 'Русский', icon: 'ru', hreflang: 'ru-RU' }
-      ],
-      selectedLanguage: { icon: 'ar' },
-    }
-  },
-  computed: {
-    languagesMenu() {
-      const switchLocalePath = useSwitchLocalePath()
-      return this.languages.map(lang => ({
-        label: lang.label,
-        icon: lang.icon,
-        hreflang: lang.hreflang,
-        to: switchLocalePath(lang.code),
-      }))
-    }
-  },
-  watch: {
-    $route() {
-      this.closeDrawer();
-      const currentLang = this.languages.find(lang => lang.code === this.$i18n.locale);
-      this.selectedLanguage = { icon: currentLang?.icon || 'ar' };
-    }
-  },
-  mounted() {
-    const currentLang = this.languages.find(lang => lang.code === this.$i18n.locale);
-    this.selectedLanguage = { icon: currentLang?.icon || 'ar' };
-    document.addEventListener("click", this.handleOutsideClick);
-    document.addEventListener("keydown", this.handleKeyDown);
-  },
-  beforeUnmount() {
-    document.removeEventListener("click", this.handleOutsideClick);
-    document.removeEventListener("keydown", this.handleKeyDown);
-  },
-  methods: {
-    openContact() {
-      window.dispatchEvent(new CustomEvent('open-contact-modal'));
-    },
-    onLanguageClick() {
-      this.$refs.languagesMenu?.hide()
-    },
-    toggleDrawer() {
-      this.drawerMenu = !this.drawerMenu;
-    },
-    closeDrawer() {
-      this.drawerMenu = false;
-    },
-    handleKeyDown(event) {
-      if (event.key === "Escape" && this.drawerMenu) {
-        this.closeDrawer();
-      }
-    },
-    handleOutsideClick(event) {
-      const drawer = document.querySelector(".p-drawer");
-      const hamburger = document.querySelector(".hamburger");
-      if (
-        this.drawerMenu &&
-        drawer &&
-        !drawer.contains(event.target) &&
-        event.target !== hamburger &&
-        !hamburger.contains(event.target)
-      ) {
-        this.closeDrawer();
-      }
-    },
-    toggleLanguages(event) {
-      this.$refs.languagesMenu.toggle(event);
-    },
-  },
+const { locale } = useI18n()
+const switchLocalePath = useSwitchLocalePath()
+const route = useRoute()
+
+const languages = [
+  { code: 'es', label: 'Español', icon: 'ar', hreflang: 'es-AR' },
+  { code: 'en', label: 'English', icon: 'us', hreflang: 'en-US' },
+  { code: 'pt', label: 'Português', icon: 'br', hreflang: 'pt-BR' },
+  { code: 'fr', label: 'Français', icon: 'fr', hreflang: 'fr-FR' },
+  { code: 'ru', label: 'Русский', icon: 'ru', hreflang: 'ru-RU' },
+  { code: 'nl', label: 'Nederlands', icon: 'nl', hreflang: 'nl-NL' }
+]
+
+const routes = ROUTES_NAMES
+const drawerMenu = ref(false)
+const languagesMenuRef = ref(null)
+
+const selectedLanguage = computed(() => ({
+  icon: languages.find(lang => lang.code === locale.value)?.icon || 'ar'
+}))
+
+const languagesMenu = computed(() => languages.map(lang => ({
+  label: lang.label,
+  icon: lang.icon,
+  hreflang: lang.hreflang,
+  to: switchLocalePath(lang.code),
+})))
+
+function openContact() {
+  window.dispatchEvent(new CustomEvent('open-contact-modal'));
 }
+
+function onLanguageClick() {
+  languagesMenuRef.value?.hide()
+}
+
+function toggleDrawer() {
+  drawerMenu.value = !drawerMenu.value;
+}
+
+function closeDrawer() {
+  drawerMenu.value = false;
+}
+
+function toggleLanguages(event) {
+  languagesMenuRef.value?.toggle(event);
+}
+
+function handleKeyDown(event) {
+  if (event.key === "Escape" && drawerMenu.value) {
+    closeDrawer();
+  }
+}
+
+function handleOutsideClick(event) {
+  const drawer = document.querySelector(".p-drawer");
+  const hamburger = document.querySelector(".hamburger");
+  if (
+    drawerMenu.value &&
+    drawer &&
+    !drawer.contains(event.target) &&
+    event.target !== hamburger &&
+    !hamburger.contains(event.target)
+  ) {
+    closeDrawer();
+  }
+}
+
+watch(() => route.fullPath, () => {
+  closeDrawer();
+})
+
+onMounted(() => {
+  document.addEventListener("click", handleOutsideClick);
+  document.addEventListener("keydown", handleKeyDown);
+})
+
+onBeforeUnmount(() => {
+  document.removeEventListener("click", handleOutsideClick);
+  document.removeEventListener("keydown", handleKeyDown);
+})
 </script>
 
 <style>
