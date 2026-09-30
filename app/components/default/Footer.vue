@@ -5,7 +5,7 @@
         <NuxtImg src="/images/Logo-Goral-Blanco.svg" alt="Logo Goral" class="logo" width="160" height="35" />
         <ul class="contact column">
           <li v-for="(item, index) in contact" :key="index">
-            <a :href="item.link" @click="track('email_click')" class="rowCenter text-light font-medium no-underline">
+            <a :href="item.link" @click="useTrackEvent('email_click')" class="rowCenter text-light font-medium no-underline">
               <Icon :name="`mingcute:${item.icon}`" class="text-light" />
               {{ item.text }}
             </a>
@@ -51,7 +51,7 @@
         <div class="certActions column">
           <a
             :href="certificateUrl"
-            @click="track('certificate_download')"
+            @click="useTrackEvent('certificate_download')"
             target="_blank"
             rel="noopener noreferrer"
             class="rowCenter text-light font-medium no-underline certCta"
@@ -60,7 +60,7 @@
             <Icon name="mingcute:external-link-line" class="text-light" />
           </a>
           <a
-            @click="track('globalgap_verify_click')"
+            @click="useTrackEvent('globalgap_verify_click')"
             href="https://prod.osapiens.cloud/portal/webbundle/foodplus/field-service-os/supply-chain-portal?app-route-hash=%252Fcertificates"
             target="_blank"
             rel="noopener noreferrer"
@@ -82,7 +82,6 @@
 
 <script setup>
 import { ref } from 'vue'
-import { track } from '@vercel/analytics'
 
 const contact = [
   {

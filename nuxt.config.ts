@@ -10,8 +10,11 @@ export default defineNuxtConfig({
     'nuxt-anchorscroll',
     '@nuxt/fonts',
     '@nuxtjs/i18n',
-    '@vercel/analytics/nuxt',
+    'nuxt-gtag',
   ],
+  gtag: {
+    id: 'G-BLWLJ63E4C',
+  },
   fonts: {
     defaults: {
       weights: [400, 500, 700, 900],
