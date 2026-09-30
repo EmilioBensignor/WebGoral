@@ -16,8 +16,22 @@ let prefersReducedMotion = false
 let initialized = false
 let THREE = null
 
+// Three pesa en CPU: se monta recién con el hilo libre (después de load + idle)
+function whenIdle() {
+    return new Promise((resolve) => {
+        const schedule = () => 'requestIdleCallback' in window
+            ? requestIdleCallback(resolve, { timeout: 3000 })
+            : setTimeout(resolve, 200)
+        if (document.readyState === 'complete') schedule()
+        else window.addEventListener('load', schedule, { once: true })
+    })
+}
+
 onMounted(async () => {
     if (typeof window === 'undefined') return
+
+    await whenIdle()
+    if (!container.value) return
 
     if (window.matchMedia) {
         prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -58,6 +72,7 @@ async function initThree() {
     const threeModule = await import('three')
     const { GLTFLoader } = await import('three/examples/jsm/loaders/GLTFLoader.js')
     const { OrbitControls } = await import('three/examples/jsm/controls/OrbitControls.js')
+    const { MeshoptDecoder } = await import('three/examples/jsm/libs/meshopt_decoder.module.js')
     THREE = threeModule
 
     scene = new THREE.Scene()
@@ -111,6 +126,7 @@ async function initThree() {
     scene.add(fillLight)
 
     const loader = new GLTFLoader()
+    loader.setMeshoptDecoder(MeshoptDecoder)
     loader.load(
         '/models/Granada-Goral.glb',
         (gltf) => {

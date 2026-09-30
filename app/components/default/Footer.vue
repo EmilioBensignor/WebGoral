@@ -5,7 +5,7 @@
         <NuxtImg src="/images/Logo-Goral-Blanco.svg" alt="Logo Goral" class="logo" width="160" height="35" />
         <ul class="contact column">
           <li v-for="(item, index) in contact" :key="index">
-            <a :href="item.link" class="rowCenter text-light font-medium no-underline">
+            <a :href="item.link" @click="track('email_click')" class="rowCenter text-light font-medium no-underline">
               <Icon :name="`mingcute:${item.icon}`" class="text-light" />
               {{ item.text }}
             </a>
@@ -18,7 +18,7 @@
         <div class="certLogoClaim rowCenter">
           <NuxtImg
             src="/images/home/Logo-Global-GAP.svg"
-            alt="GLOBALG.A.P."
+            alt=""
             class="certLogo"
             width="64"
             height="64"
@@ -29,7 +29,7 @@
           <button
             type="button"
             @click="copyGgn"
-            :aria-label="$t('footer.certification.copy')"
+            :aria-label="`${$t('footer.certification.copy')} ${ggn}`"
             class="ggnButton rowCenter text-light"
           >
             <span class="text-light/70">{{ $t('footer.certification.ggn') }}</span>
@@ -51,6 +51,7 @@
         <div class="certActions column">
           <a
             :href="certificateUrl"
+            @click="track('certificate_download')"
             target="_blank"
             rel="noopener noreferrer"
             class="rowCenter text-light font-medium no-underline certCta"
@@ -59,6 +60,7 @@
             <Icon name="mingcute:external-link-line" class="text-light" />
           </a>
           <a
+            @click="track('globalgap_verify_click')"
             href="https://prod.osapiens.cloud/portal/webbundle/foodplus/field-service-os/supply-chain-portal?app-route-hash=%252Fcertificates"
             target="_blank"
             rel="noopener noreferrer"
@@ -80,6 +82,7 @@
 
 <script setup>
 import { ref } from 'vue'
+import { track } from '@vercel/analytics'
 
 const contact = [
   {

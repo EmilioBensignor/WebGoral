@@ -18,7 +18,7 @@
                     <video v-if="selectedInfo === 'location'" :aria-label="$t('about.info.location.title')" preload="none" autoplay loop muted playsinline>
                         <source src="/videos/home/ubicacion-estrategica.mp4" type="video/mp4" />
                     </video>
-                    <img v-else :src="`/images/home/${images[selectedInfo]}.webp`" :alt="$t(`about.info.${selectedInfo}.title`)" />
+                    <img v-else :src="`/images/home/${images[selectedInfo]}.webp`" :alt="$t(`about.info.${selectedInfo}.title`)" width="639" height="384" />
                 </div>
             </div>
         </div>

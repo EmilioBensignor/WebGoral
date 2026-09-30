@@ -7,13 +7,12 @@
             <div class="w-full columnAlignCenter">
                 <button @click="$emit('open-dialog')" class="primaryButton">{{ $t('ctaHero') }}</button>
                 <div class="rowCenter">
-                    <NuxtImg src="/images/home/Logo-Global-GAP.svg" alt="Logo GLOBALG.A.P." width="30" height="30" />
+                    <NuxtImg src="/images/home/Logo-Global-GAP.svg" alt="" width="30" height="30" />
                     <p class="text-dark-gray font-medium">{{ $t('globalGap') }}</p>
                 </div>
             </div>
         </div>
         <HomeCanvasArilos />
-        <DefaultContacto ref="dialog" />
     </section>
 </template>
 

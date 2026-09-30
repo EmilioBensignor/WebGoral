@@ -10,6 +10,7 @@ export default defineNuxtConfig({
     'nuxt-anchorscroll',
     '@nuxt/fonts',
     '@nuxtjs/i18n',
+    '@vercel/analytics/nuxt',
   ],
   fonts: {
     defaults: {
@@ -35,7 +36,7 @@ export default defineNuxtConfig({
     vueI18n: '~/i18n.config.ts',
     strategy: 'prefix_except_default',
     defaultLocale: 'es',
-    baseUrl: 'https://goral.com.ar',
+    baseUrl: 'https://www.goral.com.ar',
     locales: [
       { code: 'es', language: 'es-AR', name: 'Español' },
       { code: 'en', language: 'en-US', name: 'English' },
@@ -49,14 +50,14 @@ export default defineNuxtConfig({
     }
   },
   site: {
-    url: 'https://goral.com.ar',
+    url: 'https://www.goral.com.ar',
     name: 'Goral',
     description: 'Producción y exportación de granadas premium Acco y Wonderful desde San Juan, Argentina. Certificación GLOBALG.A.P., calidad consistente y entregas confiables.',
     defaultLocale: 'es',
   },
   robots: {
     disallow: ['/api/'],
-    sitemap: 'https://goral.com.ar/sitemap_index.xml',
+    sitemap: 'https://www.goral.com.ar/sitemap_index.xml',
   },
   routeRules: {
     '/**': {
@@ -101,6 +102,7 @@ export default defineNuxtConfig({
         'three',
         'three/examples/jsm/loaders/GLTFLoader.js',
         'three/examples/jsm/controls/OrbitControls.js',
+        'three/examples/jsm/libs/meshopt_decoder.module.js',
       ],
     },
   },

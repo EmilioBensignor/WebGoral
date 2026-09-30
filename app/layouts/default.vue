@@ -23,14 +23,21 @@ useHead({
 useSchemaOrg([
   defineOrganization({
     name: 'Goral',
-    url: 'https://goral.com.ar',
-    logo: 'https://goral.com.ar/images/Logo-Goral.svg',
+    url: 'https://www.goral.com.ar',
+    logo: 'https://www.goral.com.ar/images/Logo-Goral.svg',
     description: 'Productores y exportadores de granadas premium Acco y Wonderful desde San Juan, Argentina. Certificación GLOBALG.A.P.',
     email: 'info@goral.com.ar',
     address: {
       '@type': 'PostalAddress',
       addressCountry: 'AR',
       addressRegion: 'San Juan',
+      addressLocality: 'Pocito',
+    },
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'sales',
+      email: 'info@goral.com.ar',
+      availableLanguage: ['es', 'en', 'pt', 'fr', 'ru', 'nl'],
     },
     identifier: {
       '@type': 'PropertyValue',
@@ -40,7 +47,7 @@ useSchemaOrg([
   }),
   defineWebSite({
     name: 'Goral',
-    url: 'https://goral.com.ar',
+    url: 'https://www.goral.com.ar',
     inLanguage: ['es-AR', 'en-US', 'pt-BR', 'fr-FR', 'ru-RU', 'nl-NL'],
   }),
 ])

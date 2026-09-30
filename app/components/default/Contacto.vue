@@ -82,6 +82,8 @@
 </template>
 
 <script>
+import { track } from '@vercel/analytics'
+
 export default {
     name: 'ContactDialog',
 
@@ -220,6 +222,7 @@ export default {
                             website: this.formData.website // honeypot
                         }
                     });
+                    track('contact_form_submit');
                     this.closeDialog();
                     this.showSuccessDialog();
                 } catch (error) {
@@ -246,6 +249,7 @@ export default {
                 this.previousFocus = document.activeElement
             }
             this.isDialogVisible = true
+            track('contact_modal_open')
             this.$nextTick(() => {
                 const dialog = this.$refs.dialogEl
                 const firstInput = dialog?.querySelector('input, textarea, button')

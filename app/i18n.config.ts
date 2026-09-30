@@ -8,7 +8,6 @@ export default defineI18nConfig(() => ({
             seo: {
                 title: 'Granadas Premium de San Juan, Argentina',
                 description: 'Producción y exportación de granadas premium Acco y Wonderful desde San Juan, Argentina. Certificación GLOBALG.A.P., calidad consistente y entregas confiables.',
-                ogTitle: 'Goral | Granadas Premium de Argentina',
             },
             title: 'Calidad. Frescura. Consistencia.',
             pomegranates: 'Granadas',
@@ -86,8 +85,8 @@ export default defineI18nConfig(() => ({
                         text: '*Desde San Juan al mundo.* Proveemos un servicio de exportación confiable para que puedas llevar el mejor producto a tu mercado.'
                     },
                     harvest: {
-                        title: 'Cosechas en Marzo y Abril',
-                        text: '*Planificación perfecta para tu negocio.* Nuestras cosechas están programadas estratégicamente en los meses de marzo y abril, garantizando el mejor momento para cada variedad.'
+                        title: 'Cosechas de febrero a abril',
+                        text: '*Planificación perfecta para tu negocio.* Nuestras cosechas están programadas estratégicamente de febrero a abril, garantizando el mejor momento para cada variedad.'
                     }
                 }
             },
@@ -155,9 +154,8 @@ export default defineI18nConfig(() => ({
         },
         en: {
             seo: {
-                title: 'Premium Pomegranates from San Juan, Argentina',
+                title: 'Pomegranate exporter from Argentina {\'|\'} Acco & Wonderful',
                 description: 'Production and export of premium Acco and Wonderful pomegranates from San Juan, Argentina. GLOBALG.A.P. certified, consistent quality and reliable deliveries.',
-                ogTitle: 'Goral | Premium Pomegranates from Argentina',
             },
             title: 'Quality. Freshness. Consistency.',
             pomegranates: 'Pomegranates',
@@ -239,8 +237,8 @@ export default defineI18nConfig(() => ({
                         text: 'Our team accompanies you at every stage with *personalized attention*, so you\'re never alone in the process.'
                     },
                     harvest: {
-                        title: 'Harvests in March and April',
-                        text: '*Perfect planning for your business.* Our harvests are strategically scheduled in March and April, ensuring the best timing for each variety.'
+                        title: 'Harvests from February to April',
+                        text: '*Perfect planning for your business.* Our harvests are strategically scheduled from February to April, ensuring the best timing for each variety.'
                     }
                 }
             },
@@ -310,7 +308,6 @@ export default defineI18nConfig(() => ({
             seo: {
                 title: 'Romãs Premium de San Juan, Argentina',
                 description: 'Produção e exportação de romãs premium Acco e Wonderful de San Juan, Argentina. Certificação GLOBALG.A.P., qualidade consistente e entregas confiáveis.',
-                ogTitle: 'Goral | Romãs Premium da Argentina',
             },
             title: 'Qualidade. Frescura. Consistência.',
             pomegranates: 'Romãs',
@@ -392,8 +389,8 @@ export default defineI18nConfig(() => ({
                         text: 'Nossa equipe acompanha você em cada etapa com *atenção personalizada*, para que você nunca esteja sozinho no processo.'
                     },
                     harvest: {
-                        title: 'Colheitas em Março e Abril',
-                        text: '*Planejamento perfeito para seu negócio.* Nossas colheitas são programadas estrategicamente nos meses de março e abril, garantindo o melhor momento para cada variedade.'
+                        title: 'Colheitas de fevereiro a abril',
+                        text: '*Planejamento perfeito para seu negócio.* Nossas colheitas são programadas estrategicamente de fevereiro a abril, garantindo o melhor momento para cada variedade.'
                     }
                 }
             },
@@ -463,7 +460,6 @@ export default defineI18nConfig(() => ({
             seo: {
                 title: 'Grenades Premium de San Juan, Argentine',
                 description: 'Production et exportation de grenades premium Acco et Wonderful de San Juan, Argentine. Certification GLOBALG.A.P., qualité constante et livraisons fiables.',
-                ogTitle: 'Goral | Grenades Premium d\'Argentine',
             },
             title: 'Qualité. Fraîcheur. Constance.',
             pomegranates: 'Grenades',
@@ -545,8 +541,8 @@ export default defineI18nConfig(() => ({
                         text: 'Notre équipe vous accompagne à chaque étape avec une *attention personnalisée*, pour que vous ne soyez jamais seul dans le processus.'
                     },
                     harvest: {
-                        title: 'Récoltes en Mars et Avril',
-                        text: '*Planification parfaite pour votre entreprise.* Nos récoltes sont programmées stratégiquement en mars et avril, garantissant le meilleur moment pour chaque variété.'
+                        title: 'Récoltes de février à avril',
+                        text: '*Planification parfaite pour votre entreprise.* Nos récoltes sont programmées stratégiquement de février à avril, garantissant le meilleur moment pour chaque variété.'
                     }
                 }
             },
@@ -616,7 +612,6 @@ export default defineI18nConfig(() => ({
             seo: {
                 title: 'Премиальные гранаты из Сан-Хуана, Аргентина',
                 description: 'Производство и экспорт премиальных гранатов Acco и Wonderful из Сан-Хуана, Аргентина. Сертификат GLOBALG.A.P., стабильное качество и надежные поставки.',
-                ogTitle: 'Goral | Премиальные гранаты из Аргентины',
             },
             title: 'Качество. Свежесть. Стабильность.',
             pomegranates: 'Гранаты',
@@ -698,8 +693,8 @@ export default defineI18nConfig(() => ({
                         text: 'Наша команда сопровождает вас на каждом этапе с *персонализированным вниманием*, чтобы вы никогда не были одни в процессе.'
                     },
                     harvest: {
-                        title: 'Сбор урожая в марте и апреле',
-                        text: '*Идеальное планирование для вашего бизнеса.* Наш сбор урожая стратегически запланирован на март и апрель, обеспечивая лучшее время для каждого сорта.'
+                        title: 'Сбор урожая с февраля по апрель',
+                        text: '*Идеальное планирование для вашего бизнеса.* Наш сбор урожая стратегически запланирован с февраля по апрель, обеспечивая лучшее время для каждого сорта.'
                     }
                 }
             },
@@ -769,7 +764,6 @@ export default defineI18nConfig(() => ({
             seo: {
                 title: 'Premium Granaatappels uit San Juan, Argentinië',
                 description: 'Productie en export van premium Acco- en Wonderful-granaatappels uit San Juan, Argentinië. GLOBALG.A.P.-gecertificeerd, constante kwaliteit en betrouwbare leveringen.',
-                ogTitle: 'Goral | Premium Granaatappels uit Argentinië',
             },
             title: 'Kwaliteit. Versheid. Constantheid.',
             pomegranates: 'Granaatappels',
@@ -851,8 +845,8 @@ export default defineI18nConfig(() => ({
                         text: 'Ons team begeleidt u bij elke stap met *persoonlijke aandacht*, zodat u er nooit alleen voor staat.'
                     },
                     harvest: {
-                        title: 'Oogst in maart en april',
-                        text: '*De perfecte planning voor uw bedrijf.* Onze oogst is strategisch gepland in maart en april, wat het beste moment voor elke variëteit garandeert.'
+                        title: 'Oogst van februari tot april',
+                        text: '*De perfecte planning voor uw bedrijf.* Onze oogst is strategisch gepland van februari tot april, wat het beste moment voor elke variëteit garandeert.'
                     }
                 }
             },

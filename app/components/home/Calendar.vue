@@ -74,7 +74,6 @@
             </ClientOnly>
 
             <button @click="$emit('open-dialog')" class="secondaryButton active">{{ $t("calendar.cta") }}</button>
-            <DefaultContacto ref="dialog" />
         </div>
     </section>
 </template>
@@ -84,11 +83,11 @@ export default {
     emits: ['open-dialog'],
     computed: {
         accoHarvestDate() {
-            return this.getHarvestDate(3, 2)
+            return this.getHarvestDate(2, 25)
         },
 
         wonderfulHarvestDate() {
-            return this.getHarvestDate(3, 16)
+            return this.getHarvestDate(3, 15)
         },
 
         accoData() {
@@ -202,10 +201,7 @@ section {
     border-radius: 999px;
 }
 
-.accoHarvest {
-    transform: translateX(-60%);
-}
-
+.month.active .accoHarvest,
 .month.active .wonderfulHarvest {
     width: 230%;
     transform: translateX(-54%);
@@ -314,6 +310,7 @@ section {
         height: 1.5rem;
     }
 
+    .month.active .accoHarvest,
     .month.active .wonderfulHarvest {
         width: 210%;
         transform: translateX(-52%);
@@ -365,6 +362,7 @@ section {
         height: 1.625rem;
     }
 
+    .month.active .accoHarvest,
     .month.active .wonderfulHarvest {
         width: 205%;
     }

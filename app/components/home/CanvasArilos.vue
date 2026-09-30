@@ -25,8 +25,8 @@ let sharedImagesLoaded = false
 const loadSharedImages = () => {
     return new Promise((resolve) => {
         const sources = [
-            '/images/arilos/Goral-Granada-Arilo.png',
-            '/images/arilos/Goral-Granada-Arilo-2.png'
+            '/images/arilos/Goral-Granada-Arilo.webp',
+            '/images/arilos/Goral-Granada-Arilo-2.webp'
         ]
         let loaded = 0
         sources.forEach((src) => {

@@ -19,6 +19,7 @@
     "@primevue/nuxt-module": "^4.2.2",
     "@types/nodemailer": "^6.4.17",
     "@types/three": "^0.173.0",
+    "@vercel/analytics": "^2.0.1",
     "nodemailer": "^6.10.0",
     "nuxt": "4.4.4",
     "nuxt-anchorscroll": "^1.0.5",
