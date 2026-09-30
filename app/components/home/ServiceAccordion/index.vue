@@ -10,7 +10,7 @@
                     <div class="columnAlignCenter">
                         <p v-html="formatText($t(`services.items.${key}.text`))"></p>
                         <video :ref="el => { if (el) videos[index] = el }" :src="`/videos/home/${service.video}.mp4`"
-                            :aria-label="$t(`services.items.${key}.title`)" class="serviceAnimation" preload="metadata" autoplay muted playsinline loop></video>
+                            :aria-label="$t(`services.items.${key}.title`)" class="serviceAnimation" preload="none" muted playsinline loop></video>
                     </div>
                 </AccordionContent>
             </AccordionPanel>
@@ -47,6 +47,10 @@ export default {
                 return `${bg} ${active}`.trim()
             })
         }
+    },
+    // sin autoplay: solo se descarga el video del panel abierto
+    mounted() {
+        this.$nextTick(() => this.videos[this.activePanel]?.play())
     },
     watch: {
         activePanel(newValue) {

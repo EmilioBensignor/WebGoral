@@ -1,5 +1,12 @@
 <template>
-    <section class="heroSection bgCover">
+    <section class="heroSection">
+        <!-- asumo: >=1080 el hero no lleva imagen (antes background-image: none), el gif vacío evita descargarla -->
+        <picture class="heroBg">
+            <source media="(min-width: 1080px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
+            <source media="(min-width: 700px)" srcset="/images/home/Goral-Granadas-Desktop.webp" width="1080" height="280" />
+            <source media="(min-width: 480px)" srcset="/images/home/Goral-Granadas-Tablet.webp" width="700" height="280" />
+            <img src="/images/home/Goral-Granadas-Mobile.webp" alt="" width="480" height="280" fetchpriority="high" loading="eager" />
+        </picture>
         <div class="hero columnAlignCenter">
             <h1>{{ $t('title') }}</h1>
             <p class="text-center font-medium"><span class="text-primary font-bold">{{ $t('pomegranates') }}</span>{{
@@ -49,11 +56,21 @@ useHead({
 </script>
 
 <style scoped>
-    .heroSection {
-        background-image: url('/images/home/Goral-Granadas-Mobile.webp');
-    }
+.heroSection {
+    position: relative;
+}
+
+.heroBg img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
 
 .hero {
+    position: relative;
     gap: 0.75rem;
     z-index: 2;
     left: 0;
@@ -73,17 +90,7 @@ useHead({
     width: 1.35rem;
 }
 
-@media (width >=480px) {
-    .heroSection {
-        background-image: url('/images/home/Goral-Granadas-Tablet.webp');
-    }
-}
-
 @media (width >=700px) {
-    .heroSection {
-        background-image: url('/images/home/Goral-Granadas-Desktop.webp');
-    }
-
     .hero {
         gap: 1rem;
     }
@@ -100,8 +107,10 @@ useHead({
 @media (width >=1080px) {
     .heroSection {
         height: 50vh;
-        position: relative;
-        background-image: none;
+    }
+
+    .heroBg {
+        display: none;
     }
 
     .hero {
