@@ -26,7 +26,7 @@ Sitio one-page de Goral, productor y exportador de granadas premium Acco y Wonde
 app/
   app.vue                  # NuxtLayout > NuxtPage
   layouts/default.vue      # Header + slot + Footer · useLocaleHead + Schema.org base
-  pages/index.vue          # ÚNICA página · useSeoMeta + Schema.org Product/Farm
+  pages/index.vue          # ÚNICA página · useSeoMeta + Schema.org Farm
   components/
     default/               # Header, Footer, Contacto (modal)
     home/                  # Hero, Variations, Calendar, About, Services, Granada (3D), CanvasArilos
@@ -67,8 +67,8 @@ Ninguno da error si falta: el sitio compila igual y la falla aparece como bander
 ### SEO
 - `useSeoMeta` solo en `pages/index.vue` (única página por ahora). `og:title`/`twitter:title` se arman como `` `${t('seo.title')} | Goral` `` para coincidir con el `<title>` que genera el titleTemplate.
 - Dominio canónico **con www**: `site.url`, `i18n.baseUrl`, `robots.sitemap` y toda URL absoluta (og, JSON-LD) van con `https://www.goral.com.ar`.
-- JSON-LD: cada `defineProduct` necesita `'@id'` absoluto propio (`https://www.goral.com.ar/#product-acco`); sin eso comparten `#product` y el segundo pisa al primero. `contactPoint` va solo en la Organization del layout (si se repite en la LocalBusiness, `nuxt-schema-org` los fusiona y duplica `availableLanguage`).
-- `useSchemaOrg` en `layouts/default.vue` (Organization + WebSite, válido global) y en `pages/index.vue` (LocalBusiness/Farm + Product Acco/Wonderful).
+- JSON-LD **sin `Product`** (sacado 2026-10-08): Search Console lo marca como error crítico si no tiene `offers`, `review` o `aggregateRating`, y Goral no publica precios. No volver a agregarlo sin un precio real. `contactPoint` va solo en la Organization del layout (si se repite en la LocalBusiness, `nuxt-schema-org` los fusiona y duplica `availableLanguage`).
+- `useSchemaOrg` en `layouts/default.vue` (Organization + WebSite, válido global) y en `pages/index.vue` (LocalBusiness/Farm).
 - `og:image` apunta a `/images/home/Goral-Granadas-Desktop.webp` — al subir nuevo hero, actualizar también `og:image` y `twitter:image`.
 - **Nunca agregar `meta keywords`** — Google la ignora desde 2009.
 - Robots auto-generado por `@nuxtjs/robots`. Modificar via `robots:` en `nuxt.config.ts`, **no** crear `public/robots.txt`.
@@ -156,6 +156,7 @@ pnpm preview      # Preview build local
 - Generar OG image dinámica con `nuxt-og-image` (hoy se usa el hero estático).
 - Migrar a `<script setup>` los 6 componentes que siguen en Options API: `Variations`, `Services`, `Calendar`, `About`, `ServiceAccordion/index`, `Contacto`. `Header` ya está migrado (2026-08-05) y sirve de referencia. Ojo con `Contacto`: tiene focus trap manual y validaciones, migrarlo solo con verificación de a11y.
 - **Banner de cookies / Consent Mode v2**: GA4 corre sin consentimiento. El sitio apunta a importadores de la UE (NL, FR), así que por GDPR correspondería un banner mínimo; decisión de riesgo pendiente con Goral (es cambio de UI).
+- **Acceso a NIC.ar** para delegar `goral.com.ar` a Vercel (hoy en Astra Network, ver Decisiones). Habilita manejar DNS desde Vercel y verificar Search Console como propiedad de dominio. Copiar antes MX y SPF.
 - Logo GLOBALG.A.P. (Hero y Footer): `width`/`height` 30×30 y 64×64 contra un viewBox real de 23×18 (Lighthouse `image-aspect-ratio`). Corregirlo achica ~10px la fila, así que va con el rediseño.
 - LCP mobile 2,8–3,8s: lo que queda es load delay del hero (compite con CSS/JS inicial) + ~650ms de TTFB.
 - Posters de video: descartados, el primer frame de los 4 videos de Services es un color liso.
@@ -165,4 +166,4 @@ pnpm preview      # Preview build local
 - `app/.DS_Store` y similares: NO commitear. Ya están en `.gitignore`.
 - El bloque `vite.optimizeDeps.include` en `nuxt.config.ts` lista solo lo que realmente se importa — al agregar componentes PrimeVue nuevos, sumarlos también ahí para evitar warnings de dev.
 - El warning `interpolate-size: allow-keywords` que tira el linter en `ServiceAccordion` es CSS válido moderno (anim. de altura `auto`). Ignorar.
-- El warning de `@nuxt/robots` sobre `Disallow: /api/**` es un falso positivo acá: el único endpoint es `sendEmail` (POST, sin contenido indexable), no hay assets servidos bajo `/api/` y el `og:image` es una imagen estática de `/images/`. El `disallow` se queda.
+- El warning de `@nuxt/robots` sobre `Disallow: /api/**` es un falso positivo acá: el único endpoint es `sendEmail` (POST, sin contenido indexable), el `og:image` es una imagen estática de `/images/`, y lo único más bajo `/api/` es `/api/_nuxt_icon` (fallback de `@nuxt/icon`; los íconos ya salen inline del SSR). El `disallow` se queda. Por eso Search Console avisa "Bloqueada por robots.txt" (2026-10-08): mientras las URLs listadas sean `/api/...`, es esperado.

@@ -55,7 +55,8 @@ useSeoMeta({
   twitterImage: 'https://www.goral.com.ar/images/home/Goral-Granadas-Desktop.webp',
 })
 
-// Schema.org específico de la home: Farm + Productos
+// Schema.org específico de la home: Farm
+// Sin Product: Google exige offers/review/aggregateRating, y Goral no publica precios (B2B)
 useSchemaOrg([
   defineLocalBusiness({
     '@type': ['LocalBusiness', 'Farm'],
@@ -71,24 +72,6 @@ useSchemaOrg([
     },
     email: 'info@goral.com.ar',
     priceRange: '$$',
-  }),
-  defineProduct({
-    '@id': 'https://www.goral.com.ar/#product-acco',
-    name: 'Granada Acco',
-    description: () => `${t('acco.feature1')}. ${t('acco.feature2')}. ${t('acco.feature3')}`,
-    image: 'https://www.goral.com.ar/images/arilos/Goral-Granada-Arilo.webp',
-    brand: { '@type': 'Brand', name: 'Goral' },
-    category: 'Pomegranate / Acco variety',
-    countryOfOrigin: 'AR',
-  }),
-  defineProduct({
-    '@id': 'https://www.goral.com.ar/#product-wonderful',
-    name: 'Granada Wonderful',
-    description: () => `${t('wonderful.feature1')}. ${t('wonderful.feature2')}. ${t('wonderful.feature3')}`,
-    image: 'https://www.goral.com.ar/images/arilos/Goral-Granada-Arilo-2.webp',
-    brand: { '@type': 'Brand', name: 'Goral' },
-    category: 'Pomegranate / Wonderful variety',
-    countryOfOrigin: 'AR',
   }),
 ])
 </script>
